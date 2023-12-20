@@ -1,0 +1,116 @@
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+header {
+  --header-padding: var(--spacing-4);
+  --header-margin-top: 8px;
+
+  position: sticky;
+  top: var(--header-margin-top);
+  z-index: 1;
+  padding: var(--header-padding) 0;
+  margin-top: var(--header-margin-top);
+  box-shadow: 0 -2px 0 var(--color-secondary),
+              0 -8px 0 var(--color-foreground),
+              0 0 8px rgba(0 0 0 25%);
+  border-block-start: 1px solid var(--color-brand-2);
+  border-block-end: 2px solid var(--color-brand-2);
+  background: var(--color-brand);
+
+  .block {
+    display: grid;
+    grid-template-columns: subgrid;
+    align-items: center;
+  }
+
+  .header-nav {
+    grid-column: span 3;
+  }
+
+  a:not(.button) {
+    font-family: var(--font-display);
+    font-size: var(--font-sm);
+    color: var(--color-background);
+    text-decoration: none;
+    text-shadow: 1px 1px 0 var(--color-text);
+
+    &:hover,
+    &:active {
+      text-shadow: none;
+    }
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: var(--header-padding);
+    justify-content: flex-end;
+    
+    ul {
+      display: none;
+    }
+  }
+
+  .header-brand a,
+  .header-brand span,
+  .header-brand img {
+    display: inline-flex;
+    width: 100%;
+  }
+
+  .header-brand img {
+    max-width: 200px;
+  }
+
+  .header-tools {
+    display: none;
+  }
+}
+
+.default-content-wrapper {
+  margin-block: var(--spacing-8);
+}
+
+.button {
+  --button-padding: var(--spacing-3) var(--spacing-4);
+
+  padding: var(--button-padding);
+  font-family: var(--font-display);
+  border-radius: var(--spacing-2);
+  font-size: var(--font-sm);
+  text-decoration: none;
+  display: inline-flex;
+  gap: var(--spacing-3);
+
+  &.primary {
+    background: var(--color-primary);
+    box-shadow: 0 2px 0 var(--color-text);
+    color: var(--color-background);
+
+    &:hover {
+      box-shadow: 0 1px 0 var(--color-text);
+    }
+
+    &:active {
+      box-shadow: none; 
+    }
+  }
+
+  &:not(.primary,.secondary) {
+    border: 2px solid var(--color-foreground);
+    color: var(--color-secondary);
+    box-shadow: 0 2px 0 var(--color-secondary);
+  
+    &:hover {
+      box-shadow: 0 1px 0 var(--color-secondary);
+    }
+
+    &:active {
+      box-shadow: none; 
+    }
+  }
+}
