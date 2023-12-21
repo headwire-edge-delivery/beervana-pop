@@ -1,5 +1,9 @@
 * {
   box-sizing: border-box;
+
+  &:empty {
+    display: none;
+  }
 }
 
 html, body, ul, ol {

@@ -54,6 +54,15 @@
   --font-sm: 1.2574rem;
   --font-size: clamp(1rem, .4167vw + .8875rem, 1.125rem);
   --font-xs: 0.7953rem;
+
+  /* section layout */
+  --section-layout-gap: clamp(var(--spacing-2), 6vw, var(--spacing-4));
+  --section-layout-full: minmax(var(--section-layout-gap), 1fr);
+  --section-layout-content: min((var(--layout-max-width) - var(--section-layout-gap) * 5) / 4, 25% - var(--section-layout-gap));
+  --section-template-columns: 
+    [full-width-start breakout-left-start] var(--section-layout-full)
+    [content-start breakout-right-start content-left-start sidebar-left-start] var(--section-layout-content) [sidebar-left-end content-middle-start] var(--section-layout-content) [content-left-end content-right-start] var(--section-layout-content) [content-middle-end sidebar-right-start] var(--section-layout-content) [content-right-end content-end breakout-left-end]
+    var(--section-layout-full) [breakout-right-end full-width-end];
 }
 
 html.dark-mode {
