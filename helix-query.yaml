@@ -1,0 +1,59 @@
+version: 1
+# See https://www.hlx.live/docs/setup-indexing, https://www.aem.live/docs/indexing-reference
+indices:
+  default:
+    include:
+      - /**
+    exclude:
+      - '/admin/**'
+      - '/drafts/**'
+      - '/footer'
+      - '/header'
+      - '/nav'
+    target: /query-index.json
+    properties:
+      lastModified:
+        select: none
+        value: parseTimestamp(headers["last-modified"], "ddd, DD MMM YYYY hh:mm:ss GMT")
+      title:
+        select: head > meta[property="og:title"]
+        value: attribute(el, "content")
+      image:
+        select: head > meta[property="og:image"]
+        value: attribute(el, "content")
+      description:
+        select: head > meta[name="description"]
+        value: attribute(el, "content")
+      AUTHOR:
+        select: head > meta[name="AUTHOR"]
+        value: attribute(el, "content")
+      date:
+        select: head > meta[name="publication-date"]
+        value: parseTimestamp(attribute(el, "content"), "MM/DD/YYYY")
+      category:
+        select: head > meta[name="category"]
+        value: attribute(el, "content")
+      tags:
+        select: head > meta[property="article:tag"]
+        values: attribute(el, "content")
+      address:
+        select: head > meta[name="address"]
+        value: attribute(el, "content")
+      telephone:
+        select: head > meta[name="telephone"]
+        value: attribute(el, "content")
+      email:
+        select: head > meta[name="email"]
+        value: attribute(el, "content")
+      website:
+        select: head > meta[name="website"]
+        value: attribute(el, "content")
+      websiteTitle:
+        select: head > meta[name="website-title"]
+        value: attribute(el, "content")
+      onTap:
+        select: head > meta[name="on-tap"]
+        value: attribute(el, "content")
+      hours:
+        select: head > meta[name="hours"]
+        value: attribute(el, "content")
