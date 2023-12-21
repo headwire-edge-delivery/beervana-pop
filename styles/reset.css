@@ -1,7 +1,7 @@
 * {
   box-sizing: border-box;
 
-  &:empty {
+  &:not(img, picture, helix-sidekick):empty {
     display: none;
   }
 }
