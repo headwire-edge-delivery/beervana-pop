@@ -8,10 +8,6 @@
     grid-column: content-middle / content-right;
   }
 
-  & > * {
-    grid-column: content;
-  }
-
   .full-width {
     grid-column: full-width;
   }

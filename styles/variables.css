@@ -46,6 +46,9 @@
   --color-secondary: var(--color-brand-5);
   --color-text: var(--color-brand-2);
   --color-text-on-secondary: var(--color-brand-3);
+  --color-border-primary: var(--color-brand-2);
+  --color-border-secondary: var(--color-brand-4);
+  --color-focus-ring: var(--color-brand-5);
   --font-display: 'Caprasimo', serif;
   --font-copy: system-ui, sans-serif;
   --font-xl: 2.5rem;
@@ -71,5 +74,7 @@ html.dark-mode {
   --color-foreground-semi-transparent: var(--color-brand-4-85);
   --color-text: var(--color-brand-3);
   --color-text-on-secondary: var(--color-brand-2);
+  --color-border-primary: var(--color-brand-2);
+  --color-border-secondary: var(--color-brand-4);
+  --color-focus-ring: var(--color-brand-5);
 }
-
