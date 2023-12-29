@@ -8,6 +8,7 @@
   position: relative;
   border-bottom: 4px double var(--color-border-primary);
   padding: var(--spacing-8) 0 0;
+  overflow: hidden;
 
   .block {
     grid-column: content;
@@ -19,8 +20,14 @@
     background: url('/icons/hero-divider.webp') no-repeat bottom center;
     min-width: 100%;
     min-height: 200px;
-    bottom: 0;
+    bottom: -75px;
     position: absolute;
+  }
+
+  @media (width > 60rem) {
+    &::after {
+      bottom: 0;
+    }
   }
 
   .hero-content {
@@ -50,5 +57,17 @@
   .button-container {
     margin-block: 0;
     flex-shrink: 0;
+  }
+
+  .hero-picture,
+  .hero-picture img {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 16 / 9;
+  }
+
+  .hero-picture img {
+    object-fit: cover;
   }
 }

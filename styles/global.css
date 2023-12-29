@@ -31,7 +31,7 @@ header,
     inset: 0;
     position: absolute;
     background-blend-mode: multiply;
-    opacity: 0.25;
+    opacity: 0.05;
   }
 
   .block,
