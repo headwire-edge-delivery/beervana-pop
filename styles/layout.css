@@ -4,7 +4,7 @@
   grid-auto-flow: row;
   grid-template-columns: var(--section-template-columns);
 
-  .default-content-wrapper {
+  .default-content-wrapper:not(.include-wrapper .default-content-wrapper)  {
     grid-column: content-middle / content-right;
   }
 

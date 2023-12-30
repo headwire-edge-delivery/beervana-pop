@@ -202,3 +202,9 @@
     opacity: 1;
   }
 }
+
+.pagination-wrapper {
+  grid-template-columns: subgrid;
+  display: grid;
+  grid-column: content;
+}
