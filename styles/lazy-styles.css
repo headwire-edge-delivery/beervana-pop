@@ -99,6 +99,8 @@
     aspect-ratio: 1 / 1;
     border-radius: 100% 100% 0 0;
     overflow: hidden;
+    outline: 11px solid var(--color-secondary);
+    outline-offset: 0;
 
     & a,
     & picture,
