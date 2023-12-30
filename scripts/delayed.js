@@ -11,9 +11,9 @@ const templateConfig = {
 };
 
 function decorateTemplate() {
-  const template = document.querySelector('meta[name="template"]')?.getAttribute('content');
-  if (template && templateConfig[template]) {
-    templateConfig[template]();
+  const template = document.querySelector('meta[name="template"]')?.getAttribute('content')?.split(' ');
+  if (template) {
+    template.forEach((t) => templateConfig[t] && templateConfig[t]());
   }
 }
 

@@ -1,49 +1,64 @@
 import { fetchPlaceholders } from './aem.js';
 
-export default async function decorateTemplateDetails() {
-  const placeholders = await fetchPlaceholders();
-  const { nextLinkText, previousLinkText, websiteTitle } = placeholders;
-  // convert to looking up the content in the query index
-  const previousLink = document.querySelector('meta[name="previous-link"]')?.getAttribute('content');
-  const nextLink = document.querySelector('meta[name="next-link"]')?.getAttribute('content');
+async function decoratePreviousNext(placeholders) {
+  const contentType = window.location.pathname.split('/')[1];
+  if (contentType) {
+    const response = await fetch(`/query-index.json?sheet=${contentType}`);
+    if (response.ok) {
+      const { data } = await response.json();
+      if (data) {
+        const path = window.location.pathname;
+        const index = data.findIndex((item) => item.path === path);
+        const previous = data[index - 1];
+        const next = data[index + 1];
 
-  if (previousLink || previousLinkText || nextLink || nextLinkText) {
-    const pagination = document.createElement('div');
-    pagination.classList.add('subgrid', 'pagination');
-    const previousLinkHTML = previousLink ? `<div class="previous-link content-left">
-      <h4 id="to-the-back">To the back</h4>
-      <p class="button-container">
-        <a href="${previousLink}" title="${previousLinkText}" class="button primary">
-          <span class="icon icon-arrow-left">
-            <img data-icon-name="arrow-left" src="/icons/arrow-left.svg" loading="lazy" alt="arrow-left" width="16" height="16">
-          </span>
-          <span>${previousLinkText}</span>
-        </a>
-      </p>
-    </div>` : '';
-    const nextLinkHTML = nextLink ? `<div class="next-link content-right">
-      <h4 id="to-the-back">On Tap</h4>
-      <p class="button-container">
-        <a href="${nextLink}" title="${nextLinkText}" class="button primary">
-          <span>${nextLinkText}</span>
-          <span class="icon icon-arrow-right">
-            <img data-icon-name="arrow-right" src="/icons/arrow-right.svg" loading="lazy" alt="arrow-right" width="16" height="16">
-          </span>
-        </a>
-      </p>
-    </div>` : '';
+        const { nextLinkText, previousLinkText } = placeholders;
+        const previousLink = previous?.path || `/${contentType}`;
+        const nextLink = next?.path || `/${contentType}`;
 
-    if (previousLink || nextLink) {
-      pagination.innerHTML = `<div class="pagination-wrapper">${previousLinkHTML}${nextLinkHTML}</div>`;
-      document.querySelector('main .section:last-child').appendChild(pagination);
+        if (previousLink || previousLinkText || nextLink || nextLinkText) {
+          const pagination = document.createElement('div');
+          pagination.classList.add('subgrid', 'pagination');
+          const previousLinkHTML = previousLink ? `<div class="previous-link content-left">
+            <h4 id="to-the-back">To the back</h4>
+            <p class="button-container">
+              <a href="${previousLink}" title="${previous?.title || previousLinkText}" class="button primary">
+                <span class="icon icon-arrow-left">
+                  <img data-icon-name="arrow-left" src="/icons/arrow-left.svg" loading="lazy" alt="arrow-left" width="16" height="16">
+                </span>
+                <span>${previousLinkText}</span>
+              </a>
+            </p>
+          </div>` : '';
+          const nextLinkHTML = nextLink ? `<div class="next-link content-right">
+            <h4 id="to-the-back">On Tap</h4>
+            <p class="button-container">
+              <a href="${nextLink}" title="${next?.title || nextLinkText}" class="button primary">
+                <span>${nextLinkText}</span>
+                <span class="icon icon-arrow-right">
+                  <img data-icon-name="arrow-right" src="/icons/arrow-right.svg" loading="lazy" alt="arrow-right" width="16" height="16">
+                </span>
+              </a>
+            </p>
+          </div>` : '';
+
+          if (previousLink || nextLink) {
+            pagination.innerHTML = `<div class="pagination-wrapper">${previousLinkHTML}${nextLinkHTML}</div>`;
+            document.querySelector('main .section:last-child').appendChild(pagination);
+          }
+        }
+      }
     }
   }
+}
+
+async function decorateDetails(placeholders) {
+  const { websiteTitle } = placeholders;
 
   const hours = document.querySelector('meta[name="hours"]')?.getAttribute('content') || '';
   const address = document.querySelector('meta[name="address"]')?.getAttribute('content') || '';
   const telephone = document.querySelector('meta[name="telephone"]')?.getAttribute('content') || '';
   const website = document.querySelector('meta[name="website"]')?.getAttribute('content') || '';
-  // convert to grabbing this from the placeholders
   const email = document.querySelector('meta[name="email"]')?.getAttribute('content') || '';
   const onTap = document.querySelector('meta[name="on-tap"]')?.getAttribute('content') || '';
 
@@ -72,4 +87,10 @@ export default async function decorateTemplateDetails() {
 
     document.querySelector('main .section :first-child').after(contact);
   }
+}
+
+export default async function decorateTemplateDetails() {
+  const placeholders = await fetchPlaceholders();
+  decoratePreviousNext(placeholders);
+  decorateDetails(placeholders);
 }
