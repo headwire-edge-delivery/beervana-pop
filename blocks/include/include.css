@@ -225,3 +225,175 @@
 .include.cards {
   margin-block: var(--spacing-12);
 }
+
+.include.events {
+  grid-column: content;
+  grid-template-columns: subgrid;
+  display: grid;
+  margin-block: var(--spacing-10);
+
+  .events.wrapper {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: content;
+    gap: var(--spacing-8);
+  }
+
+  .event {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    background: var(--color-brand);
+    grid-column: content;
+    animation: slide-up linear forwards;
+    animation-timeline: view();
+    opacity: 0;
+    animation-range: 10vh 30vh;
+
+    @media (prefers-reduced-motion: reduce) {
+      & {
+        animation: none;
+        opacity: 1;
+      }
+    }
+
+    /* causes horizontal scrolling, and adding overflow hidden to the parent removes the animation
+    
+    &:nth-child(even) {
+      transform: translateX(-20%);
+    }
+
+    &:nth-child(odd) {
+      transform: translateX(20%);
+    }
+    */
+  
+    @media (width > 768px) and (width < 1024px) {
+      & {
+        display: grid;
+        grid-template-columns: 1.5fr 2.5fr;
+
+        .events-image {
+          order: 2;
+        }
+      }
+    }
+
+    @media (width > 1024px) {
+      &:nth-child(odd) {
+        grid-column: content-left;
+        animation-range: 0 20vh;
+      }
+
+      &:nth-child(even) {
+        grid-column: content-right;
+        animation-range: 20vh 40vh;
+      }
+    }
+  }
+
+  .events-image {
+    overflow: hidden;
+    position: relative;
+    padding: var(--spacing-6);
+
+    &::before {
+      display: block;
+      position: absolute;
+      inset: 0;
+      content: '';
+      background: var(--background-image) no-repeat center center / cover;
+      background-blend-mode: luminosity;
+      filter: blur(10px);
+      z-index: 0;
+      opacity: .5;
+      transition: all .2s ease-in-out;
+    }
+
+    &:hover::before {
+      scale: 1.1;
+      opacity: .25;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      &::before {
+        transition: none;
+      }
+    }
+
+    & a {
+      position: relative;
+      display: block;
+      text-decoration: none;
+    }
+
+    & picture,
+    & img {
+      aspect-ratio: 1 / .9;
+      display: block;
+    
+      &:is(img) {
+        object-fit: cover;
+      }
+
+      &:is(picture) {
+        border: 2px solid var(--color-border-brand);
+      }
+    }
+
+    .month {
+      font-family: var(--font-display);
+      text-transform: uppercase;
+      fill: var(--color-foreground);
+      text-shadow: 0 0 2px var(--color-text);
+    }
+
+    .date {
+      display: flex;
+      background: var(--color-text);
+      color: var(--color-foreground);
+      border: 2px solid var(--color-border-brand);
+      border-top: none;
+
+      & span {
+        flex: 1;
+        padding: var(--spacing-4);
+        text-align: center;
+        font-family: var(--font-display);
+        text-shadow: 0 1px 0 var(--color-secondary);
+        font-size: var(--font-lg);
+
+        & + span {
+          border-inline-start: 2px solid var(--color-border-brand);
+        }
+      }
+    }
+  }
+
+  .events-body {
+    background: var(--color-brand);
+    padding: var(--spacing-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+    color: var(--color-background);
+    flex: 1;
+
+    & a {
+      color: var(--color-background);
+      text-decoration: none;
+    }
+
+    & h3,
+    & p {
+      margin-block: 0;
+    }
+
+    .button-container {
+      flex: 1;
+      display: flex;
+      align-items: flex-end;
+      margin-block-start: var(--spacing-2);
+    }
+  }
+}

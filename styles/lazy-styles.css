@@ -203,6 +203,14 @@
   }
 }
 
+@keyframes slide-in {
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+
 .pagination-wrapper {
   grid-template-columns: subgrid;
   display: grid;
