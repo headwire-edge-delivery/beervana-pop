@@ -1,1 +1,162 @@
 /* add global styles that can be loaded post LCP here */
+.cards {
+  --cards-per-row: 1;
+
+  display: grid;
+  grid-template-columns: repeat(var(--cards-per-row), 1fr);
+  gap: var(--spacing-16) var(--spacing-8);
+
+  @media (width > 768px) {
+    --cards-per-row: 2;
+  }
+
+  @media (width > 1024px) {
+    --cards-per-row: 3;
+  }
+}
+
+.cards.brewery {
+  .card {
+    border: 10px solid var(--color-secondary);
+    outline: 5px solid var(--color-foreground);
+    outline-offset: 0;
+    border-radius: 100% 100% 0 0;
+    position: relative;
+
+    &:hover {
+      .cards-card-image img {
+        scale: 1.05;
+      }
+
+      /*
+      .cards-card-body {
+        & > *:not(h3) {
+          scale: 100%;
+          visibility: visible;
+          opacity: 1;
+          height: 100%;
+          overflow: unset;
+          margin-top: var(--spacing-2);
+        }
+      }
+      */
+    }
+  
+    &::before,
+    &::after {
+      display: block;
+      content: '';
+      background: url('/icons/hops.webp') no-repeat center center / contain;
+      width: 30%;
+      height: 40%;
+      position: absolute;
+      top: -8%;
+      z-index: 1;
+    }
+
+    &::after {
+      right: 0;
+      transform: rotate(120deg);
+    }
+
+    &::before {
+      left: 0;
+      transform: rotate(200deg);
+    }
+  }
+
+  .cards-card-image {
+    aspect-ratio: 1 / 1;
+    border-radius: 100% 100% 0 0;
+    overflow: hidden;
+
+    & a,
+    & picture,
+    & img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+      &:is(img) {
+        transition: all .2s linear;
+
+        @media (prefers-reduced-motion: reduce) {
+          transition: none;
+        }
+      }
+    }
+
+    &::before,
+    &::after {
+      display: block;
+      content: '';
+      background: url('/icons/two-hops.webp') no-repeat center center / contain;
+      width: 60%;
+      height: 60%;
+      position: absolute;
+      top: -11%;
+      z-index: -1;
+    }
+
+    &::after {
+      right: -7%;
+      scale: -1 1;
+    }
+
+    &::before {
+      left: -7%;
+    }
+  }
+
+  .cards-card-body {
+    height: auto;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: var(--color-text);
+    padding: var(--spacing-4);
+    transition: all .2s linear;
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+
+    & > *:not(h3) {
+      opacity: 0;
+      visibility: hidden;
+      transform-origin: bottom;
+      transition: all .2s linear;
+      background: var(--color-text);
+      margin: 0;
+      height: 0;
+      overflow: hidden;
+
+      @media (prefers-reduced-motion: reduce) {
+        transition: none;
+      }
+    }
+
+    & h3 {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      & a {
+        color: var(--color-background);
+        text-decoration: none;
+      }
+    }
+
+    & p {
+      color: var(--color-background);
+      margin-bottom: 0;
+      font-size: var(--font-xs);
+    }
+
+    .button-container {
+      display: none;
+    }
+  }
+}
