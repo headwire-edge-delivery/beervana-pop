@@ -22,6 +22,36 @@
     outline-offset: 0;
     border-radius: 100% 100% 0 0;
     position: relative;
+    transition: all .2s linear;
+    animation: slide-up linear forwards;
+    animation-timeline: view();
+    transform: translateY(20%);
+    opacity: 0;
+    animation-range: 10vh 30vh;
+
+    @media (width > 768px) {
+      &:nth-child(2n - 1) {
+        animation-range: 0 20vh;
+      }
+
+      &:nth-child(2n) {
+        animation-range: 20vh 40vh;
+      }
+    }
+
+    @media (width > 1024px) {
+      &:nth-child(3n - 2) {
+        animation-range: 0 20vh;
+      }
+
+      &:nth-child(3n - 1) {
+        animation-range: 20vh 40vh;
+      }
+
+      &:nth-child(3n) {
+        animation-range: 40vh 50vh;
+      }
+    }
 
     &:hover {
       .cards-card-image img {
@@ -158,5 +188,17 @@
     .button-container {
       display: none;
     }
+  }
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(20%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
