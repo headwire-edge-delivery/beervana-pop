@@ -32,4 +32,5 @@ export default async function decorate(block) {
   const logo = block.querySelector('.icon-logo-desktop');
   logo?.parentNode.classList.remove('button');
   logo?.parentNode.parentNode.classList.remove('button-container');
+  logo?.parentNode.setAttribute('aria-label', 'Home');
 }
