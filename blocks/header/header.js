@@ -117,6 +117,16 @@ export default async function decorate(block) {
   const navSections = nav.querySelector('.nav-sections');
   if (navSections) {
     navSections.querySelectorAll(':scope .default-content-wrapper > ul > li').forEach((navSection) => {
+      if (navSection.querySelector('a > .icon')) {
+        const navTextWrapper = document.createElement('span');
+        const text = navSection.textContent;
+        const icon = navSection.querySelector('a > .icon');
+        navSection.querySelector('a').textContent = '';
+        navTextWrapper.className = 'nav-text-wrapper';
+        navTextWrapper.innerText = text;
+        navSection.querySelector('a').append(icon);
+        navSection.querySelector('a').append(navTextWrapper);
+      }
       if (navSection.querySelector('ul')) navSection.classList.add('nav-drop');
       navSection.addEventListener('click', () => {
         if (isDesktop.matches) {

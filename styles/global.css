@@ -159,9 +159,6 @@ header,
       width: 22px;
       height: 22px;
 
-      &:is(#nav[aria-expanded="true"] button span) {
-        background: url('/icons/close.svg') no-repeat center center / contain;
-      }
     }
 
     &:hover {
@@ -171,6 +168,14 @@ header,
     &:focus {
       outline: none;
       box-shadow: var(--focus-ring);
+    }
+
+    &:is(#nav[aria-expanded="true"] button) {
+      margin-inline-end: calc(var(--spacing-1) * -1);
+
+      & span {
+        background: url('/icons/close.svg') no-repeat center center / contain;
+      }
     }
   }
 
@@ -201,8 +206,15 @@ header,
     }
 
     & a {
-      justify-content: flex-end;
+      flex-direction: row-reverse;
+      gap: var(--spacing-3);
     }
+  }
+}
+
+@media (width > 768px) and (width < 1024px) {
+  .nav-text-wrapper {
+    display: none;
   }
 }
 
