@@ -72,6 +72,7 @@ header,
     &:hover {
       text-shadow: none;
       background: var(--color-brand);
+      color: var(--color-brand-3-hover);
     }
 
     &:focus {

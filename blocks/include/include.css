@@ -95,7 +95,6 @@
   }
 
   & h2 {
-    font-size: var(--text-size-display-xs);
     font-weight: 700;
     line-height: 2rem;
   }

@@ -41,7 +41,7 @@ function templateBreakout({
       </h2>
       <p>${description}</p>
       <ul>
-        ${address && `<li><span class="icon icon-map-pin"><img data-icon-name="map-pin" src="/icons/map-pin.svg" loading="lazy" alt="map-pin" width="16" height="16"></span><a href="https://google.com/maps/place/${address.split('<br/>').join(' ')}" title="Map to Address" target="_blank">${address.replaceAll('<br/>,', '<br/>')}</a></li>`}
+        ${address && `<li><span class="icon icon-map"><img data-icon-name="map" src="/icons/map.svg" loading="lazy" alt="map-pin" width="16" height="16"></span><a href="https://google.com/maps/place/${address.split('<br/>').join(' ')}" title="Map to Address" target="_blank">${address.replaceAll('<br/>,', '<br/>')}</a></li>`}
         ${telephone && `<li><span class="icon icon-phone"><img data-icon-name="phone" src="/icons/phone.svg" loading="lazy" alt="phone" width="16" height="16"></span><a href="tel:${telephone}" title="Telephone">${telephone}</a></li>`}
         ${email && `<li><span class="icon icon-mail"><img data-icon-name="mail" src="/icons/mail.svg" loading="lazy" alt="mail" width="16" height="16"></span><a href="mailto:${email}" title="${email}">${email}</a></li>`}
         ${hours && `<li><span class="icon icon-clock"><img data-icon-name="clock" src="/icons/clock.svg" loading="lazy" alt="clock" width="16" height="16"></span>${hours}</li>`}

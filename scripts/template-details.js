@@ -68,7 +68,7 @@ async function decorateDetails(placeholders) {
     contact.innerHTML = `<div class="contact-info">
       <h4>Contact</h4>
       <ul class="icon-list">
-        ${address && `<li><span class="icon icon-map-pin"><img data-icon-name="map-pin" src="/icons/map-pin.svg" loading="lazy" alt="map-pin" width="16" height="16"></span><a href="https://google.com/maps/place/${address.replaceAll('<br/>,', '').replaceAll(' ', '+')}">${address.replaceAll('<br/>,', '<br/>')}</a></li>`}
+        ${address && `<li><span class="icon icon-map"><img data-icon-name="map" src="/icons/map.svg" loading="lazy" alt="map-pin" width="16" height="16"></span><a href="https://google.com/maps/place/${address.replaceAll('<br/>,', '').replaceAll(' ', '+')}">${address.replaceAll('<br/>,', '<br/>')}</a></li>`}
         ${telephone && `<li><span class="icon icon-phone"><img data-icon-name="phone" src="/icons/phone.svg" loading="lazy" alt="phone" width="16" height="16"></span><a href="tel:${telephone}" title="Telephone Number">${telephone}</a></li>`}
         ${email && `<li><span class="icon icon-mail"><img data-icon-name="mail" src="/icons/mail.svg" loading="lazy" alt="mail" width="16" height="16"></span><a href="mailto:${email}" title="${email}">${email}</a></li>`}
         ${website && `<li><span class="icon icon-link"><img data-icon-name="link" src="/icons/link.svg" loading="lazy" alt="link" width="16" height="16"></span><a href="${website}" title="${websiteTitle || ''}">${websiteTitle || website}</a></li>`}
