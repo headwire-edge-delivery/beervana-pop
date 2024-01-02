@@ -1,12 +1,8 @@
-.section:not(#nav .section) {
+.section:not(#nav .section, .footer .section) {
   width: 100%;
   display: grid;
   grid-auto-flow: row;
   grid-template-columns: var(--section-template-columns);
-
-  .default-content-wrapper:not(.include-wrapper .default-content-wrapper)  {
-    grid-column: content-middle / content-right;
-  }
 
   .full-width {
     grid-column: full-width;
@@ -57,4 +53,8 @@
     grid-template-columns: subgrid;
     grid-column: full-width;
   }
+}
+
+main .section .default-content-wrapper:not(.include-wrapper .default-content-wrapper)  {
+  grid-column: content-middle / content-right;
 }

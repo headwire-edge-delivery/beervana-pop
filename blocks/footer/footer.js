@@ -1,4 +1,9 @@
-import { getMetadata } from '../../scripts/aem.js';
+import {
+  getMetadata,
+  decorateBlock,
+  decorateIcons,
+  loadBlocks,
+} from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
 
 /**
@@ -17,5 +22,14 @@ export default async function decorate(block) {
   const footer = document.createElement('div');
   while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
 
+  decorateIcons(block);
+  if (block.querySelector('.form')) {
+    decorateBlock(block.querySelector('.form'));
+    loadBlocks(document.querySelector('footer'));
+  }
+
   block.append(footer);
+  const logo = block.querySelector('.icon-logo-desktop');
+  logo?.parentNode.classList.remove('button');
+  logo?.parentNode.parentNode.classList.remove('button-container');
 }
