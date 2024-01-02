@@ -133,13 +133,43 @@ header,
   grid-auto-flow: column;
   align-items: center;
 
-  .nav-hamburger {
-    display: none;
-  }
-
   p,
   ul {
     margin: 0;
+  }
+
+  @media (width < 768px) {
+    .nav-hamburger {
+      order: 1;
+    }
+  }
+}
+
+.nav-hamburger {
+  justify-self: flex-end;
+
+  button {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
+
+    span {
+      background: url('/icons/menu.svg') no-repeat center center / contain;
+      display: block;
+      width: 22px;
+      height: 22px;
+    }
+  }
+
+  @media (width > 768px) {
+    display: none;
+  }
+}
+
+@media (width < 768px) {
+  .nav-sections {
+    display: none;
   }
 }
 
@@ -147,7 +177,7 @@ main .default-content-wrapper:not(#nav .default-content-wrapper) {
   margin-block: var(--spacing-8);
 }
 
-button,
+button:not(.nav-hamburger button),
 .button {
   --button-padding: var(--spacing-3) var(--spacing-4);
 
@@ -159,6 +189,10 @@ button,
   text-decoration: none;
   display: inline-flex;
   gap: var(--spacing-3);
+  
+  &:not(:disabled) {
+    cursor: pointer;
+  }
 
   &.primary {
     background: var(--color-primary);

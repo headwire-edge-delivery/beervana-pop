@@ -57,6 +57,10 @@
       .cards-card-image img {
         scale: 1.05;
       }
+
+      .cards-card-body {
+        background-color: var(--color-brand);
+      }
     }
   
     &::before,

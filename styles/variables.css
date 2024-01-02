@@ -78,7 +78,7 @@
   --font-xs: 0.7953rem;
 
   /* section layout */
-  --section-layout-gap: clamp(var(--spacing-2), 6vw, var(--spacing-4));
+  --section-layout-gap: clamp(var(--spacing-2), 2vw, var(--spacing-4));
   --section-layout-full: minmax(var(--section-layout-gap), 1fr);
   --section-layout-content: min((var(--layout-max-width) - var(--section-layout-gap) * 5) / 4, 25% - var(--section-layout-gap));
   --section-template-columns: 
