@@ -381,7 +381,6 @@
 
     & a {
       color: var(--color-background);
-      text-decoration: none;
     }
 
     & h3,
