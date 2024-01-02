@@ -32,7 +32,7 @@
 
   .hero-content {
     padding: var(--spacing-8);
-    background: linear-gradient(180deg, rgba(221 161 94 / 65%) 0%, rgba(221 161 94 / 90%) 100%);
+    background: linear-gradient(180deg, hsla(var(--color-brand-4-hsl) / 65%) 0%, hsla(var(--color-brand-4-hsl) / 90%) 100%);
     border: 1px solid var(--color-border-secondary);
     border-radius: var(--spacing-8) var(--spacing-8) 0 0;
     display: flex;

@@ -107,18 +107,18 @@ input, textarea {
   padding: var(--spacing-3);
   border: 1px solid var(--color-border-primary);
   border-radius: var(--spacing-2);
-  background: var(--color-background);
+  background-color: hsla(var(--color-background-hsl) / 90%);
   font-family: var(--font-copy);
   font-size: var(--font-size);
   color: var(--color-text);
-  box-shadow: 0 1px 2px 0 #10182805;
+  box-shadow: 0 1px 2px 0 var(--color-shadow-default);
 
   &:is(textarea) {
     min-height: var(--spacing-32);
   }
 
   &::placeholder {
-    color: var(--color-text-text-placeholder);
+    color: hsla(var(--color-text-hsl) / 50%);
     font-style: italic;
   }
 
@@ -129,18 +129,20 @@ input, textarea {
   &:focus {
     outline: none;
     border-color: var(--color-border-brand);
-    box-shadow: var(--color-focus-ring);
+    box-shadow: var(--focus-ring);
+    background: var(--color-background);
   }
 
   &:disabled {
-    background-color: var(--colors-background-bg-disabled-subtle);
-    border-color: var(--colors-border-border-disabled);
-    color: var(--colors-text-text-disabled);
+    background-color: hsla(var(--color-background-hsl) / 70%);
+    border-color: hsla(var(--color-border-primary-hsl) / 70%);
+    color: hsla(var(--color-text) / 50%);
+    cursor: not-allowed;
   }
 }
 
 input[type='checkbox'] {
-  border: 1px solid var(--colors-border-border-primary);
+  border: 1px solid var(--color-border-primary);
   width: var(--spacing-4);
   height: var(--spacing-4);
   border-radius: var(--border-radius-xs);
@@ -158,13 +160,13 @@ input[type='checkbox'] {
   place-content: center;
 
   &:hover {
-    border-color: var(--colors-border-border-secondary);
+    border-color: var(--color-border-secondary);
   }
 
   &:focus {
     outline: none;
-    border-color: var(--colors-border-border-brand);
-    box-shadow: var(--focus-ring-box-shadow);
+    border-color: var(--color-border-brand);
+    box-shadow: var(--focus-ring);
   }
 
   &::before {
@@ -173,7 +175,7 @@ input[type='checkbox'] {
     height: var(--spacing-2);
     transform: scale(0);
     transition: 120ms transform ease-in-out;
-    box-shadow: inset 1em 1em var(--colors-background-bg-brand-primary);
+    box-shadow: inset 1em 1em var(--color-background);
     border-radius: var(--border-radius-xxs);
     grid-area: checkbox;
   }
@@ -207,10 +209,10 @@ input[type='checkbox'] {
   gap: var(--spacing-2);
 
   & label {
-    color: var(--colors-text-text-brand-secondary);
+    color: var(--color-text);
 
     &:hover {
-      color: var(--colors-text-text-primary)
+      color: var(--color-text)
     }
   }
 }

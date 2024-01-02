@@ -57,19 +57,6 @@
       .cards-card-image img {
         scale: 1.05;
       }
-
-      /*
-      .cards-card-body {
-        & > *:not(h3) {
-          scale: 100%;
-          visibility: visible;
-          opacity: 1;
-          height: 100%;
-          overflow: unset;
-          margin-top: var(--spacing-2);
-        }
-      }
-      */
     }
   
     &::before,

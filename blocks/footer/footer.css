@@ -1,5 +1,5 @@
 .footer-wrapper {
-  box-shadow: inset 0 0 3px rgba(0 0 0 / 25%); /* TODO: create standard shadow, use here, and update colors to be hsla */
+  box-shadow: inset 0 0 3px var(--color-shadow-default);
   border-top: 2px solid var(--color-secondary);
   background: var(--color-foreground);
   width: 100%;

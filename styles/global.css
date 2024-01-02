@@ -10,6 +10,11 @@ a {
   &:hover {
     text-decoration: underline;
   }
+
+  &:focus {
+    outline: none;
+    box-shadow: var(--focus-ring);
+  }
 }
 
 header,
@@ -23,7 +28,7 @@ header,
   margin-top: var(--header-margin-top);
   box-shadow: 0 -2px 0 var(--color-secondary),
               0 -8px 0 var(--color-foreground),
-              0 0 8px rgba(0 0 0 / 25%);
+              0 0 8px var(--color-shadow-default);
   border-block-start: 1px solid var(--color-brand-2);
   border-block-end: 2px solid var(--color-brand-2);
   background: var(--color-brand);
@@ -198,4 +203,14 @@ button,
       box-shadow: none; 
     }
   }
+
+  &:focus {
+    outline: none;
+    box-shadow: var(--focus-ring);
+  }
+}
+
+::selection {
+  background: var(--color-brand);
+  color: var(--color-background);
 }
