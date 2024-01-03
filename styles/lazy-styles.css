@@ -250,3 +250,55 @@
   display: grid;
   grid-column: content;
 }
+
+.stories-wrapper {
+  --bg: linear-gradient(to top, hsla(var(--color-foreground-hsl) / 60%), hsla(var(--color-foreground-hsl) / 20%));
+
+  display: grid;
+  grid-template: [story] 1fr / [story] 1fr;
+  height: 100%;
+  width: 100%;
+  grid-area: stories;
+
+  .story-wrapper {
+    grid-area: story;
+    background: var(--bg), linear-gradient(to top, hsla(var(--color-foreground-hsl) / 80%), hsla(var(--color-foreground-hsl) / 50%)), var(--color-background);
+    border-radius: var(--spacing-4);
+    padding: var(--spacing-4);
+    transition: all .3s cubic-bezier(0.4, 0.0, 1, 1);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    & > ul {
+      margin-inline-start: var(--spacing-5);
+    }
+
+    &.seen {
+      opacity: 0;
+    }
+  }
+}
+
+.stories-navigation {
+  padding: var(--spacing-4);
+  grid-area: stories;
+  display: grid;
+  grid-auto-flow: column;
+  gap: var(--spacing-1);
+  align-items: flex-start;
+
+  .story-nav {
+    display: block;
+    background: hsla(var(--color-background-hsl) / 60%);
+    height: var(--spacing-1);
+    border: none;
+    outline: none;
+
+    &:hover {
+      background-color: hsla(var(--color-background-hsl) / 100%);
+      cursor: pointer;
+    }
+  }
+}

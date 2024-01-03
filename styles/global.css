@@ -223,7 +223,7 @@ main .default-content-wrapper:not(#nav .default-content-wrapper) {
   margin-block: var(--spacing-8);
 }
 
-button:not(.nav-hamburger button),
+button:not(.nav-hamburger button, .story-nav),
 .button {
   --button-padding: var(--spacing-3) var(--spacing-4);
 

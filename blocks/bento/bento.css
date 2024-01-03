@@ -19,6 +19,10 @@
   padding: var(--spacing-4);
   background-color: hsla(var(--color-foreground-hsl) / 10%);
 
+  & :is(h1, h2, h3, h4, h5, h6) {
+    color: inherit;
+  }
+
   &.bg-brand {
     background-color: var(--color-brand);
     color: var(--color-text-on-brand);
@@ -84,6 +88,9 @@
   &.stories {
     grid-column: 4;
     grid-row: 2 / span 2;
+    padding: 0;
+    display: grid;
+    grid-template: [stories] 1fr / [stories] 1fr;
   }
 
   &.centered {
