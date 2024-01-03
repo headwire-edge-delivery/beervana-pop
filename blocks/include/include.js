@@ -5,7 +5,7 @@ function templateCard({
   image,
   path,
   title,
-}, placeholders) {
+}, index, placeholders) {
   const { emptyLinkTitlePrefix, cardButtonText } = placeholders;
   return `<div class="card">
     <div class="cards-card-image image-content">
@@ -34,7 +34,8 @@ function templateBreakout({
   title,
   website,
   websiteTitle,
-}, index) {
+}, index, placeholders) {
+  const { emptyLinkTitlePrefix } = placeholders;
   return `<div class="breakout-${index % 2 === 0 ? 'left' : 'right'} two-columns block">
     <div class="default-content-wrapper">
       <h2 id="portland-art-museum">
@@ -49,7 +50,9 @@ function templateBreakout({
         ${website && `<li><span class="icon icon-link"><img data-icon-name="link" src="/icons/link.svg" loading="lazy" alt="link" width="16" height="16"></span><a href="${website}" title="${websiteTitle || ''}">${websiteTitle || website}</a></li>`}
       </ul>
     </div>
-    <div class="default-content-wrapper image-content">${createOptimizedPicture(image).outerHTML}</div>
+    <div class="default-content-wrapper image-content">
+      <a href="${path}" title="${emptyLinkTitlePrefix.replace('%title%', title)}">${createOptimizedPicture(image).outerHTML}</a>
+    </div>
   </div>`;
 }
 
@@ -166,7 +169,7 @@ export default async function decorate(block) {
       const template = templateConfig[styles[0]] || templateConfig.default;
       const container = document.createElement('div');
       container.className = `${styles.join(' ')} wrapper`;
-      container.innerHTML = data.map((item) => template(item, placeholders)).join('');
+      container.innerHTML = data.map((item, index) => template(item, index, placeholders)).join('');
       block.appendChild(container);
     }
   }
