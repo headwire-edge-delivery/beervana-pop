@@ -24,6 +24,11 @@
     flex-direction: column;
   }
 
+  .card {
+    display: flex;
+    flex-direction: column;
+  }
+
   .cards-card-image {
     aspect-ratio: 4 / 3;
     overflow: hidden;
@@ -62,6 +67,10 @@
 
     & > * {
       margin-block: 0;
+    }
+
+    & :last-child:is(.button-container) {
+      align-self: flex-end;
     }
   }
 }

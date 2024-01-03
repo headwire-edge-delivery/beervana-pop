@@ -221,10 +221,6 @@
   }
 }
 
-.include.cards {
-  margin-block: var(--spacing-12);
-}
-
 .include.events {
   grid-column: content;
   grid-template-columns: subgrid;

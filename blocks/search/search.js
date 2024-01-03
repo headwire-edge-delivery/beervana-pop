@@ -5,7 +5,7 @@ export default async function decorate(block) {
   const { emptyLinkTitlePrefix, cardButtonText, searchNoResults } = placeholders;
 
   const searchParams = new URLSearchParams(window.location.search);
-  block.innerHTML = '<ul class="search-results cards"></ul>';
+  block.innerHTML = '<ul class="search-results cards block"></ul>';
 
   const heroBlock = document.querySelector('.hero');
   if (heroBlock) {
