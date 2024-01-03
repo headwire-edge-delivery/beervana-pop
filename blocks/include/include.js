@@ -1,14 +1,15 @@
-import { createOptimizedPicture } from '../../scripts/aem.js';
+import { createOptimizedPicture, fetchPlaceholders } from '../../scripts/aem.js';
 
 function templateCard({
   description,
   image,
   path,
   title,
-}) {
+}, placeholders) {
+  const { emptyLinkTitlePrefix, cardButtonText } = placeholders;
   return `<div class="card">
     <div class="cards-card-image image-content">
-      <a href="${path}" title="${title}">${createOptimizedPicture(image).outerHTML}</a>
+      <a href="${path}" title="${emptyLinkTitlePrefix.replace('%title%', title)}">${createOptimizedPicture(image).outerHTML}</a>
     </div>
     <div class="cards-card-body">
       <h3>
@@ -16,7 +17,7 @@ function templateCard({
       </h3>
       <p>${description}</p>
       <p class="button-container">
-        <a href="${path}" title="${title}" class="button primary">Learn More</a>
+        <a href="${path}" title="${emptyLinkTitlePrefix.replace('%title%', title)}" class="button primary">${cardButtonText}</a>
       </p>
     </div>
   </div>`;
@@ -146,6 +147,7 @@ const templateConfig = {
 };
 
 export default async function decorate(block) {
+  const placeholders = await fetchPlaceholders();
   const queryA = block.querySelector('a[href*="query-index.json"]');
   if (queryA) {
     const styles = Array.from(block.classList).filter((c) => c.toLowerCase() !== 'include' && c.toLowerCase() !== 'block');
@@ -164,7 +166,7 @@ export default async function decorate(block) {
       const template = templateConfig[styles[0]] || templateConfig.default;
       const container = document.createElement('div');
       container.className = `${styles.join(' ')} wrapper`;
-      container.innerHTML = data.map(template).join('');
+      container.innerHTML = data.map((item) => template(item, placeholders)).join('');
       block.appendChild(container);
     }
   }
