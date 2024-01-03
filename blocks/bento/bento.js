@@ -24,7 +24,7 @@ export default async function decorate(block) {
     const storyContents = storyContainer.querySelector(':scope > div');
     const stories = document.createElement('div');
     stories.classList.add('stories-wrapper');
-    const storiesNavigation = document.createElement('nav');
+    const storiesNavigation = document.createElement('div');
     storiesNavigation.classList.add('stories-navigation');
     const markup = storyContents.innerHTML;
     const storiesMarkup = markup.split('<hr>');
