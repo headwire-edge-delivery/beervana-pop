@@ -1,4 +1,17 @@
+.columns-wrapper,
+.columns-wrapper > .block {
+  grid-column: full-width;
+  display: grid;
+  grid-template-columns: subgrid;
+
+  &:is(.block) {
+    background: var(--bg-color);
+  }
+}
+
 .columns > div {
+  margin-block: var(--spacing-6);
+  grid-column: content;
   display: flex;
   flex-direction: column;
 }
@@ -17,6 +30,10 @@
 
 .columns > div > .columns-img-col img {
   display: block;
+}
+
+.columns ul {
+  margin-inline-start: var(--spacing-6);
 }
 
 @media (width >= 900px) {

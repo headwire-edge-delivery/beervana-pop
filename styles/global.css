@@ -294,3 +294,34 @@ button:not(.nav-hamburger button, .story-nav),
   background: var(--color-brand);
   color: var(--color-background);
 }
+
+
+.bg-brand {
+  --bg-color: var(--color-brand);
+  --color: var(--color-text-on-brand);
+}
+
+.bg-foreground {
+  --bg-color: var(--color-foreground);
+  --color: var(--color-text-on-foreground);
+}
+
+.bg-background {
+  --bg-color: var(--color-background);
+  --color: var(--color-text-on-background);
+}
+
+.bg-primary {
+  --bg-color: var(--color-primary);
+  --color: var(--color-text-on-primary);
+}
+
+.bg-secondary {
+  --bg-color: var(--color-secondary);
+  --color: var(--color-text-on-secondary);
+}
+
+.bg-tertiary {
+  --bg-color: var(--color-tertiary);
+  --color: var(--color-text-on-tertiary);
+}

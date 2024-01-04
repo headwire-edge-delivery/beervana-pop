@@ -37,7 +37,7 @@
   --color-brand-3-hsl: 52 94% 94%;
   --color-brand-3-hover-hsl: 52 94% 100%;
   --color-brand-4-hsl: 32 65% 62%;
-  --color-brand-5-hsl: 28 67% 44%;
+  --color-brand-5-hsl: 28 67% 39%;
   --color-brand-1: hsl(var(--color-brand-1-hsl));
   --color-brand-2: hsl(var(--color-brand-2-hsl));
   --color-brand-3: hsl(var(--color-brand-3-hsl));

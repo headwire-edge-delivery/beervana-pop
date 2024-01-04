@@ -1,4 +1,5 @@
 export default async function decorate(block) {
+  const INTERVAL_TIME = 4000;
   function setActiveStory(target) {
     const stories = document.querySelector('.stories-wrapper');
     const storiesNavigation = document.querySelector('.stories-navigation');
@@ -12,7 +13,7 @@ export default async function decorate(block) {
     nextStoryNav.classList.add('active');
   }
 
-  let storyInterval = setInterval(() => setActiveStory(), 2000);
+  let storyInterval = setInterval(() => setActiveStory(), INTERVAL_TIME);
 
   const stories = document.createElement('div');
   const storiesNavigation = document.createElement('div');
@@ -37,7 +38,7 @@ export default async function decorate(block) {
       storyNav.addEventListener('click', ({ target }) => {
         clearInterval(storyInterval);
         setActiveStory(target);
-        storyInterval = setInterval(() => setActiveStory(), 2000);
+        storyInterval = setInterval(() => setActiveStory(), INTERVAL_TIME);
       });
       storiesNavigation.appendChild(storyNav);
 

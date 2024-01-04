@@ -262,7 +262,7 @@
 
   .story-wrapper {
     grid-area: story;
-    background: var(--bg), linear-gradient(to top, hsla(var(--color-foreground-hsl) / 80%), hsla(var(--color-foreground-hsl) / 50%)), var(--color-background);
+    background: var(--bg) no-repeat center center / cover, linear-gradient(to top, hsla(var(--color-foreground-hsl) / 80%), hsla(var(--color-foreground-hsl) / 50%)), var(--color-background);
     border-radius: var(--spacing-4);
     padding: var(--spacing-4);
     transition: all .3s cubic-bezier(0.4, 0.0, 1, 1);
@@ -306,7 +306,17 @@
     }
 
     &.active {
-      background: hsla(var(--color-background-hsl) / 90%);
+      animation: progress-bar 2s linear;
     }
+  }
+}
+
+@keyframes progress-bar {
+  0% {
+    background-image: linear-gradient(to right, hsla(var(--color-background-hsl) / 50%), hsla(var(--color-background-hsl) / 50%) 10%, hsla(var(--color-background-hsl) / 20%) 11%, hsla(var(--color-background-hsl) / 20%) 100%);
+  }
+
+  100% {
+    background-image: linear-gradient(to right, hsla(var(--color-background-hsl) / 90%) 100%, hsla(var(--color-background-hsl) / 90%) 100%);
   }
 }
