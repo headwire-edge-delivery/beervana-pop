@@ -73,7 +73,9 @@ body {
 main .section .default-content-wrapper:not(.include-wrapper .default-content-wrapper)  {
   grid-column: content;
 
+  /*
   @media (width > 1024px) {
     grid-column: content-middle / content-right;
   }
+  */
 }
