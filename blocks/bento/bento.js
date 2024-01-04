@@ -1,17 +1,22 @@
-function rotateStories(container) {
-  setTimeout(() => {
-    // navigation.style = `` // TODO make the navigation work
-    const currentStory = container.querySelector('.story-wrapper:last-child');
-    currentStory.classList.add('seen');
-    setTimeout(() => {
-      container.prepend(currentStory);
-      currentStory.classList.remove('seen');
-      rotateStories(container);
-    }, 500);
-  }, 2000);
-}
-
 export default async function decorate(block) {
+  function setActiveStory(target) {
+    const stories = document.querySelector('.stories-wrapper');
+    const storiesNavigation = document.querySelector('.stories-navigation');
+    const currentStory = stories.querySelector('.active');
+    const currentStoryNav = storiesNavigation.querySelector('.active');
+    const nextStory = target ? stories.querySelector(`[data-story="${target.dataset.story}"]`) : currentStory.nextElementSibling || stories.querySelector('.story-wrapper:first-child');
+    const nextStoryNav = target || currentStoryNav.nextElementSibling || storiesNavigation.querySelector('.story-nav:first-child');
+    currentStory.classList.remove('active');
+    currentStoryNav.classList.remove('active');
+    nextStory.classList.add('active');
+    nextStoryNav.classList.add('active');
+  }
+
+  let storyInterval = setInterval(() => setActiveStory(), 2000);
+
+  const stories = document.createElement('div');
+  const storiesNavigation = document.createElement('div');
+
   const elements = block.querySelectorAll(':scope > div');
   elements.forEach((element) => {
     const contents = element.querySelectorAll(':scope > div');
@@ -21,32 +26,38 @@ export default async function decorate(block) {
   });
 
   block.querySelectorAll('.stories')?.forEach((storyContainer) => {
-    const storyContents = storyContainer.querySelector(':scope > div');
-    const stories = document.createElement('div');
     stories.classList.add('stories-wrapper');
-    const storiesNavigation = document.createElement('div');
     storiesNavigation.classList.add('stories-navigation');
-    const markup = storyContents.innerHTML;
-    const storiesMarkup = markup.split('<hr>');
-    storiesMarkup.forEach((storyMarkup, i) => {
+
+    storyContainer.querySelector(':scope > div')?.innerHTML?.split('<hr>')?.forEach((storyMarkup, i) => {
       const storyNav = document.createElement('button');
-      storyNav.classList.add('story-nav', i);
+      storyNav.dataset.story = i;
+      storyNav.classList.add('story-nav', i, i === 0 && 'active');
       storyNav.setAttribute('title', `Navigate to story ${i + 1}`);
+      storyNav.addEventListener('click', ({ target }) => {
+        clearInterval(storyInterval);
+        setActiveStory(target);
+        storyInterval = setInterval(() => setActiveStory(), 2000);
+      });
       storiesNavigation.appendChild(storyNav);
+
       const storyWrapper = document.createElement('div');
-      storyWrapper.classList.add('story-wrapper');
+      storyWrapper.classList.add('story-wrapper', i === 0 && 'active');
       storyWrapper.innerHTML = storyMarkup;
+      storyWrapper.dataset.story = i;
+
       const img = storyWrapper.querySelector('img');
       if (img) {
         const imgSrc = img.getAttribute('src');
         storyWrapper.style = `--bg: url(${imgSrc});`;
       }
       storyWrapper.querySelector('p:has(picture)')?.remove();
+
       stories.appendChild(storyWrapper);
     });
+
     storyContainer.innerHTML = '';
     storyContainer.appendChild(stories);
     storyContainer.appendChild(storiesNavigation);
-    rotateStories(stories, storiesNavigation);
   });
 }
