@@ -299,6 +299,7 @@
     height: var(--spacing-1);
     border: none;
     outline: none;
+    transition: all .2s linear;
 
     &:hover {
       background-color: hsla(var(--color-background-hsl) / 100%);
@@ -313,10 +314,14 @@
 
 @keyframes progress-bar {
   0% {
-    background-image: linear-gradient(to right, hsla(var(--color-background-hsl) / 50%), hsla(var(--color-background-hsl) / 50%) 10%, hsla(var(--color-background-hsl) / 20%) 11%, hsla(var(--color-background-hsl) / 20%) 100%);
+    background-image: linear-gradient(to right, hsla(var(--color-background-hsl) / 80%) 10%, hsla(var(--color-background-hsl) / 20%) 11%);
+  }
+
+  50% {
+    background-image: linear-gradient(to right, hsla(var(--color-background-hsl) / 80%) 50%, hsla(var(--color-background-hsl) / 20%) 51%);
   }
 
   100% {
-    background-image: linear-gradient(to right, hsla(var(--color-background-hsl) / 90%) 100%, hsla(var(--color-background-hsl) / 90%) 100%);
+    background-image: linear-gradient(to right, hsla(var(--color-background-hsl) / 80%) 0, hsla(var(--color-background-hsl) / 80%) 100%);
   }
 }

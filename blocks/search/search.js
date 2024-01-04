@@ -101,7 +101,7 @@ export default async function decorate(block) {
       return;
     }
     document.title = `Search Results for "${query}"`;
-    const response = await fetch(`https://search.jz-759.workers.dev/?search=${query}`);
+    const response = await fetch(`https://beervana-pop-search.jz-759.workers.dev/?search=${query}`);
     const data = await response.json();
 
     const listItemsHtml = data.map((resultItem) => {
