@@ -7,7 +7,7 @@
   grid-template-columns: subgrid;
 
   &:is(.block) {
-    padding-block: var(--spacing-6);
+    padding-block: var(--spacing-8);
     background: url('/icons/forest-background.webp') no-repeat bottom center / cover;
   }
 }
@@ -20,4 +20,31 @@
   grid-column: content;
   padding: var(--spacing-6);
   border-radius: var(--spacing-6);
+
+  @media (width > 768px) {
+    & {
+      padding: var(--spacing-12);
+      display: grid;
+      grid-template:
+        'title button' auto
+        'description button' auto
+        / 1fr auto;
+      column-gap: var(--spacing-8);
+
+      & h3 {
+        grid-area: title;
+        margin-block: 0;
+      }
+
+      & p:not(.button-container) {
+        grid-area: description;
+        margin-block: 0;
+      }
+
+      & .button-container {
+        grid-area: button;
+        margin-block: 0;
+      }
+    }
+  }
 }
