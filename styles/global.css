@@ -24,7 +24,7 @@ header,
 
   position: sticky;
   top: var(--header-margin-top);
-  z-index: 1;
+  z-index: 99;
   margin-top: var(--header-margin-top);
   box-shadow: 0 -2px 0 var(--color-secondary),
               0 -8px 0 var(--color-foreground),
