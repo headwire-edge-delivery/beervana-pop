@@ -1,1 +1,23 @@
 /* lazy cta styles */
+.cta-wrapper,
+.cta-wrapper > .block,
+.cta-wrapper > .block > div {
+  grid-column: full-width;
+  display: grid;
+  grid-template-columns: subgrid;
+
+  &:is(.block) {
+    padding-block: var(--spacing-6);
+    background: url('/icons/forest-background.webp') no-repeat bottom center / cover;
+  }
+}
+
+.cta-content {
+  --color-text: var(--color);
+
+  background-color: var(--bg-color);
+  color: var(--color);
+  grid-column: content;
+  padding: var(--spacing-6);
+  border-radius: var(--spacing-6);
+}
