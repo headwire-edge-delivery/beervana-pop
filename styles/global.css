@@ -235,6 +235,7 @@ button:not(.nav-hamburger button, .story-nav),
   text-decoration: none;
   display: inline-flex;
   gap: var(--spacing-3);
+  justify-content: center;
   
   &:not(:disabled) {
     cursor: pointer;
