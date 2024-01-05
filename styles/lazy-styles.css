@@ -355,4 +355,8 @@
       grid-column: content-right;
     }
   }
+
+  .next-link {
+    justify-self: flex-end;
+  }
 }
