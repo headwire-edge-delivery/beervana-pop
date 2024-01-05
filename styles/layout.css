@@ -85,8 +85,13 @@ body {
 
 body.details {
   @media (width > 1024px) {
+    .bento-wrapper {
+      margin-block: var(--spacing-4);
+    }
+
     .default-content-wrapper {
       grid-column: content-middle / content-right;
+      margin-inline-start: var(--spacing-8);
     }
   }
 }
