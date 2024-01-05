@@ -18,33 +18,27 @@ async function decoratePreviousNext(placeholders) {
 
         if (previousLink || previousLinkText || nextLink || nextLinkText) {
           const pagination = document.createElement('div');
-          pagination.classList.add('pagination');
-          const previousLinkHTML = previousLink ? `<div class="previous-link content-left">
-            <h4 id="to-the-back">To the back</h4>
-            <p class="button-container">
-              <a href="${previousLink}" title="${previous?.title || previousLinkText}" class="button primary">
+          pagination.classList.add('pagination', 'details-group');
+          const previousLinkHTML = previousLink ? `<li>
                 <span class="icon icon-arrow-left">
                   <img data-icon-name="arrow-left" src="/icons/arrow-left.svg" loading="lazy" alt="arrow-left" width="16" height="16">
                 </span>
-                <span>${previousLinkText}</span>
-              </a>
-            </p>
-          </div>` : '';
-          const nextLinkHTML = nextLink ? `<div class="next-link content-right">
-            <h4 id="to-the-back">On Tap</h4>
-            <p class="button-container">
-              <a href="${nextLink}" title="${next?.title || nextLinkText}" class="button primary">
-                <span>${nextLinkText}</span>
+                <a href="${previousLink}" title="${previous?.title || previousLinkText}">
+                  <span>${previous?.title ? `${previousLinkText}: ${previous?.title}` : previousLinkText}</span>
+                </a>
+              </li>` : '';
+          const nextLinkHTML = nextLink ? `<li>
                 <span class="icon icon-arrow-right">
                   <img data-icon-name="arrow-right" src="/icons/arrow-right.svg" loading="lazy" alt="arrow-right" width="16" height="16">
                 </span>
-              </a>
-            </p>
-          </div>` : '';
+                <a href="${nextLink}" title="${next?.title || nextLinkText}">
+                  <span>${next?.title ? `${nextLinkText}: ${next?.title}` : nextLinkText}</span>
+                </a>
+              </li>` : '';
 
           if (previousLink || nextLink) {
-            pagination.innerHTML = `<div class="pagination-wrapper">${previousLinkHTML}${nextLinkHTML}</div>`;
-            document.querySelector('main .section:last-child').appendChild(pagination);
+            pagination.innerHTML = `<h4>Up Next</h4><ul class="icon-list">${previousLinkHTML}${nextLinkHTML}</ul>`;
+            document.querySelector('.details-wrapper').appendChild(pagination);
           }
         }
       }
@@ -64,7 +58,7 @@ async function decorateDetails(placeholders) {
 
   if (hours || address || telephone || website || websiteTitle || email || onTap) {
     const contact = document.createElement('div');
-    contact.classList.add('metadata-wrapper');
+    contact.classList.add('metadata-wrapper', 'details-group');
     contact.innerHTML = `<div class="contact-info">
       <h4>Contact</h4>
       <ul class="icon-list">
@@ -85,12 +79,15 @@ async function decorateDetails(placeholders) {
       <ul>${onTap.split(',').map((beer) => `<li>${beer}</li>`).join('')}</ul>
     </div>`}`;
 
-    document.querySelector('main .section :first-child').after(contact);
+    document.querySelector('.details-wrapper').appendChild(contact);
   }
 }
 
 export default async function decorateTemplateDetails() {
   const placeholders = await fetchPlaceholders();
+  const detailsWrapper = document.createElement('div');
+  detailsWrapper.classList.add('details-wrapper');
+  document.querySelector('main .section').appendChild(detailsWrapper);
   decoratePreviousNext(placeholders);
   decorateDetails(placeholders);
 }
