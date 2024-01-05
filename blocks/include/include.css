@@ -139,6 +139,12 @@
       grid-column: breakout-left / content;
       border-radius: 0 var(--spacing-12) var(--spacing-12) 0;
       overflow: hidden;
+      transition: all .2s linear;
+      animation: slide-in linear forwards;
+      animation-timeline: view();
+      transform: translateX(-20%);
+      opacity: 0;
+      animation-range: 10vh 30vh;
     }
   }
 
@@ -147,6 +153,11 @@
       grid-column: content / breakout-right;
       border-radius: var(--spacing-12) 0 0 var(--spacing-12);
       overflow: hidden;
+      animation: slide-in linear forwards;
+      animation-timeline: view();
+      transform: translateX(20%);
+      opacity: 0;
+      animation-range: 10vh 30vh;
     }
   }
 }
