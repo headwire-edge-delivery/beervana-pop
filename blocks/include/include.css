@@ -137,12 +137,16 @@
   &.breakout-left {
     .image-content {
       grid-column: breakout-left / content;
+      border-radius: 0 var(--spacing-12) var(--spacing-12) 0;
+      overflow: hidden;
     }
   }
 
   &.breakout-right {
     .image-content {
       grid-column: content / breakout-right;
+      border-radius: var(--spacing-12) 0 0 var(--spacing-12);
+      overflow: hidden;
     }
   }
 }
@@ -174,7 +178,6 @@
 
         &.image-content {
           grid-column: breakout-left / content-left;
-          margin-inline-end: calc((var(--section-layout-gap) / 2) * -1);
         }
       }
     }
@@ -187,7 +190,6 @@
 
         &.image-content {
           grid-column: content-right / breakout-right;
-          margin-inline-start: calc((var(--section-layout-gap) / 2) * -1);
         }
       }
     }
