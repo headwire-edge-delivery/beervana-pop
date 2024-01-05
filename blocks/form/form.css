@@ -8,10 +8,6 @@
     grid-template-columns: subgrid;
     grid-column: full-width;
   }
-
-  .block {
-    margin-block: var(--spacing-8);
-  }
 }
 
 form {

@@ -238,13 +238,14 @@
   grid-column: content;
   grid-template-columns: subgrid;
   display: grid;
-  margin-block: var(--spacing-10);
 
   .events.wrapper {
-    display: grid;
-    grid-template-columns: subgrid;
+    display: flex;
     grid-column: content;
     gap: var(--spacing-8);
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
   }
 
   .event {
@@ -253,10 +254,11 @@
     flex-direction: column;
     background: var(--color-brand);
     grid-column: content;
-    animation: slide-up linear forwards;
+    animation: slide-in linear forwards;
     animation-timeline: view();
     opacity: 0;
     animation-range: 10vh 30vh;
+    scroll-snap-align: start;
 
     @media (prefers-reduced-motion: reduce) {
       & {
@@ -265,16 +267,13 @@
       }
     }
 
-    /* causes horizontal scrolling, and adding overflow hidden to the parent removes the animation
-    
     &:nth-child(even) {
-      transform: translateX(-20%);
+      transform: translateX(20%);
     }
 
     &:nth-child(odd) {
-      transform: translateX(20%);
+      transform: translateX(-20%);
     }
-    */
   
     @media (width > 768px) and (width < 1024px) {
       & {
@@ -347,13 +346,6 @@
       &:is(picture) {
         border: 2px solid var(--color-border-brand);
       }
-    }
-
-    .month {
-      font-family: var(--font-display);
-      text-transform: uppercase;
-      fill: var(--color-foreground);
-      text-shadow: 0 0 2px var(--color-text);
     }
 
     .date {

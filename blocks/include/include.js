@@ -56,57 +56,6 @@ function templateBreakout({
   </div>`;
 }
 
-function createSVGForMonth() {
-  const month = new Date().toLocaleDateString('en-US', { month: 'long' });
-  let viewBox = '';
-
-  switch (month) {
-    case 'January':
-      viewBox = '0 0 98 18';
-      break;
-    case 'February':
-      viewBox = '0 0 108 18';
-      break;
-    case 'March':
-      viewBox = '0 0 73 18';
-      break;
-    case 'April':
-      viewBox = '0 0 61 18';
-      break;
-    case 'May':
-      viewBox = '0 0 44 18';
-      break;
-    case 'June':
-      viewBox = '0 0 54 18';
-      break;
-    case 'July':
-      viewBox = '0 0 51 18';
-      break;
-    case 'August':
-      viewBox = '0 0 84 18';
-      break;
-    case 'September':
-      viewBox = '0 0 118 18';
-      break;
-    case 'October':
-      viewBox = '0 0 94 18';
-      break;
-    case 'November':
-      viewBox = '0 0 112 18';
-      break;
-    case 'December':
-      viewBox = '0 0 109 18';
-      break;
-    default:
-      viewBox = '0 0 56 18';
-      break;
-  }
-
-  return `<svg viewBox="${viewBox}" class="month">
-    <text x="0" y="15">${month}</text>
-  </svg>`;
-}
-
 function templateEvents({
   description,
   image,
@@ -119,7 +68,6 @@ function templateEvents({
   return `<div class="event event-${index}">
     <div class="events-image image-content" style="--background-image: url(${image})">
       <a href="${path}" title="${title}">
-        ${createSVGForMonth()}
         <span class="border-group">
           ${createOptimizedPicture(image).outerHTML}
           <span class="date">

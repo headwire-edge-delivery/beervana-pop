@@ -18,6 +18,10 @@ body {
   grid-auto-flow: row;
   grid-template-columns: var(--section-template-columns);
 
+  & > * {
+    padding-block: var(--spacing-8);
+  }
+
   .full-width {
     grid-column: full-width;
   }
