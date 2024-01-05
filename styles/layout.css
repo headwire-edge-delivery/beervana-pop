@@ -12,7 +12,6 @@ body {
   }
 }
 
-
 .section:not(#nav .section, .footer .section) {
   width: 100%;
   display: grid;
@@ -70,12 +69,24 @@ body {
   }
 }
 
-main .section .default-content-wrapper:not(.include-wrapper .default-content-wrapper)  {
+.default-content-wrapper  {
   grid-column: content;
 
-  /*
-  @media (width > 1024px) {
-    grid-column: content-middle / content-right;
+  &:is(main .default-content-wrapper) {
+    .button-container {
+      display: inline-flex;
+
+      & + .button-container {
+        margin-inline-start: var(--spacing-4);
+      }
+    }
   }
-  */
+}
+
+body.details {
+  @media (width > 1024px) {
+    .default-content-wrapper {
+      grid-column: content-middle / content-right;
+    }
+  }
 }

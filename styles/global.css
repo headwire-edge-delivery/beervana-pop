@@ -219,18 +219,6 @@ header,
   }
 }
 
-main .default-content-wrapper:not(#nav .default-content-wrapper) {
-  margin-block: var(--spacing-8);
-
-  .button-container {
-    display: inline-flex;
-
-    & + .button-container {
-      margin-inline-start: var(--spacing-4);
-    }
-  }
-}
-
 button:not(.nav-hamburger button, .story-nav),
 .button {
   --button-padding: var(--spacing-3) var(--spacing-4);
@@ -333,4 +321,37 @@ button:not(.nav-hamburger button, .story-nav),
 .bg-tertiary {
   --bg-color: var(--color-tertiary);
   --color: var(--color-text-on-tertiary);
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(20%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in {
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes progress-bar {
+  0% {
+    background-image: linear-gradient(to right, hsla(var(--color-background-hsl) / 80%) 10%, hsla(var(--color-background-hsl) / 20%) 11%);
+  }
+
+  50% {
+    background-image: linear-gradient(to right, hsla(var(--color-background-hsl) / 80%) 50%, hsla(var(--color-background-hsl) / 20%) 51%);
+  }
+
+  100% {
+    background-image: linear-gradient(to right, hsla(var(--color-background-hsl) / 80%) 0, hsla(var(--color-background-hsl) / 80%) 100%);
+  }
 }

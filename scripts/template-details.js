@@ -18,7 +18,7 @@ async function decoratePreviousNext(placeholders) {
 
         if (previousLink || previousLinkText || nextLink || nextLinkText) {
           const pagination = document.createElement('div');
-          pagination.classList.add('subgrid', 'pagination');
+          pagination.classList.add('pagination');
           const previousLinkHTML = previousLink ? `<div class="previous-link content-left">
             <h4 id="to-the-back">To the back</h4>
             <p class="button-container">
@@ -64,7 +64,7 @@ async function decorateDetails(placeholders) {
 
   if (hours || address || telephone || website || websiteTitle || email || onTap) {
     const contact = document.createElement('div');
-    contact.classList.add('sidebar-left', 'metadata-wrapper');
+    contact.classList.add('metadata-wrapper');
     contact.innerHTML = `<div class="contact-info">
       <h4>Contact</h4>
       <ul class="icon-list">

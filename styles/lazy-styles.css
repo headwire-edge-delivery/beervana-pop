@@ -225,25 +225,6 @@
   }
 }
 
-@keyframes slide-up {
-  from {
-    transform: translateY(20%);
-    opacity: 0;
-  }
-
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slide-in {
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
 
 .pagination-wrapper {
   grid-template-columns: subgrid;
@@ -312,16 +293,66 @@
   }
 }
 
-@keyframes progress-bar {
-  0% {
-    background-image: linear-gradient(to right, hsla(var(--color-background-hsl) / 80%) 10%, hsla(var(--color-background-hsl) / 20%) 11%);
+.metadata-wrapper {
+  grid-column: content;
+  order: 99;
+  margin-block: var(--spacing-4);
+
+  @media (width > 768px) {
+    grid-column: content-left;
+    margin-inline-end: var(--section-layout-gap);
   }
 
-  50% {
-    background-image: linear-gradient(to right, hsla(var(--color-background-hsl) / 80%) 50%, hsla(var(--color-background-hsl) / 20%) 51%);
+  @media (width > 1024px) {
+    order: unset;
+    grid-column: sidebar-left;
   }
 
-  100% {
-    background-image: linear-gradient(to right, hsla(var(--color-background-hsl) / 80%) 0, hsla(var(--color-background-hsl) / 80%) 100%);
+  & > div {
+    background: hsla(var(--color-foreground-hsl) / 10%);
+    border: 2px solid var(--color-text);
+    padding: 2px;
+  }
+
+  & h4 {
+    border-bottom: 10px solid var(--color-text);
+    margin: 0;
+    padding: var(--spacing-2);
+  }
+
+  & ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  
+    & li {
+      padding: var(--spacing-2);
+      font-size: var(--font-xs);
+      font-weight: 700;
+      display: flex;
+      flex-direction: row-reverse;
+      gap: var(--spacing-2);
+      justify-content: space-between;
+      
+      & + li {
+        border-top: 1px solid var(--color-text);
+      }
+    }
+  }
+
+}
+
+.pagination {
+  order: 100;
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: content;
+
+  @media (width > 768px) and (width < 1024px) {
+    grid-column: content-right;
+
+    .pagination-wrapper {
+      grid-column: content-right;
+    }
   }
 }
