@@ -1,8 +1,16 @@
 .form-wrapper {
+  grid-column: full-width;
+  display: grid;
+  grid-template-columns: subgrid;
+
   &:has(.content-middle) {
     display: grid;
     grid-template-columns: subgrid;
     grid-column: full-width;
+  }
+
+  .block {
+    margin-block: var(--spacing-8);
   }
 }
 

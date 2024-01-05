@@ -133,8 +133,11 @@
   & a {
     color: var(--color-text-on-secondary);
   }
-}
 
+  .form-wrapper .block {
+    margin-block: 0;
+  }
+}
 
 .footer-nav ul {
   margin: 0;
