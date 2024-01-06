@@ -286,15 +286,23 @@
     height: var(--spacing-1);
     border: none;
     outline: none;
-    transition: all .2s linear;
+    position: relative;
 
     &:hover {
       background-color: hsla(var(--color-background-hsl) / 100%);
       cursor: pointer;
     }
-
-    &.active {
-      animation: progress-bar 2s linear;
+  
+    &.active::after {
+      content: '';
+      display: block;
+      width: 0%;
+      height: 100%;
+      transition: all .2s linear;
+      background-color: hsla(var(--color-background-hsl) / 90%);;
+      animation: progress-bar 3s linear forwards;
+      position: absolute;
+      inset: 0;
     }
   }
 }

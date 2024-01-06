@@ -349,14 +349,10 @@ button:not(.nav-hamburger button, .story-nav, .color-mode-toggle),
 
 @keyframes progress-bar {
   0% {
-    background-image: linear-gradient(to right, hsla(var(--color-background-hsl) / 80%) 10%, hsla(var(--color-background-hsl) / 20%) 11%);
-  }
-
-  50% {
-    background-image: linear-gradient(to right, hsla(var(--color-background-hsl) / 80%) 50%, hsla(var(--color-background-hsl) / 20%) 51%);
+    width: 0%;
   }
 
   100% {
-    background-image: linear-gradient(to right, hsla(var(--color-background-hsl) / 80%) 0, hsla(var(--color-background-hsl) / 80%) 100%);
+    width: 100%;
   }
 }
