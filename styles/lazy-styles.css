@@ -64,8 +64,16 @@
     gap: var(--spacing-3);
     background: hsla(var(--color-foreground-hsl) / 30%);
     border-radius: 0 0 var(--spacing-3) var(--spacing-3);
-    border: 1px solid var(--color-foreground);
-    border-top: 0;
+    
+    &:is(:not(.cards-card-image + .cards-card-body)) {
+      border-radius: var(--spacing-3);
+      border: 1px solid var(--color-foreground);
+    }
+
+    &:is(.cards-card-image + .cards-card-body) {
+      border-radius: 0 0 var(--spacing-3) var(--spacing-3);
+      border: 1px solid var(--color-foreground);
+    }
 
     & > * {
       margin-block: 0;
