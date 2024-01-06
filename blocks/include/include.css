@@ -217,13 +217,14 @@
 }
 
 @media (width > 1024px) {
-  &:has(.breakout-left) {
+  /* this is breaking the header */
+  .include-wrapper:has(.breakout-left) {
     .default-content-wrapper:not(.image-content) {
       padding-inline-start: var(--spacing-10);
     }
   }
 
-  &:has(.breakout-right) {
+  .include-wrapper:has(.breakout-right) {
     .default-content-wrapper:not(.image-content) {
       padding-inline-end: var(--spacing-10);
     }
