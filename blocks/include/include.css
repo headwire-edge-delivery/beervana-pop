@@ -276,28 +276,6 @@
       transform: translateX(-20%);
     }
   
-    @media (width > 768px) and (width < 1024px) {
-      & {
-        display: grid;
-        grid-template-columns: 1.5fr 2.5fr;
-
-        .events-image {
-          order: 2;
-        }
-      }
-    }
-
-    @media (width > 1024px) {
-      &:nth-child(odd) {
-        grid-column: content-left;
-        animation-range: 0 20vh;
-      }
-
-      &:nth-child(even) {
-        grid-column: content-right;
-        animation-range: 20vh 40vh;
-      }
-    }
   }
 
   .events-image {
@@ -372,6 +350,8 @@
   }
 
   .events-body {
+    --color: var(--color-text-on-brand);
+
     background: var(--color-brand);
     padding: var(--spacing-6);
     display: flex;
@@ -379,6 +359,7 @@
     gap: var(--spacing-2);
     color: var(--color-background);
     flex: 1;
+    min-width: min(90vw, var(--spacing-80));
 
     & a {
       color: var(--color-background);

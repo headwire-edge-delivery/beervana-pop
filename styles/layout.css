@@ -103,7 +103,7 @@ body {
 
 body.details {
   @media (width > 768px) {
-    .default-content-wrapper:not(footer .default-content-wrapper) {
+    .default-content-wrapper:not(header .default-content-wrapper, footer .default-content-wrapper) {
       grid-column: content-middle / content-right;
       margin-inline-start: var(--spacing-8);
     }
@@ -114,7 +114,7 @@ body.details {
       margin-block: var(--spacing-4);
     }
 
-    .default-content-wrapper:not(footer .default-content-wrapper) {
+    .default-content-wrapper:not(header .default-content-wrapper, footer .default-content-wrapper) {
       grid-column: content-middle / content-right;
       margin-inline-start: var(--spacing-8);
     }

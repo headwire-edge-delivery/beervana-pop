@@ -61,19 +61,18 @@ function templateEvents({
   image,
   path,
   title,
+  startDate,
 }, index) {
-  const date = new Date();
-  const minutes = date.getMinutes();
-  const hour = date.getHours();
+  console.log('startDate', startDate);
+  const date = new Date(startDate);
   return `<div class="event event-${index}">
     <div class="events-image image-content" style="--background-image: url(${image})">
       <a href="${path}" title="${title}">
         <span class="border-group">
           ${createOptimizedPicture(image).outerHTML}
           <span class="date">
-            <span class="weekday">${new Date().toLocaleDateString('en-US', { weekday: 'long' })}</span>
-            <span class="day">${new Date().toLocaleDateString('en-US', { day: 'numeric' })}</span>
-            <span class="hour">${hour}:${minutes}</span>
+            <span class="weekday">${date.toLocaleDateString('en-US', { weekday: 'long' })}</span>
+            <span class="day">${date.toLocaleDateString('en-US', { day: 'numeric' })}</span>
           </span>
         </span>
       </a>
