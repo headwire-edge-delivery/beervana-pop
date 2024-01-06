@@ -32,10 +32,10 @@ indices:
         value: parseTimestamp(attribute(el, "content"), "MM/DD/YYYY")
       startDate:
         select: head > meta[name="start-date"]
-        value: parseTimestamp(attribute(el, "content"), "YYYY/MM/DD")
+        value: attribute(el, "content")
       endDate:
         select: head > meta[name="end-date"]
-        value: parseTimestamp(attribute(el, "content"), "YYYY/MM/DD")
+        value: attribute(el, "content")
       category:
         select: head > meta[name="category"]
         value: attribute(el, "content")
