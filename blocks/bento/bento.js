@@ -25,10 +25,10 @@ export default async function decorate(block) {
     element.classList.add(...classes.innerText.toLowerCase().split(' '), 'bento-item');
     classes.remove();
 
-    element.addEventListener('mousemove', ({ target, clientX, clientY }) => {
+    element.addEventListener('mousemove', ({ target, pageX, pageY }) => {
       const bentoItem = target?.closest('.bento-item');
-      const x = clientX - bentoItem.offsetLeft;
-      const y = clientY - bentoItem.offsetTop;
+      const x = pageX - bentoItem.offsetLeft;
+      const y = pageY - bentoItem.offsetTop;
       bentoItem.style.setProperty('--left', `${x}px`);
       bentoItem.style.setProperty('--top', `${y}px`);
     });
