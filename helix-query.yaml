@@ -30,6 +30,12 @@ indices:
       date:
         select: head > meta[name="publication-date"]
         value: parseTimestamp(attribute(el, "content"), "MM/DD/YYYY")
+      startDate:
+        select: head > meta[name="start-date"]
+        value: parseTimestamp(attribute(el, "content"), "YYYY/MM/DD")
+      endDate:
+        select: head > meta[name="end-date"]
+        value: parseTimestamp(attribute(el, "content"), "YYYY/MM/DD")
       category:
         select: head > meta[name="category"]
         value: attribute(el, "content")
