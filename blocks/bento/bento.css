@@ -15,6 +15,10 @@
   grid-auto-flow: dense;
   gap: var(--spacing-4);
   margin-block: var(--spacing-6);
+
+  &:is(html.dark-mode &) {
+    --bg-color: hsla(var(--color-brand-hsl) / 30%);
+  } 
 }
 
 .bento-item {
@@ -28,7 +32,7 @@
     color: inherit;
 
     &:is(h1) {
-      text-shadow: 1px 1px 0 var(--bg-color), 2px 2px 0 var(--color-text);
+      text-shadow: 1px 1px 0 var(--bg-color), 2px 2px 0 var(--color-text-shadow);
     }
   }
 

@@ -1,7 +1,7 @@
 * {
   box-sizing: border-box;
 
-  &:not(img, picture, helix-sidekick, input, textarea, br):empty {
+  &:not(img, picture, helix-sidekick, input, textarea, br, svg, rect, circle):empty {
     display: none;
   }
 }

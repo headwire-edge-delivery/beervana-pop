@@ -21,6 +21,13 @@ p {
   margin-block: 0;
 }
 
-main p {
-  margin-block: var(--spacing-4);
+main {
+  & p {
+    margin-block: var(--spacing-4);
+    color: var(--color, var(--color-text));
+  }
+
+  & ul {
+    color: var(--color, var(--color-text));
+  }
 }

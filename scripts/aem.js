@@ -408,7 +408,15 @@ function decorateIcon(span, prefix = '', alt = '') {
   img.src = `${window.hlx.codeBasePath}${prefix}/icons/${iconName}.svg`;
   img.alt = alt;
   img.loading = 'lazy';
+  img.classList.add('light-mode');
   span.append(img);
+  const imgInverted = document.createElement('img');
+  imgInverted.dataset.iconName = iconName;
+  imgInverted.src = `${window.hlx.codeBasePath}${prefix}/icons/${iconName}-inverted.svg`;
+  imgInverted.alt = alt;
+  imgInverted.loading = 'lazy';
+  imgInverted.classList.add('dark-mode');
+  span.append(imgInverted);
 }
 
 /**

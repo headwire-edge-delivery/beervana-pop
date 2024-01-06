@@ -52,6 +52,7 @@
   --color-foreground: var(--color-brand-4);
   --color-foreground-hsl: var(--color-brand-4-hsl);
   --color-foreground-semi-transparent: hsla(var(--color-brand-4) / 85%);
+  --color-text-on-foreground: var(--color-brand-2);
   --color-primary: var(--color-brand-1);
   --color-primary-hsl: var(--color-brand-1-hsl);
   --color-text-on-primary: var(--color-brand-3);
@@ -64,6 +65,7 @@
   --color-text-hsl: var(--color-brand-2-hsl);
   --color-text-on-secondary: var(--color-brand-3);
   --color-text-on-secondary-hsl: var(--color-brand-3-hsl);
+  --color-text-shadow: var(--color-brand-2);
   --color-border-primary: var(--color-brand-2);
   --color-border-primary-hsl: var(--color-brand-2-hsl);
   --color-border-secondary: var(--color-brand-4);
@@ -72,6 +74,7 @@
   --color-border-brand-hsl: var(--color-brand-hsl);
   --color-focus-ring: var(--color-brand-5);
   --color-focus-ring-hsl: var(--color-brand-5-hsl);
+  --color-link: var(--color-brand-1);
   --focus-ring: 0 0 0 4px var(--color-focus-ring);
   --color-shadow-hsl: 0 0% 0%;
   --color-shadow-default: hsl(var(--color-shadow-hsl) / 40%);
@@ -100,8 +103,9 @@ html.dark-mode {
   --color-foreground-semi-transparent: var(--color-brand-4-85);
   --color-text: var(--color-brand-3);
   --color-text-on-secondary: var(--color-brand-2);
-  --color-border-primary: var(--color-brand-2);
+  --color-border-primary: var(--color-brand-1);
   --color-border-secondary: var(--color-brand-4);
   --color-border-brand: var(--color-brand);
   --color-focus-ring: var(--color-brand-5);
+  --color-link: var(--color-brand-4);
 }

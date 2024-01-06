@@ -1,6 +1,7 @@
 import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
 import decorateHeaderSearch from './header-search.js';
+import decorateColorMode from './header-color-mode.js';
 
 // media query match that indicates mobile/tablet width
 const isDesktop = window.matchMedia('(min-width: 900px)');
@@ -158,4 +159,5 @@ export default async function decorate(block) {
   navWrapper.append(nav);
   block.append(navWrapper);
   decorateHeaderSearch(block);
+  decorateColorMode(block);
 }

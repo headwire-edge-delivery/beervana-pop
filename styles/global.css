@@ -5,7 +5,7 @@ body {
 
 a {
   text-decoration: none;
-  color: var(--color-brand);
+  color: var(--color-link);
 
   &:hover {
     text-decoration: underline;
@@ -60,9 +60,9 @@ header,
   & a {
     font-family: var(--font-display);
     font-size: var(--font-sm);
-    color: var(--color-background);
+    color: var(--color-text-on-brand);
     text-decoration: none;
-    text-shadow: 1px 1px 0 var(--color-text);
+    text-shadow: 1px 1px 0 var(--color-text-shadow);
     display: flex;
     gap: var(--spacing-2);
     align-items: center;
@@ -219,7 +219,7 @@ header,
   }
 }
 
-button:not(.nav-hamburger button, .story-nav),
+button:not(.nav-hamburger button, .story-nav, .color-mode-toggle),
 .button {
   --button-padding: var(--spacing-3) var(--spacing-4);
 
@@ -240,7 +240,7 @@ button:not(.nav-hamburger button, .story-nav),
   &.primary {
     background: var(--color-primary);
     box-shadow: 0 2px 0 var(--color-text);
-    color: var(--color-background);
+    color: var(--color-text-on-brand);
 
     &:hover {
       box-shadow: 0 1px 0 var(--color-text);

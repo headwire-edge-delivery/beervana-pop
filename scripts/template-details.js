@@ -62,16 +62,16 @@ async function decorateDetails(placeholders) {
     contact.innerHTML = `<div class="contact-info">
       <h4>Contact</h4>
       <ul class="icon-list">
-        ${address && `<li><span class="icon icon-map"><img data-icon-name="map" src="/icons/map.svg" loading="lazy" alt="map-pin" width="16" height="16"></span><a href="https://google.com/maps/place/${address.replaceAll('<br/>,', '').replaceAll(' ', '+')}">${address.replaceAll('<br/>,', '<br/>')}</a></li>`}
-        ${telephone && `<li><span class="icon icon-phone"><img data-icon-name="phone" src="/icons/phone.svg" loading="lazy" alt="phone" width="16" height="16"></span><a href="tel:${telephone}" title="Telephone Number">${telephone}</a></li>`}
-        ${email && `<li><span class="icon icon-mail"><img data-icon-name="mail" src="/icons/mail.svg" loading="lazy" alt="mail" width="16" height="16"></span><a href="mailto:${email}" title="${email}">${email}</a></li>`}
-        ${website && `<li><span class="icon icon-link"><img data-icon-name="link" src="/icons/link.svg" loading="lazy" alt="link" width="16" height="16"></span><a href="${website}" title="${websiteTitle || ''}">${websiteTitle || website}</a></li>`}
+        ${address && `<li><span class="icon icon-map"><img class="light-mode" data-icon-name="map" src="/icons/map.svg" loading="lazy" alt="map-pin" width="16" height="16"><img class="dark-mode" data-icon-name="map" src="/icons/map-inverted.svg" loading="lazy" alt="map-pin" width="16" height="16"></span><a href="https://google.com/maps/place/${address.replaceAll('<br/>,', '').replaceAll(' ', '+')}">${address.replaceAll('<br/>,', '<br/>')}</a></li>`}
+        ${telephone && `<li><span class="icon icon-phone"><img  class="light-mode" data-icon-name="phone" src="/icons/phone.svg" loading="lazy" alt="phone" width="16" height="16"><img class="dark-mode" data-icon-name="phone" src="/icons/phone-inverted.svg" loading="lazy" alt="phone" width="16" height="16"></span><a href="tel:${telephone}" title="Telephone Number">${telephone}</a></li>`}
+        ${email && `<li><span class="icon icon-mail"><img class="light-mode" data-icon-name="mail" src="/icons/mail.svg" loading="lazy" alt="mail" width="16" height="16"><img class="dark-mode" data-icon-name="mail" src="/icons/mail-inverted.svg" loading="lazy" alt="mail" width="16" height="16"></span><a href="mailto:${email}" title="${email}">${email}</a></li>`}
+        ${website && `<li><span class="icon icon-link"><img class="light-mode" data-icon-name="link" src="/icons/link.svg" loading="lazy" alt="link" width="16" height="16"><img class="dark-mode" data-icon-name="link" src="/icons/link-inverted.svg" loading="lazy" alt="link" width="16" height="16"></span><a href="${website}" title="${websiteTitle || ''}">${websiteTitle || website}</a></li>`}
       </ul>
     </div>
     ${hours && `<div class="hours-info">
       <h4>Hours</h4>
       <ul class="icon-list">
-      <li><span class="icon icon-clock"><img data-icon-name="clock" src="/icons/clock.svg" loading="lazy" alt="clock" width="16" height="16"></span>${hours.replaceAll('<br/>,', '<br/>')}</li>
+      <li><span class="icon icon-clock"><img class="light-mode" data-icon-name="clock" src="/icons/clock.svg" loading="lazy" alt="clock" width="16" height="16"><img class="dark-mode" data-icon-name="clock" src="/icons/clock-inverted.svg" loading="lazy" alt="clock" width="16" height="16"></span>${hours.replaceAll('<br/>,', '<br/>')}</li>
       </ul>
     </div>`}
     ${onTap && `<div class="on-tap-info">
