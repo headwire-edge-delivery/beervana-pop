@@ -127,6 +127,13 @@ function loadDelayed() {
 }
 
 async function loadPage() {
+  if (window.localStorage.getItem('darkMode') === 'true') {
+    document.documentElement.classList.add('dark-mode');
+  } else if (window.localStorage.getItem('darkMode') === 'false') {
+    document.documentElement.classList.remove('dark-mode');
+  } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.classList.add('dark-mode');
+  }
   await loadEager(document);
   await loadLazy(document);
   loadDelayed();
