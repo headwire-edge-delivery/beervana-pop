@@ -63,7 +63,6 @@ function templateEvents({
   title,
   startDate,
 }, index) {
-  console.log('startDate', startDate);
   const date = new Date(startDate);
   return `<div class="event event-${index}">
     <div class="events-image image-content" style="--background-image: url(${image})">
