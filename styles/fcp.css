@@ -48,10 +48,12 @@
   & h2:not(h1 + h2) {
     text-shadow: 1px 1px 0 var(--color-foreground), 2px 2px 0 var(--color-text);
     margin-block: 0;
+    color: var(--color-text);
   }
 
   & h2 {
     margin-block: 0;
+    color: var(--color-text);
   }
 
   .button-container {
