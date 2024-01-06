@@ -18,7 +18,7 @@ body {
   grid-auto-flow: row;
   grid-template-columns: var(--section-template-columns);
 
-  & > * {
+  & > *:not(.hero-wrapper) {
     padding-block: var(--spacing-8);
   }
 
@@ -60,6 +60,10 @@ body {
 
   .content-middle {
     grid-column: content-middle;
+
+    .default-content-wrapper:not(header .default-content-wrapper, footer .default-content-wrapper) {
+      grid-column: content-middle;
+    }
   }
 
   .content-right {
@@ -84,6 +88,16 @@ body {
         margin-inline-start: var(--spacing-4);
       }
     }
+  }
+
+  &:is(.section.content > .default-content-wrapper),
+  &:is(body.content .default-content-wrapper) {
+    grid-column: content;
+  }
+
+  &:is(.section.content-middle > .default-content-wrapper),
+  &:is(body.content-middle .default-content-wrapper) {
+    grid-column: content-middle;
   }
 }
 

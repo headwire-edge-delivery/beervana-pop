@@ -293,6 +293,11 @@ button:not(.nav-hamburger button, .story-nav),
 }
 
 
+.section:not(header .section, footer .section) {
+  background-color: var(--bg-color, var(--color-background));
+  color: var(--color, var(--color-text));
+}
+
 .bg-brand {
   --bg-color: var(--color-brand);
   --color: var(--color-text-on-brand);

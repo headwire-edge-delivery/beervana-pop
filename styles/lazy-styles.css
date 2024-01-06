@@ -150,7 +150,7 @@
     aspect-ratio: 1 / 1;
     border-radius: 100% 100% 0 0;
     overflow: hidden;
-    outline: 11px solid var(--color-secondary);
+    outline: 11px solid var(--color-brand);
     outline-offset: 0;
 
     & a,
@@ -299,6 +299,7 @@
   grid-column: content;
   order: 99;
   margin-block: var(--spacing-4);
+  align-self: flex-start;
 
   @media (width > 768px) {
     grid-column: sidebar-left;
