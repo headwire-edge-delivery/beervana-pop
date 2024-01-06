@@ -7,9 +7,11 @@
   gap: var(--spacing-16) var(--spacing-8);
   list-style: none;
 
+  /*
   &.block {
     padding-block: var(--spacing-12);
   }
+  */
 
   @media (width > 768px) {
     --cards-per-row: 2;
@@ -109,7 +111,7 @@
       }
 
       &:nth-child(3n) {
-        animation-range: 40vh 50vh;
+        animation-range: 30vh 40vh;
       }
     }
 
