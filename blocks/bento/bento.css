@@ -27,6 +27,7 @@
   grid-column: 1 / span 4;
   background-color: var(--bg-color);
   color: var(--color);
+  position: relative;
 
   & :is(h1, h2, h3, h4, h5, h6) {
     color: inherit;
@@ -207,6 +208,24 @@
       &:nth-child(5) {
         grid-column: 4;
         grid-row: 2 / span 2;
+      }
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    &:hover {
+      &::after {
+        content: '';
+        background: radial-gradient(ellipse at var(--left) var(--top), var(--bg-color), transparent, transparent);
+        position: absolute;
+        inset: calc(var(--spacing-2) * -1);
+        border-radius: var(--spacing-6);
+        z-index: 0;
+      }
+
+      & div {
+        position: relative;
+        z-index: 1;
       }
     }
   }

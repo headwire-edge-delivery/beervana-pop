@@ -24,6 +24,14 @@ export default async function decorate(block) {
     const classes = contents[1];
     element.classList.add(...classes.innerText.toLowerCase().split(' '), 'bento-item');
     classes.remove();
+
+    element.addEventListener('mousemove', ({ target, clientX, clientY }) => {
+      const bentoItem = target?.closest('.bento-item');
+      const x = clientX - bentoItem.offsetLeft;
+      const y = clientY - bentoItem.offsetTop;
+      bentoItem.style.setProperty('--left', `${x}px`);
+      bentoItem.style.setProperty('--top', `${y}px`);
+    });
   });
 
   block.querySelectorAll('.stories')?.forEach((storyContainer) => {
