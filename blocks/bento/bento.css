@@ -213,7 +213,7 @@
   }
 
   &:is(.block.layout-4 &) {
-    @media (width > 1024px) {
+    @media (width > 768px) {
       &:first-child {
         grid-column: 2 / span 3;
         grid-row: span 2;
