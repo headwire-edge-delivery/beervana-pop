@@ -6,10 +6,11 @@ function templateCard({
   path,
   title,
 }, index, placeholders, styles) {
+  const breakpoints = [{ media: '(min-width: 600px)', width: '750' }, { width: '750' }];
   const { emptyLinkTitlePrefix, cardButtonText } = placeholders;
   return `<div class="card">
     <div class="cards-card-image image-content">
-      <a href="${path}" title="${emptyLinkTitlePrefix.replace('%title%', title)}">${createOptimizedPicture(image).outerHTML}</a>
+      <a href="${path}" title="${emptyLinkTitlePrefix.replace('%title%', title)}">${createOptimizedPicture(image, '', false, breakpoints).outerHTML}</a>
     </div>
     <div class="cards-card-body">
       <h3>
