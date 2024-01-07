@@ -517,7 +517,7 @@ input[type='checkbox'] {
   &::after {
     content: '';
     grid-area: checkbox;
-    background: url('/icons/check.svg') no-repeat center center;
+    background: url('/icons/check.svg') no-repeat center center / contain;
     transform: scale(0);
     transition: 120ms transform ease-in-out;
     width: var(--spacing-2);
@@ -526,13 +526,19 @@ input[type='checkbox'] {
     z-index: 1;
   }
 
+  &:is(html.dark-mode &) {
+    &::after {
+      background: url('/icons/check-inverted.svg') no-repeat center center / contain;
+    }
+  }
+
   &:checked {
     &::before {
       transform: scale(2);
     }
 
     &::after {
-      transform: scale(1);
+      transform: scale(1.5);
     }
   }
 }
@@ -541,6 +547,7 @@ input[type='checkbox'] {
   display: grid;
   grid-template-columns: var(--spacing-4) auto;
   gap: var(--spacing-2);
+  align-items: center;
 
   & label {
     color: var(--color-text);
