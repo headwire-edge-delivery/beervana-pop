@@ -60,7 +60,6 @@ export default function decorateHeaderSearch(block) {
   searchBlock.append(searchButton);
 
   searchWrapper.append(searchBlock);
+  document.querySelector('body').appendChild(searchWrapper);
   searchWrapper.addEventListener('click', toggleSearch);
-
-  searchLink.after(searchWrapper);
 }

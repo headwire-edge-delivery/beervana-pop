@@ -103,9 +103,10 @@ header,
     @media (width > 768px) {
       flex-direction: row;
     }
-    
-    ul {
-      display: none;
+
+    & li {
+      display: flex;
+      justify-content: flex-end;
     }
   }
 
@@ -136,7 +137,7 @@ header,
     margin: 0;
   }
 
-  @media (width < 768px) {
+  @media (width <= 768px) {
     .nav-hamburger {
       order: 1;
     }
@@ -192,7 +193,7 @@ header,
   }
 }
 
-@media (width < 768px) {
+@media (width <= 768px) {
   .nav-sections {
     visibility: hidden;
     opacity: 0;
