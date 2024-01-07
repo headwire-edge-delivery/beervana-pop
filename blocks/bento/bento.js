@@ -15,7 +15,6 @@ export default async function decorate(block) {
 
   let storyInterval = setInterval(() => setActiveStory(), INTERVAL_TIME);
 
-  const stories = document.createElement('div');
   const storiesNavigation = document.createElement('div');
 
   const elements = block.querySelectorAll(':scope > div');
@@ -35,10 +34,15 @@ export default async function decorate(block) {
   });
 
   block.querySelectorAll('.stories')?.forEach((storyContainer) => {
-    stories.classList.add('stories-wrapper');
     storiesNavigation.classList.add('stories-navigation');
 
-    storyContainer.querySelector(':scope > div')?.innerHTML?.split('<hr>')?.forEach((storyMarkup, i) => {
+    const storiesWrapper = storyContainer.querySelector(':scope > div');
+    storiesWrapper.classList.add('stories-wrapper');
+
+    storiesWrapper.querySelectorAll('p')?.forEach((storyWrapper, i) => {
+      storyWrapper.classList.add('story-wrapper', i === 0 && 'active');
+      storyWrapper.dataset.story = i;
+
       const storyNav = document.createElement('button');
       storyNav.dataset.story = i;
       storyNav.classList.add('story-nav', i, i === 0 && 'active');
@@ -49,26 +53,10 @@ export default async function decorate(block) {
         storyInterval = setInterval(() => setActiveStory(), INTERVAL_TIME);
       });
       storiesNavigation.appendChild(storyNav);
-
-      const storyWrapper = document.createElement('div');
-      storyWrapper.classList.add('story-wrapper', i === 0 && 'active');
-      storyWrapper.innerHTML = storyMarkup;
-      storyWrapper.dataset.story = i;
-
-      const webpImg = storyWrapper.querySelector('source[type="image/webp"]');
-      const img = storyWrapper.querySelector('img');
-      if (img && webpImg) {
-        const webpSrc = webpImg.getAttribute('srcset');
-        const imgSrc = img.getAttribute('src');
-        storyWrapper.style = `--bg: url(${webpSrc}), url(${imgSrc});`;
-      }
-      storyWrapper.querySelector('p:has(picture)')?.remove();
-
-      stories.appendChild(storyWrapper);
     });
 
-    storyContainer.innerHTML = '';
-    storyContainer.appendChild(stories);
     storyContainer.appendChild(storiesNavigation);
   });
+
+  block.querySelectorAll('hr')?.forEach((hr) => hr.remove());
 }
