@@ -22,6 +22,7 @@
     min-height: 200px;
     bottom: -75px;
     position: absolute;
+    aspect-ratio: 10 / 1;
   }
 
   &:has(.simple) {
