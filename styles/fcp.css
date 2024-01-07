@@ -79,6 +79,7 @@
     height: auto;
     display: block;
     max-height: 40vh;
+    aspect-ratio: 2.5 / 1;
   }
 
   .hero-picture img {
