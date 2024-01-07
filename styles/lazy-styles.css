@@ -70,7 +70,7 @@
       border: 1px solid var(--color-foreground);
     }
 
-    &:is(.cards-card-image + .cards-card-body) {
+    &:not(.cards.brewery .cards-card-body):is(.cards-card-image + .cards-card-body) {
       border-radius: 0 0 var(--spacing-3) var(--spacing-3);
       border: 1px solid var(--color-foreground);
     }
@@ -84,7 +84,7 @@
     }
 
     &:is(html.dark-mode &) {
-      background: hsla(var(--color-brand-hsl) / 30%);
+      background: var(--color-foreground);
     } 
   }
 }

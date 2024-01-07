@@ -328,6 +328,37 @@ button:not(.nav-hamburger button, .story-nav, .color-mode-toggle),
   --color: var(--color-text-on-tertiary);
 }
 
+.bento {
+  .bg-primary,
+  .bg-secondary,
+  .bg-tertiary,
+  .bg-brand,
+  .bg-text {
+    .icon {
+      .dark-mode {
+        display: inline;
+      }
+
+      .light-mode {
+        display: none;
+      }
+    }
+  }
+
+  .bg-foreground,
+  .bg-background {
+    .icon {
+      .dark-mode {
+        display: none;
+      }
+
+      .light-mode {
+        display: inline;
+      }
+    }
+  }
+}
+
 .form-wrapper {
   grid-column: full-width;
   display: grid;
