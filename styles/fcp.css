@@ -119,6 +119,10 @@
       }
     }
   }
+
+  ::placeholder {
+    color: var(--color-text);
+  }
 }
 
 

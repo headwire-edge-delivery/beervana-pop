@@ -2,7 +2,12 @@ import { fetchPlaceholders } from '../../scripts/aem.js';
 
 export default async function decorate(block) {
   const placeholders = await fetchPlaceholders();
-  const { emptyLinkTitlePrefix, cardButtonText, searchNoResults } = placeholders;
+  const {
+    emptyLinkTitlePrefix,
+    cardButtonText,
+    searchNoResults,
+    searchInputPlaceholder,
+  } = placeholders;
 
   const searchParams = new URLSearchParams(window.location.search);
   block.innerHTML = '<ul class="search-results cards block"></ul>';
@@ -19,7 +24,7 @@ export default async function decorate(block) {
       <form id='search-form'>
         <div class='form-text-field-wrapper field-wrapper'>
           <label for='search' class='required'>Search</label>
-          <input type='text-field' id='search' placeholder='${searchParams.get('query')}' value='${searchParams.get('query')}' required='required'>
+          <input type='text-field' id='search' placeholder='${searchInputPlaceholder}' value='${searchParams.get('query') === null ? '' : searchParams.get('query')}' required='required'>
         </div>
         </div>
           <div class='form-submit-wrapper form-primary field-wrapper'>
