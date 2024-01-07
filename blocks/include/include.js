@@ -51,7 +51,7 @@ function templateBreakout({
       </ul>
     </div>
     <div class="default-content-wrapper image-content">
-      <a href="${path}" title="${emptyLinkTitlePrefix.replace('%title%', title)}">${createOptimizedPicture(image).outerHTML}</a>
+      <a href="${path}" title="${emptyLinkTitlePrefix.replace('%title%', title)}">${createOptimizedPicture(image, '', false, [{ media: '(min-width: 600px)', width: '1250' }, { width: '1250' }]).outerHTML}</a>
     </div>
   </div>`;
 }
