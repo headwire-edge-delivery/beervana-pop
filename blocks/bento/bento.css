@@ -64,6 +64,7 @@
       height: 100%;
       object-fit: cover;
       overflow: hidden;
+      display: block;
     }
 
     & > div {
@@ -76,6 +77,7 @@
     grid-template: [stories] 1fr / [stories] 1fr;
     min-height: var(--spacing-96);
     max-height: 50vh;
+    overflow: clip;
   }
 
   &.cta {
