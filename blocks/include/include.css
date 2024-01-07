@@ -26,6 +26,7 @@
   grid-template-columns: subgrid;
   grid-column: full-width;
   grid-auto-flow: row;
+  overflow: clip;
 
   &.block {
     margin-block: var(--spacing-12);
