@@ -57,6 +57,28 @@
         border-top: 1px solid var(--color-text);
       }
     }
+
+    .pagination-link {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      flex: 1;
+      transition: transform .3s ease-in-out;
+
+      &:hover {
+        &:is(.previous) {
+          & .icon {
+            transform: translateX(-2px);
+          }
+        }
+
+        &:is(.next) {
+          & .icon {
+            transform: translateX(2px);
+          }
+        }
+      }
+    }
   }
 }
 
