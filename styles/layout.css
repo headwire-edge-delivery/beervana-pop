@@ -122,3 +122,26 @@ body.details {
     }
   }
 }
+
+.include-wrapper {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: full-width;
+
+  & > .include.cards {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: content;
+  }
+
+  .cards.wrapper {
+    display: grid;
+    grid-column: content;
+  }
+
+  &:has(.breakout) {
+    display: grid;
+    grid-column: full-width;
+    grid-template-columns: subgrid;
+  }
+}
