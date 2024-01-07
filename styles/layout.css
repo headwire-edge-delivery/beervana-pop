@@ -135,7 +135,7 @@ body.details {
   }
 
   .cards.wrapper {
-    display: grid;
+    display: flex;
     grid-column: content;
   }
 
