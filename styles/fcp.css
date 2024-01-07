@@ -239,7 +239,7 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-    background: var(--color-text);
+    background: var(--color-brand-2);
     border-radius: 0;
     display: block;
     padding: 0;
@@ -259,7 +259,7 @@
 
       & a {
         padding: var(--spacing-4);
-        color: var(--color-background);
+        color: var(--color-brand-3);
         text-decoration: none;
         display: block;
       }
@@ -344,10 +344,6 @@
     & :last-child:is(.button-container) {
       align-self: flex-end;
     }
-
-    &:is(html.dark-mode &) {
-      background: hsla(var(--color-brand-hsl) / 30%);
-    } 
   }
 }
 
