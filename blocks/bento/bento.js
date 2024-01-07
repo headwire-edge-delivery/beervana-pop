@@ -42,6 +42,7 @@ export default async function decorate(block) {
     storiesWrapper.querySelectorAll('p')?.forEach((storyWrapper, i) => {
       storyWrapper.classList.add('story-wrapper', i === 0 && 'active');
       storyWrapper.dataset.story = i;
+      storyWrapper.querySelector('img')?.removeAttribute('loading');
 
       const storyNav = document.createElement('button');
       storyNav.dataset.story = i;
