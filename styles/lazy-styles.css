@@ -84,7 +84,7 @@
     }
 
     &:is(html.dark-mode &) {
-      background: var(--color-foreground);
+      background: hsla(var(--color-brand-hsl) / 30%);
     } 
   }
 }

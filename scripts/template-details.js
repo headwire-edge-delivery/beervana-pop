@@ -21,7 +21,8 @@ async function decoratePreviousNext(placeholders) {
           pagination.classList.add('pagination', 'details-group');
           const previousLinkHTML = previousLink ? `<li>
                 <span class="icon icon-arrow-left">
-                  <img data-icon-name="arrow-left" src="/icons/arrow-left.svg" loading="lazy" alt="arrow-left" width="16" height="16">
+                  <img class="light-mode" data-icon-name="arrow-left" src="/icons/arrow-left.svg" loading="lazy" alt="arrow-left" width="16" height="16">
+                  <img class="dark-mode" data-icon-name="arrow-left" src="/icons/arrow-left-inverted.svg" loading="lazy" alt="arrow-left" width="16" height="16">
                 </span>
                 <a href="${previousLink}" title="${previous?.title || previousLinkText}">
                   <span>${previous?.title ? `${previousLinkText}: ${previous?.title}` : previousLinkText}</span>
@@ -29,7 +30,8 @@ async function decoratePreviousNext(placeholders) {
               </li>` : '';
           const nextLinkHTML = nextLink ? `<li>
                 <span class="icon icon-arrow-right">
-                  <img data-icon-name="arrow-right" src="/icons/arrow-right.svg" loading="lazy" alt="arrow-right" width="16" height="16">
+                  <img class="light-mode" data-icon-name="arrow-right" src="/icons/arrow-right.svg" loading="lazy" alt="arrow-right" width="16" height="16">
+                  <img class="dark-mode" data-icon-name="arrow-right" src="/icons/arrow-right-inverted.svg" loading="lazy" alt="arrow-right" width="16" height="16">
                 </span>
                 <a href="${nextLink}" title="${next?.title || nextLinkText}">
                   <span>${next?.title ? `${nextLinkText}: ${next?.title}` : nextLinkText}</span>

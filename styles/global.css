@@ -249,6 +249,16 @@ button:not(.nav-hamburger button, .story-nav, .color-mode-toggle),
     &:active {
       box-shadow: none; 
     }
+
+    .icon {
+      .dark-mode {
+        display: inline;
+      }
+
+      .light-mode {
+        display: none;
+      }
+    }
   }
 
   &.secondary {
