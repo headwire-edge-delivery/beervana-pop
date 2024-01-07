@@ -89,7 +89,6 @@
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-2);
 
     & li {
       padding: 0 var(--spacing-2);
