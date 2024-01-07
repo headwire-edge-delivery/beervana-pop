@@ -1,7 +1,7 @@
 .hero-wrapper {
   --hero-spacing: var(--spacing-4);
 
-  background: url('/icons/forest-background.webp') no-repeat bottom center / cover;
+  /* background: url('/icons/forest-background.webp') no-repeat bottom center / cover; */
   grid-column: full-width;
   display: grid;
   grid-template-columns: subgrid;
@@ -17,7 +17,8 @@
   &::after {
     display: block;
     content: "";
-    background: url('/icons/hero-divider.webp') no-repeat bottom center;
+
+    /* background: url('/icons/hero-divider.webp') no-repeat bottom center; */
     min-width: 100%;
     min-height: 200px;
     bottom: -75px;
