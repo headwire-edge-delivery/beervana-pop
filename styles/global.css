@@ -110,6 +110,12 @@ header,
       }
     }
   }
+
+}
+
+.icon-logo-desktop img {
+  width: 100%;
+  max-width: var(--spacing-48);
 }
 
 #nav {

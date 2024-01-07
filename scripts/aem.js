@@ -409,6 +409,8 @@ function decorateIcon(span, prefix = '', alt = '') {
   img.alt = alt;
   img.loading = 'lazy';
   img.classList.add('light-mode');
+  img.setAttribute('height', '16');
+  img.setAttribute('width', '16');
   span.append(img);
   const imgInverted = document.createElement('img');
   imgInverted.dataset.iconName = iconName;
@@ -416,6 +418,8 @@ function decorateIcon(span, prefix = '', alt = '') {
   imgInverted.alt = alt;
   imgInverted.loading = 'lazy';
   imgInverted.classList.add('dark-mode');
+  imgInverted.setAttribute('height', '16');
+  imgInverted.setAttribute('width', '16');
   span.append(imgInverted);
 }
 
