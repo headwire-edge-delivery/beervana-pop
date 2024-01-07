@@ -286,8 +286,8 @@ button:not(.nav-hamburger button, .story-nav, .color-mode-toggle),
   }
 
   &:not(.primary,.secondary) {
-    border: 2px solid var(--color-foreground);
-    color: var(--color-secondary);
+    background: var(--color-brand-4);
+    color: var(--color-brand-2);
     box-shadow: 0 2px 0 var(--color-secondary);
   
     &:hover {
