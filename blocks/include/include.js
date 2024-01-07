@@ -18,7 +18,7 @@ function templateCard({
       </h3>
       ${!styles.includes('brewery') ? `<p>${description}</p>
       <p class="button-container">
-        <a href="${path}" aria-label="${emptyLinkTitlePrefix.replace('%title%', title)}" title="${emptyLinkTitlePrefix.replace('%title%', title)}" class="button primary">${cardButtonText}</a>
+        <a href="${path}" aria-label="${emptyLinkTitlePrefix.replace('%title%', title)}" title="${emptyLinkTitlePrefix.replace('%title%', title)}" class="button">${cardButtonText}</a>
       </p>` : ''}
     </div>
   </div>`;
