@@ -65,13 +65,14 @@ function templateEvents({
   title,
   startDate,
 }, index, placeholders) {
+  const breakpoints = [{ media: '(min-width: 600px)', width: '500' }, { width: '750' }];
   const { emptyLinkTitlePrefix, eventsButtonText } = placeholders;
   const date = new Date(startDate);
   return `<div class="event event-${index}">
     <div class="events-image image-content" style="--background-image: url(${image})">
       <a href="${path}" title="${title}">
         <span class="border-group">
-          ${createOptimizedPicture(image).outerHTML}
+          ${createOptimizedPicture(image, '', false, breakpoints).outerHTML}
           <span class="date">
             <span class="weekday">${date.toLocaleDateString('en-US', { weekday: 'long' })}</span>
             <span class="day">${date.toLocaleDateString('en-US', { day: 'numeric' })}</span>
