@@ -97,10 +97,11 @@
     grid-column: content;
   }
 
-  & h4 {
+  .details-group-title {
     border-bottom: 10px solid var(--color-text);
     margin: 0;
     padding: var(--spacing-2);
+    display: flex;
   }
 
   & ul {

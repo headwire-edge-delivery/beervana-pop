@@ -39,7 +39,7 @@ async function decoratePreviousNext(placeholders) {
               </li>` : '';
 
           if (previousLink || nextLink) {
-            pagination.innerHTML = `<h4>Up Next</h4><ul class="icon-list">${previousLinkHTML}${nextLinkHTML}</ul>`;
+            pagination.innerHTML = `<strong class="font-display text-md details-group-title">${nextLinkText}</strong><ul class="icon-list">${previousLinkHTML}${nextLinkHTML}</ul>`;
             document.querySelector('.details-wrapper').appendChild(pagination);
           }
         }
@@ -49,7 +49,7 @@ async function decoratePreviousNext(placeholders) {
 }
 
 async function decorateDetails(placeholders) {
-  const { websiteTitle } = placeholders;
+  const { nextLinkText, websiteTitle } = placeholders;
 
   const hours = document.querySelector('meta[name="hours"]')?.getAttribute('content') || '';
   const address = document.querySelector('meta[name="address"]')?.getAttribute('content') || '';
@@ -62,7 +62,7 @@ async function decorateDetails(placeholders) {
     const contact = document.createElement('div');
     contact.classList.add('metadata-wrapper', 'details-group');
     contact.innerHTML = `<div class="contact-info">
-      <h4>Contact</h4>
+      <strong class="font-display text-md details-group-title">Contact</strong>
       <ul class="icon-list">
         ${address && `<li><span class="icon icon-map"><img class="light-mode" data-icon-name="map" src="/icons/map.svg" loading="lazy" alt="map-pin" width="16" height="16"><img class="dark-mode" data-icon-name="map" src="/icons/map-inverted.svg" loading="lazy" alt="map-pin" width="16" height="16"></span><a href="https://google.com/maps/place/${address.replaceAll('<br/>,', '').replaceAll(' ', '+')}">${address.replaceAll('<br/>,', '<br/>')}</a></li>`}
         ${telephone && `<li><span class="icon icon-phone"><img  class="light-mode" data-icon-name="phone" src="/icons/phone.svg" loading="lazy" alt="phone" width="16" height="16"><img class="dark-mode" data-icon-name="phone" src="/icons/phone-inverted.svg" loading="lazy" alt="phone" width="16" height="16"></span><a href="tel:${telephone}" title="Telephone Number">${telephone}</a></li>`}
@@ -71,13 +71,13 @@ async function decorateDetails(placeholders) {
       </ul>
     </div>
     ${hours && `<div class="hours-info">
-      <h4>Hours</h4>
+      <strong class="font-display text-md details-group-title">Hours</strong>
       <ul class="icon-list">
       <li><span class="icon icon-clock"><img class="light-mode" data-icon-name="clock" src="/icons/clock.svg" loading="lazy" alt="clock" width="16" height="16"><img class="dark-mode" data-icon-name="clock" src="/icons/clock-inverted.svg" loading="lazy" alt="clock" width="16" height="16"></span>${hours.replaceAll('<br/>,', '<br/>')}</li>
       </ul>
     </div>`}
     ${onTap && `<div class="on-tap-info">
-      <h4 id="on-tap">On Tap</h4>
+      <strong class="font-display text-sm details-group-title">${nextLinkText}</strong>
       <ul>${onTap.split(',').map((beer) => `<li>${beer}</li>`).join('')}</ul>
     </div>`}`;
 

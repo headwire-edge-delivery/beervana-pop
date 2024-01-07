@@ -31,3 +31,11 @@ main {
     color: var(--color, var(--color-text));
   }
 }
+
+.font-xl { font-size: var(--font-xl); }
+.font-lg { font-size: var(--font-lg); }
+.font-md { font-size: var(--font-md); }
+.font-sm { font-size: var(--font-sm); }
+.font-xs { font-size: var(--font-xs); }
+.font-copy { font-family: var(--font-copy); }
+.font-display { font-family: var(--font-display); }
