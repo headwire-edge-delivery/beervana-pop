@@ -250,6 +250,10 @@
   }
 
   .event {
+    --bg-color: var(--color-brand);
+    --color: var(--color-text-on-brand);
+    --color-link: var(--color-text-on-brand);
+
     display: flex;
     height: 100%;
     flex-direction: column;
@@ -260,6 +264,7 @@
     opacity: 0;
     animation-range: 10vh 30vh;
     scroll-snap-align: start;
+    color: var(--color, var(--color-text));
 
     @media (prefers-reduced-motion: reduce) {
       & {
@@ -329,7 +334,7 @@
 
     .date {
       display: flex;
-      background: var(--color-text);
+      background: var(--color-brand-2);
       color: var(--color-foreground);
       border: 2px solid var(--color-border-brand);
       border-top: none;
@@ -360,10 +365,6 @@
     color: var(--color-background);
     flex: 1;
     min-width: min(90vw, var(--spacing-80));
-
-    & a {
-      color: var(--color-background);
-    }
 
     & h3,
     & p {
