@@ -258,28 +258,8 @@
     flex-direction: column;
     background: var(--color-brand);
     grid-column: content;
-    animation: slide-in linear forwards;
-    animation-timeline: view();
-    opacity: 0;
-    animation-range: 10vh 30vh;
     scroll-snap-align: start;
     color: var(--color, var(--color-text));
-
-    @media (prefers-reduced-motion: reduce) {
-      & {
-        animation: none;
-        opacity: 1;
-      }
-    }
-
-    &:nth-child(even) {
-      transform: translateX(20%);
-    }
-
-    &:nth-child(odd) {
-      transform: translateX(-20%);
-    }
-  
   }
 
   .events-image {
