@@ -55,8 +55,6 @@
   }
 
   &.hero-image {
-    max-height: 50vh;
-
     & picture,
     & img {
       border-radius: var(--spacing-4);
