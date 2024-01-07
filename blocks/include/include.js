@@ -6,7 +6,7 @@ function templateCard({
   path,
   title,
 }, index, placeholders, styles) {
-  const breakpoints = [{ media: '(min-width: 600px)', width: '750' }, { width: '750' }];
+  const breakpoints = [{ media: '(min-width: 600px)', width: '500' }, { width: '500' }];
   const { emptyLinkTitlePrefix, cardButtonText } = placeholders;
   return `<div class="card">
     <div class="cards-card-image image-content">
