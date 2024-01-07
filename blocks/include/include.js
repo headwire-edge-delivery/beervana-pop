@@ -64,7 +64,7 @@ function templateEvents({
   title,
   startDate,
 }, index, placeholders) {
-  const { eventButtonText } = placeholders;
+  const { eventsButtonText } = placeholders;
   const date = new Date(startDate);
   return `<div class="event event-${index}">
     <div class="events-image image-content" style="--background-image: url(${image})">
@@ -84,7 +84,7 @@ function templateEvents({
       </h3>
       <p>${description}</p>
       <p class="button-container">
-        <a href="${path}" title="${title}" class="button">${eventButtonText}</a>
+        <a href="${path}" title="${title}" class="button">${eventsButtonText}</a>
       </p>
     </div>
   </div>`;
