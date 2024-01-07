@@ -28,6 +28,7 @@
     justify-content: flex-end;
     opacity: 0;
     scale: .9;
+    will-change: transform opacity;
 
     & > ul {
       margin-inline-start: var(--spacing-5);
