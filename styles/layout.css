@@ -136,7 +136,7 @@ body.details {
 
   /* this may have caused a weird breaking issue on mobile safari where the width isn't calculated correctly until rotating the device */
   .cards.wrapper {
-    display: flex;
+    display: grid;
     grid-column: content;
   }
 

@@ -37,7 +37,7 @@ function templateBreakout({
   websiteTitle,
 }, index, placeholders) {
   const { emptyLinkTitlePrefix } = placeholders;
-  const breakpoints = [{ media: '(min-width: 600px)', width: '1250' }, { width: '750' }];
+  const breakpoints = [{ media: '(min-width: 600px)', width: '800' }, { media: '(min-width: 1200px)', width: '1250' }, { width: '750' }];
   return `<div class="breakout-${index % 2 === 0 ? 'left' : 'right'} two-columns block">
     <div class="default-content-wrapper">
       <h2 id="portland-art-museum">
