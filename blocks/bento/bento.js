@@ -55,10 +55,12 @@ export default async function decorate(block) {
       storyWrapper.innerHTML = storyMarkup;
       storyWrapper.dataset.story = i;
 
+      const webpImg = storyWrapper.querySelector('source[type="image/webp"]');
       const img = storyWrapper.querySelector('img');
-      if (img) {
+      if (img && webpImg) {
+        const webpSrc = webpImg.getAttribute('srcset');
         const imgSrc = img.getAttribute('src');
-        storyWrapper.style = `--bg: url(${imgSrc});`;
+        storyWrapper.style = `--bg: url(${webpSrc}), url(${imgSrc});`;
       }
       storyWrapper.querySelector('p:has(picture)')?.remove();
 
