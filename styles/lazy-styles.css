@@ -149,11 +149,6 @@
   cursor: pointer;
   text-align: left;
   font: inherit;
-  opacity: .7;
-
-  &:hover {
-    opacity: 1;
-  }
 
   & svg {
     position: absolute;
