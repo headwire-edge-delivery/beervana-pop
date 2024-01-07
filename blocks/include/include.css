@@ -63,6 +63,12 @@
       }
     }
 
+    @media (width > 1500px) {
+      & {
+        aspect-ratio: 16 / 9;
+      }
+    }
+
     & picture,
     & img {
       width: 100%;
