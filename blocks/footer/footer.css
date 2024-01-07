@@ -136,6 +136,10 @@
 
   .form-wrapper .block {
     margin-block: 0;
+
+    & input {
+      background-color: var(--color-foreground);
+    }
   }
 }
 
