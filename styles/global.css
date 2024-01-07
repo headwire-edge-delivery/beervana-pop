@@ -285,7 +285,7 @@ button:not(.nav-hamburger button, .story-nav, .color-mode-toggle),
 
   }
 
-  &:not(.primary,.secondary) {
+  &:not(.primary,.secondary, .enzuzo-notification-button) {
     background: var(--color-brand-4);
     color: var(--color-brand-2);
     box-shadow: 0 2px 0 var(--color-secondary);
