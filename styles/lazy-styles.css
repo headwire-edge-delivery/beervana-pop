@@ -73,6 +73,7 @@
       animation: progress-bar 3s linear forwards;
       position: absolute;
       inset: 0;
+      will-change: width;
     }
   }
 }
