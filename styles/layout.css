@@ -95,9 +95,11 @@ body {
     grid-column: content;
   }
 
-  &:is(.section.content-middle > .default-content-wrapper),
-  &:is(body.content-middle .default-content-wrapper) {
-    grid-column: content-middle;
+  @media (width > 1024px) {
+    &:is(.section.content-middle > .default-content-wrapper),
+    &:is(body.content-middle .default-content-wrapper) {
+      grid-column: content-middle;
+    }
   }
 }
 
