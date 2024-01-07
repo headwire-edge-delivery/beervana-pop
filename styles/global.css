@@ -81,6 +81,12 @@ header,
       outline: 3px solid var(--color-focus-ring);
       outline-offset: 0;
     }
+
+    .icon:not(.icon-logo-desktop) {
+      width: var(--spacing-4);
+      height: var(--spacing-4);
+      display: flex;
+    }
   }
 
   & ul {
@@ -116,6 +122,7 @@ header,
 .icon-logo-desktop img {
   width: 100%;
   max-width: var(--spacing-48);
+  height: var(--spacing-12);
 }
 
 #nav {
