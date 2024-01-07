@@ -5,7 +5,7 @@ function templateCard({
   image,
   path,
   title,
-}, index, placeholders) {
+}, index, placeholders, styles) {
   const { emptyLinkTitlePrefix, cardButtonText } = placeholders;
   return `<div class="card">
     <div class="cards-card-image image-content">
@@ -15,10 +15,10 @@ function templateCard({
       <h3>
         <a href="${path}" title="${title}">${title}</a>
       </h3>
-      <p>${description}</p>
+      ${!styles.includes('brewery') ? `<p>${description}</p>
       <p class="button-container">
         <a href="${path}" title="${emptyLinkTitlePrefix.replace('%title%', title)}" class="button primary">${cardButtonText}</a>
-      </p>
+      </p>` : ''}
     </div>
   </div>`;
 }
@@ -115,7 +115,7 @@ export default async function decorate(block) {
       const template = templateConfig[styles[0]] || templateConfig.default;
       const container = document.createElement('div');
       container.className = `${styles.join(' ')} wrapper`;
-      container.innerHTML = data.map((item, index) => template(item, index, placeholders)).join('');
+      container.innerHTML = data.map((item, index) => template(item, index, placeholders, styles)).join('');
       block.appendChild(container);
     }
   }
