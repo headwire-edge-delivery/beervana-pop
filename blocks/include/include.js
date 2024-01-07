@@ -65,7 +65,7 @@ function templateEvents({
   title,
   startDate,
 }, index, placeholders) {
-  const breakpoints = [{ media: '(min-width: 600px)', width: '500' }, { width: '750' }];
+  const breakpoints = [{ media: '(min-width: 600px)', width: '350' }, { width: '350' }];
   const { emptyLinkTitlePrefix, eventsButtonText } = placeholders;
   const date = new Date(startDate);
   return `<div class="event event-${index}">
