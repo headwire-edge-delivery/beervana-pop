@@ -271,8 +271,8 @@
       display: block;
       position: absolute;
       inset: 0;
+      background: radial-gradient(var(--color-brand-2), var(--color-brand-2) 50%, transparent 100%);
       content: '';
-      background: var(--background-image) no-repeat center center / cover;
       background-blend-mode: luminosity;
       filter: blur(10px);
       z-index: 0;
@@ -283,6 +283,12 @@
     &:hover::before {
       scale: 1.1;
       opacity: .25;
+    }
+
+    @media (width >= 768px) {
+      &::before {
+        background: var(--background-image) no-repeat center center / cover;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
