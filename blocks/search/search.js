@@ -8,6 +8,7 @@ export default async function decorate(block) {
     searchNoResults,
     searchInputPlaceholder,
     searchResultsPageTitle,
+    searchResultsPageSubTitle,
   } = placeholders;
 
   const searchParams = new URLSearchParams(window.location.search);
@@ -19,6 +20,7 @@ export default async function decorate(block) {
     <div class="hero-content">
       <div class="hero-text">
         <h1 id="results-for-query">${searchResultsPageTitle.replace('%query%', `"${searchParams.get('query')}"` || '')}</h1>
+        <h2>${searchResultsPageSubTitle}</h2>
         <form id='search-form'>
           <div class='form-text-field-wrapper field-wrapper'>
             <label for='search' class='required'>Search</label>
