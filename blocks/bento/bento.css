@@ -63,6 +63,7 @@
       object-fit: cover;
       overflow: hidden;
       display: block;
+      opacity: 0;
     }
 
     & > div {
