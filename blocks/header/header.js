@@ -23,6 +23,20 @@ function closeOnEscape(e) {
   }
 }
 
+function closeOnClick(e) {
+  const navSections = document.querySelector('.nav-sections');
+  const hamburger = document.querySelector('.nav-hamburger');
+  if (
+    hamburger
+    && navSections
+    && !navSections.contains(e.target)
+    && !hamburger.contains(e.target)
+  ) {
+    // eslint-disable-next-line no-use-before-define
+    toggleMenu(document.getElementById('nav'), navSections);
+  }
+}
+
 function openOnKeydown(e) {
   const focused = document.activeElement;
   const isNavDrop = focused.className === 'nav-drop';
@@ -88,8 +102,10 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
   if (!expanded || isDesktop.matches) {
     // collapse menu on escape press
     window.addEventListener('keydown', closeOnEscape);
+    window.addEventListener('click', closeOnClick);
   } else {
     window.removeEventListener('keydown', closeOnEscape);
+    window.removeEventListener('click', closeOnClick);
   }
 }
 
