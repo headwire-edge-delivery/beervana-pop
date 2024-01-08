@@ -130,7 +130,7 @@ body.details {
 
   & > .include.cards {
     display: grid;
-    grid-template-columns: var(--section-template-columns);
+    grid-template-columns: subgrid;
     grid-column: full-width;
   }
 
