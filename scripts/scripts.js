@@ -2,6 +2,7 @@ import {
   sampleRUM,
   buildBlock,
   loadHeader,
+  loadFooter,
   decorateButtons,
   decorateIcons,
   decorateSections,
@@ -105,7 +106,7 @@ async function loadLazy(doc) {
   if (hash && element) element.scrollIntoView();
 
   loadHeader(doc.querySelector('header'));
-  // loadFooter(document.querySelector('footer'));
+  loadFooter(document.querySelector('footer'));
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
