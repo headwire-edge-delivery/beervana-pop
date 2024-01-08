@@ -1317,6 +1317,7 @@ input, textarea {
 
   &:is(textarea) {
     min-height: var(--spacing-32);
+    resize: none;
   }
 
   &::placeholder {
