@@ -305,7 +305,7 @@ function createOptimizedPicture(
   src,
   alt = '',
   eager = false,
-  breakpoints = [{ media: '(min-width: 600px)', width: '2000' }, { width: '750' }],
+  breakpoints = [{ media: '(min-width: 600px)', width: '1000' }, { media: '(min-width: 1000px)', width: '1300' }, { width: '500' }],
 ) {
   const url = new URL(src, window.location.href);
   const picture = document.createElement('picture');
