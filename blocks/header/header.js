@@ -106,7 +106,7 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
     window.removeEventListener('keydown', closeOnEscape);
   }
 
-  if (!expanded) {
+  if (!expanded && !isDesktop.matches) {
     window.addEventListener('click', closeOnClick);
   } else {
     window.removeEventListener('click', closeOnClick);
