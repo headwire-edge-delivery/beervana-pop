@@ -139,16 +139,4 @@ async function loadPage() {
   loadDelayed();
 }
 
-function showCookieBanner() {
-  const cookieBanner = document.body.querySelector('#cookie-notification:not(.appear)');
-  if (cookieBanner) {
-    cookieBanner.classList.add('appear');
-  }
-}
-
-document.body.addEventListener('scroll', showCookieBanner, { once: true, passive: true });
-document.body.addEventListener('mousemove', showCookieBanner, { once: true, passive: true });
-document.body.addEventListener('touchmove', showCookieBanner, { once: true, passive: true });
-document.body.addEventListener('keydown', showCookieBanner, { once: true, passive: true });
-
 loadPage();
