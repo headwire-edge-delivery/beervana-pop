@@ -14,7 +14,7 @@ import {
   loadCSS,
 } from './aem.js';
 
-const LCP_BLOCKS = []; // add your LCP blocks to the list
+const LCP_BLOCKS = ['bento', 'hero']; // add your LCP blocks to the list
 
 async function decoratePreviousNext(placeholders) {
   const contentType = window.location.pathname.split('/')[1];
