@@ -213,6 +213,7 @@ async function loadLazy(doc) {
   if (hash && element) element.scrollIntoView();
 
   loadHeader(doc.querySelector('header'));
+  loadFooter(document.querySelector('footer'));
   decorateTemplate();
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
@@ -247,7 +248,6 @@ async function loadPage() {
 }
 
 function showCookieBanner() {
-  loadFooter(document.querySelector('footer'));
   const cookieBanner = document.body.querySelector('#cookie-notification:not(.appear)');
   if (cookieBanner) {
     cookieBanner.classList.add('appear');
