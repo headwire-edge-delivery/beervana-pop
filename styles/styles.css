@@ -333,10 +333,6 @@ body.details {
 }
 
 /* fcp.css */
-#cookie-notification:not(.appear) {
-  display: none !important;
-}
-
 .hero-wrapper {
   --hero-spacing: var(--spacing-4);
 
