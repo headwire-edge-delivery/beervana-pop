@@ -66,7 +66,7 @@ function templateEvents({
   startDate,
 }, index, placeholders) {
   const breakpoints = [{ media: '(min-width: 600px)', width: '350' }, { width: '350' }];
-  const { emptyLinkTitlePrefix, eventsButtonText } = placeholders;
+  const { eventsButtonText } = placeholders;
   const date = new Date(startDate);
   return `<div class="event event-${index}">
     <div class="events-image image-content" style="--background-image: url(${image})">
@@ -86,7 +86,7 @@ function templateEvents({
       </h3>
       <p>${description}</p>
       <p class="button-container">
-        <a href="${path}" aria-label="${emptyLinkTitlePrefix.replace('%title%', title)}" title="${emptyLinkTitlePrefix.replace('%title%', title)}" class="button">${eventsButtonText}</a>
+        <a href="${path}" class="button">${eventsButtonText}</a>
       </p>
     </div>
   </div>`;
