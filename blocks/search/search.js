@@ -122,7 +122,7 @@ export default async function decorate(block) {
 
       const src = resultImage.match(/src="([^"]*)"/);
       if (src) {
-        image = createOptimizedPicture(src[1], '', index > 3, breakpoints).outerHTML;
+        image = createOptimizedPicture(src[1], '', index < 3, breakpoints).outerHTML;
       }
 
       const snippet = resultItem.snippet === '<strong></strong>' ? '' : resultItem.snippet;
