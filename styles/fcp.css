@@ -129,8 +129,20 @@
   }
 }
 
-body.search .hero-wrapper {
-  padding-block-end: 0;
+body.search {
+  .hero-wrapper {
+    padding-block-end: 0;
+  }
+
+  footer {
+    display: none;
+  }
+
+  &.search-results-loaded {
+    & footer {
+      display: grid;
+    }
+  }
 }
 
 

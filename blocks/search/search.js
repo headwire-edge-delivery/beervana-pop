@@ -148,6 +148,7 @@ export default async function decorate(block) {
     resultsList.innerHTML = listItemsHtml || noResultsHMTL;
     searchParams.set('query', query);
     window.history.replaceState(null, null, `?${searchParams.toString()}`);
+    document.querySelector('body').classList.add('search-results-loaded');
   };
 
   // initialize fetch
