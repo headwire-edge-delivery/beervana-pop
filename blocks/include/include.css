@@ -349,7 +349,7 @@
     gap: var(--spacing-2);
     color: var(--color-background);
     flex: 1;
-    min-width: min(90vw, var(--spacing-80));
+    min-width: min(80vw, var(--spacing-80));
 
     & h3,
     & p {

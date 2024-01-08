@@ -519,7 +519,8 @@ body.search {
       }
     }
 
-    &:hover {
+    &:hover,
+    &:focus {
       .cards-card-image img {
         scale: 1.05;
       }
@@ -675,6 +676,7 @@ body.search {
       transition: scale .2s linear;
     }
 
+    &:focus,
     &:hover {
       img {
         scale: 1.05;
