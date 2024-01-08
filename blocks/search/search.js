@@ -7,54 +7,58 @@ export default async function decorate(block) {
     cardButtonText,
     searchNoResults,
     searchInputPlaceholder,
+    searchResultsPageTitle,
   } = placeholders;
 
   const searchParams = new URLSearchParams(window.location.search);
   block.innerHTML = '<ul class="search-results cards block"></ul>';
 
-  const heroBlock = document.querySelector('.hero');
-  if (heroBlock) {
-    const queryPlaceholder = heroBlock.querySelector('h1');
-    if (queryPlaceholder) {
-      queryPlaceholder.innerText = queryPlaceholder.innerText.replace('%query%', searchParams.get('query') || '');
-    }
-    const formPlaceholder = heroBlock.querySelector('#search-form');
-    if (formPlaceholder) {
-      formPlaceholder.outerHTML = `
-      <form id='search-form'>
-        <div class='form-text-field-wrapper field-wrapper'>
-          <label for='search' class='required'>Search</label>
-          <input type='text-field' id='search' placeholder='${searchInputPlaceholder}' value='${searchParams.get('query') === null ? '' : searchParams.get('query')}' required='required'>
-        </div>
-        </div>
+  const heroWrapper = document.createElement('div');
+  heroWrapper.classList.add('hero-wrapper');
+  heroWrapper.innerHTML = `<div class="hero simple centered block" data-block-name="hero" data-block-status="loaded">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1 id="results-for-query">${searchResultsPageTitle.replace('%query%', `"${searchParams.get('query')}"` || '')}</h1>
+        <form id='search-form'>
+          <div class='form-text-field-wrapper field-wrapper'>
+            <label for='search' class='required'>Search</label>
+            <input type='text-field' id='search' placeholder='${searchInputPlaceholder}' value='${searchParams.get('query') === null ? '' : searchParams.get('query')}' required='required'>
+          </div>
           <div class='form-submit-wrapper form-primary field-wrapper'>
-          <button class='button primary search-button'>Search</button>
-        </div>
-      </form>`;
-      const searchForm = document.querySelector('#search-form');
-      const searchInput = searchForm.querySelector('input');
-      const searchButton = searchForm.querySelector('button');
+            <button class='button primary search-button'>Search</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>`;
 
-      searchButton.onclick = () => {
-        const trimmedValue = searchInput.value.trim();
-        if (trimmedValue) {
-          window.location = `/search?query=${trimmedValue}`;
-        } else {
-          searchInput.focus();
-        }
-      };
+  block.parentNode.before(heroWrapper);
 
-      searchInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-          window.location = `/search?query=${searchInput.value.trim()}`;
-        }
-      });
+  const searchForm = document.querySelector('#search-form');
+  console.log(searchForm);
+  if (searchForm) {
+    const searchInput = searchForm.querySelector('input');
+    const searchButton = searchForm.querySelector('button');
 
-      searchForm.addEventListener('submit', (e) => {
-        e.preventDefault();
+    searchButton.onclick = () => {
+      const trimmedValue = searchInput.value.trim();
+      if (trimmedValue) {
+        window.location = `/search?query=${trimmedValue}`;
+      } else {
+        searchInput.focus();
+      }
+    };
+
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
         window.location = `/search?query=${searchInput.value.trim()}`;
-      });
-    }
+      }
+    });
+
+    searchForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      window.location = `/search?query=${searchInput.value.trim()}`;
+    });
   }
 
   // setup back button card

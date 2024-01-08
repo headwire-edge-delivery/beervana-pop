@@ -93,6 +93,10 @@
     flex: 2;
     gap: var(--spacing-1);
 
+    & label {
+      display: none;
+    }
+
     & input {
       border-radius: var(--spacing-3) 0 0 var(--spacing-3);
     }
@@ -123,6 +127,10 @@
   ::placeholder {
     color: var(--color-text);
   }
+}
+
+body.search .hero-wrapper {
+  padding-block-end: 0;
 }
 
 
