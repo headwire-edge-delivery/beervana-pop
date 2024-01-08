@@ -1138,6 +1138,7 @@ button:not(.nav-hamburger button, .story-nav, .color-mode-toggle),
 .section:not(header .section, footer .section) {
   background-color: var(--bg-color, var(--color-background));
   color: var(--color, var(--color-text));
+  transition: background-color .2s linear, color .2s linear;
 }
 
 .bg-brand {

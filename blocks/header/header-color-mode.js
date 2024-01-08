@@ -19,17 +19,17 @@ function toggleColorMode(e) {
     setTimeout(() => {
       button.classList.remove('transition-out');
       button.classList.remove('transition-in');
-
-      if (document.documentElement.classList.contains('dark-mode')) {
-        window.localStorage.setItem('darkMode', false);
-        document.documentElement.classList.remove('dark-mode');
-        document.documentElement.classList.add('light-mode');
-      } else {
-        window.localStorage.setItem('darkMode', true);
-        document.documentElement.classList.add('dark-mode');
-        document.documentElement.classList.remove('light-mode');
-      }
     }, 200);
+
+    if (document.documentElement.classList.contains('dark-mode')) {
+      window.localStorage.setItem('darkMode', false);
+      document.documentElement.classList.remove('dark-mode');
+      document.documentElement.classList.add('light-mode');
+    } else {
+      window.localStorage.setItem('darkMode', true);
+      document.documentElement.classList.add('dark-mode');
+      document.documentElement.classList.remove('light-mode');
+    }
   }, 400);
 }
 
