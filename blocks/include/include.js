@@ -18,7 +18,7 @@ function templateCard({
       </h3>
       ${!styles.includes('brewery') ? `<p>${description}</p>
       <p class="button-container">
-        <a href="${path}" aria-label="${emptyLinkTitlePrefix.replace('%title%', title)}" title="${emptyLinkTitlePrefix.replace('%title%', title)}" class="button">${cardButtonText}</a>
+        <a href="${path}" title="${emptyLinkTitlePrefix.replace('%title%', title)}" class="button">${cardButtonText}</a>
       </p>` : ''}
     </div>
   </div>`;
@@ -53,7 +53,7 @@ function templateBreakout({
       </ul>
     </div>
     <div class="default-content-wrapper image-content">
-      <a href="${path}" aria-label="${emptyLinkTitlePrefix.replace('%title%', title)}" title="${emptyLinkTitlePrefix.replace('%title%', title)}">${createOptimizedPicture(image, '', false, breakpoints).outerHTML}</a>
+      <a href="${path}" title="${emptyLinkTitlePrefix.replace('%title%', title)}">${createOptimizedPicture(image, '', false, breakpoints).outerHTML}</a>
     </div>
   </div>`;
 }
