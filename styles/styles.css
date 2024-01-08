@@ -978,6 +978,10 @@ header,
   justify-self: flex-end;
   z-index: 1;
 
+  &:is(:not(body.off-canvas &)) {
+    margin-inline-end: var(--spacing-2);
+  }
+
   & button {
     background: transparent;
     border: none;
