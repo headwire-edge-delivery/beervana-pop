@@ -5,8 +5,8 @@ indices:
     include:
       - /**
     exclude:
-      - '/admin/**'
       - '/drafts/**'
+      - '/thanks**'
       - '/footer'
       - '/header'
       - '/nav'
