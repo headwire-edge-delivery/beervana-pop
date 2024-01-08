@@ -108,6 +108,7 @@ header,
     & li {
       display: flex;
       justify-content: flex-end;
+      align-items: center;
     
       @media (width <= 768px) {
         &:has(.color-mode-toggle) {
@@ -154,6 +155,7 @@ header,
   &[aria-expanded="true"] {
     .nav-sections {
       display: grid;
+      min-height: var(--spacing-20);
     }
   }
 }
