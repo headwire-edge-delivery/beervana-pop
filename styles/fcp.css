@@ -280,7 +280,7 @@
   --cards-per-row: 1;
 
   display: grid;
-  grid-template-columns: repeat(var(--cards-per-row), 1fr);
+  grid-template-columns: repeat(var(--cards-per-row), minmax(0, 1fr));
   gap: var(--spacing-16) var(--spacing-8);
   list-style: none;
 
