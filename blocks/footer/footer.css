@@ -108,6 +108,8 @@
     }
 
     &:last-child {
+      --focus-ring: 0 0 0 4px var(--color-brand-2);
+
       grid-column: full-width;
       font-size: var(--font-xs);
     }

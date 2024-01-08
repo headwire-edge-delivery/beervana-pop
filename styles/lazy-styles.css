@@ -163,6 +163,12 @@
     display: block;
     opacity: 0;
   }
+
+  &:focus {
+    outline: none;
+    box-shadow: var(--focus-ring);
+    background: var(--color-brand-2);
+  }
 }
 
 html:not(.light-mode, .dark-mode) .color-mode-toggle,

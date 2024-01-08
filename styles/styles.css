@@ -731,7 +731,7 @@ body.search {
     flex-direction: column;
     justify-content: flex-end;
     opacity: 0;
-    scale: .9;
+    transform: scale(.9);
     will-change: transform, opacity;
     margin: 0;
     max-width: unset;
@@ -743,7 +743,7 @@ body.search {
 
     &.active {
       opacity: 1;
-      scale: 1;
+      transform: scale(1);
     }
 
     & picture,
@@ -781,6 +781,11 @@ body.search {
     &:hover {
       background-color: hsla(var(--color-background-hsl) / 100%);
       cursor: pointer;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: var(--focus-ring);
     }
   
     &.active::after {
