@@ -1,4 +1,4 @@
-import { decorateButtons, createOptimizedPicture } from '../../scripts/aem.js';
+import { decorateButtons } from '../../scripts/aem.js';
 
 export default async function decorate(block) {
   decorateButtons(block);
@@ -9,14 +9,11 @@ export default async function decorate(block) {
   const picture = block.querySelector(':scope picture');
 
   if (picture) {
-    const src = picture.querySelector('img').getAttribute('src');
-    const alt = picture.querySelector('img').getAttribute('alt');
     picture.parentNode.replaceWith(picture);
     document.body.classList.add('has-hero');
-    const newPicture = createOptimizedPicture(src, alt, true);
-    newPicture.classList.add('hero-picture');
+    picture.classList.add('hero-picture');
 
-    block.append(newPicture);
+    block.append(picture);
   }
 
   const heroTextWrapper = document.createElement('div');
