@@ -102,7 +102,7 @@ img {
   --color-shadow-default: hsl(var(--color-shadow-hsl) / 40%);
   
   /* stylelint-disable value-keyword-case */
-  --font-display: 'Caprasimo', Georgia, serif;
+  --font-display: 'Caprasimo', 'Caprasimo Fallback', Georgia, serif;
   --font-copy: system-ui, sans-serif;
   --font-xl: 2.5rem;
   --font-lg: 1.9882rem;
