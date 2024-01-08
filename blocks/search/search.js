@@ -130,7 +130,7 @@ export default async function decorate(block) {
       return `
       <li>
         <div class='cards-card-image image-content'>
-          <a href='${resultItem.url}' title='${emptyLinkTitlePrefix.replace('%title%', resultItem.title) || emptyLinkTitlePrefix}'>${image}</a>
+          <a href='${resultItem.url}' title='${emptyLinkTitlePrefix.replace('%title%', resultItem.title) || emptyLinkTitlePrefix}'>${image || ''}</a>
         </div>
         <div class='cards-card-body'>
           <h3><strong><a href='${resultItem.url}' title='${resultItem.title}'>${resultItem.title}</a></strong></h3>
