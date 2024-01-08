@@ -126,38 +126,6 @@
     transition: all .2s linear;
     opacity: 0;
 
-    @supports (animation-timeline: view()) and (animation-range: 10vh 30vh) {
-      & {
-        transform: translateY(20%);
-        animation: slide-up linear forwards;
-        animation-timeline: view();
-        animation-range: 10vh 30vh;
-      }
-
-      @media (width > 768px) {
-        &:nth-child(2n - 1) {
-          animation-range: 0 20vh;
-        }
-
-        &:nth-child(2n) {
-          animation-range: 20vh 40vh;
-        }
-      }
-
-      @media (width > 1024px) {
-        &:nth-child(3n - 2) {
-          animation-range: 0 20vh;
-        }
-
-        &:nth-child(3n - 1) {
-          animation-range: 20vh 40vh;
-        }
-
-        &:nth-child(3n) {
-          animation-range: 30vh 40vh;
-        }
-      }
-    }
 
     &:hover {
       .cards-card-image img {
@@ -434,6 +402,42 @@
       position: absolute;
       inset: 0;
       will-change: width;
+    }
+  }
+}
+
+@supports (animation-timeline: view()) and (animation-range: 10vh 30vh) {
+  /* stylelint-disable no-duplicate-selectors */
+  .cards.brewery .card {
+    & {
+      transform: translateY(20%);
+      animation: slide-up linear forwards;
+      animation-timeline: view();
+      animation-range: 10vh 30vh;
+    }
+
+    @media (width > 768px) {
+      &:nth-child(2n - 1) {
+        animation-range: 0 20vh;
+      }
+
+      &:nth-child(2n) {
+        animation-range: 20vh 40vh;
+      }
+    }
+
+    @media (width > 1024px) {
+      &:nth-child(3n - 2) {
+        animation-range: 0 20vh;
+      }
+
+      &:nth-child(3n - 1) {
+        animation-range: 20vh 40vh;
+      }
+
+      &:nth-child(3n) {
+        animation-range: 30vh 40vh;
+      }
     }
   }
 }
