@@ -2,6 +2,7 @@ function toggleSearch(e) {
   e.preventDefault();
   if (e.target?.closest('.header-search-block') === null) {
     const searchWrapper = document.querySelector('.header-search-wrapper');
+    searchWrapper.querySelector('input[type="text"]').toggleAttribute('disabled');
     searchWrapper?.classList.toggle('active');
     if (searchWrapper.classList.contains('active')) {
       searchWrapper.querySelector('input[type="text"]').focus();
@@ -23,16 +24,18 @@ function setupSearchInput(searchButton) {
   searchInput.classList.add('search-input');
   searchInput.setAttribute('type', 'text');
   searchInput.setAttribute('placeholder', 'Search');
+  searchInput.setAttribute('disabled', '');
   searchInput.addEventListener('keydown', (e) => {
+    const searchWrapper = document.querySelector('.header-search-wrapper');
     if (e.key === 'Enter') {
       e.preventDefault();
       searchButton.click();
     } else if (e.key === 'Tab') {
-      e.preventDefault();
-      toggleSearch(e);
-      document.querySelector(e.shiftKey ? '.header-tools .color-mode-toggle' : '.header-tools .button-container a')?.focus();
+      searchWrapper?.classList.remove('active');
+      searchWrapper.querySelector('input[type="text"]').addAttribute('disabled');
+      const searchNav = document.querySelector('header [href="/search"]');
+      searchNav?.focus();
     } else if (e.key === 'Escape') {
-      const searchWrapper = document.querySelector('.header-search-wrapper');
       searchWrapper?.classList.toggle('active');
     }
   });
