@@ -51,3 +51,18 @@
 body.details .columns.block:has(.columns-img-col) > div {
   gap: var(--spacing-6);
 }
+
+.contact-us-columns {
+  & a {
+    text-decoration: underline;
+  
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  & ul li a {
+    padding-block: var(--spacing-1);
+    display: inline-block;
+  }
+}

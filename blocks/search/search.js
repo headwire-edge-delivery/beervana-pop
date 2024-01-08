@@ -1,4 +1,4 @@
-import { fetchPlaceholders } from '../../scripts/aem.js';
+import { createOptimizedPicture, fetchPlaceholders } from '../../scripts/aem.js';
 
 export default async function decorate(block) {
   const placeholders = await fetchPlaceholders();
@@ -7,57 +7,59 @@ export default async function decorate(block) {
     cardButtonText,
     searchNoResults,
     searchInputPlaceholder,
+    searchResultsPageTitle,
+    searchResultsPageSubTitle,
   } = placeholders;
 
   const searchParams = new URLSearchParams(window.location.search);
   block.innerHTML = '<ul class="search-results cards block"></ul>';
 
-  const heroBlock = document.querySelector('.hero');
-  if (heroBlock) {
-    const queryPlaceholder = heroBlock.querySelector('h1');
-    if (queryPlaceholder) {
-      queryPlaceholder.innerText = queryPlaceholder.innerText.replace('%query%', searchParams.get('query') || '');
-    }
-    const formPlaceholder = heroBlock.querySelector('#search-form');
-    if (formPlaceholder) {
-      formPlaceholder.outerHTML = `
-      <form id='search-form'>
-        <div class='form-text-field-wrapper field-wrapper'>
-          <label for='search' class='required'>Search</label>
-          <input type='text-field' id='search' placeholder='${searchInputPlaceholder}' value='${searchParams.get('query') === null ? '' : searchParams.get('query')}' required='required'>
-        </div>
-        </div>
+  const heroWrapper = document.createElement('div');
+  heroWrapper.classList.add('hero-wrapper');
+  heroWrapper.innerHTML = `<div class="hero simple centered block" data-block-name="hero" data-block-status="loaded">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1 id="results-for-query">${searchResultsPageTitle.replace('%query%', `"${searchParams.get('query')}"` || '')}</h1>
+        <h2>${searchResultsPageSubTitle}</h2>
+        <form id='search-form'>
+          <div class='form-text-field-wrapper field-wrapper'>
+            <label for='search' class='required'>Search</label>
+            <input type='text-field' id='search' placeholder='${searchInputPlaceholder}' value='${searchParams.get('query') === null ? '' : searchParams.get('query')}' required='required'>
+          </div>
           <div class='form-submit-wrapper form-primary field-wrapper'>
-          <button class='button primary search-button'>
-            <img alt='' src='/icons/search.svg' />
-            Search
-          </button>
-        </div>
-      </form>`;
-      const searchForm = document.querySelector('#search-form');
-      const searchInput = searchForm.querySelector('input');
-      const searchButton = searchForm.querySelector('button');
+            <button class='button primary search-button'>Search</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>`;
 
-      searchButton.onclick = () => {
-        const trimmedValue = searchInput.value.trim();
-        if (trimmedValue) {
-          window.location = `/search?query=${trimmedValue}`;
-        } else {
-          searchInput.focus();
-        }
-      };
+  block.parentNode.before(heroWrapper);
 
-      searchInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-          window.location = `/search?query=${searchInput.value.trim()}`;
-        }
-      });
+  const searchForm = document.querySelector('#search-form');
+  if (searchForm) {
+    const searchInput = searchForm.querySelector('input');
+    const searchButton = searchForm.querySelector('button');
 
-      searchForm.addEventListener('submit', (e) => {
-        e.preventDefault();
+    searchButton.onclick = () => {
+      const trimmedValue = searchInput.value.trim();
+      if (trimmedValue) {
+        window.location = `/search?query=${trimmedValue}`;
+      } else {
+        searchInput.focus();
+      }
+    };
+
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
         window.location = `/search?query=${searchInput.value.trim()}`;
-      });
-    }
+      }
+    });
+
+    searchForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      window.location = `/search?query=${searchInput.value.trim()}`;
+    });
   }
 
   // setup back button card
@@ -106,10 +108,12 @@ export default async function decorate(block) {
       return;
     }
     document.title = `Search Results for "${query}"`;
+    const breakpoints = [{ media: '(min-width: 600px)', width: '500' }, { width: '300' }];
     const response = await fetch(`https://beervana-pop-search.jz-759.workers.dev/?search=${query}`);
     const data = await response.json();
 
-    const listItemsHtml = data.map((resultItem) => {
+    const listItemsHtml = data.map((resultItem, index) => {
+      let image;
       let resultImage = '';
       if (resultItem?.heroImage) {
         resultImage = resultItem.heroImage;
@@ -118,12 +122,17 @@ export default async function decorate(block) {
         resultImage = '';
       }
 
+      const src = resultImage.match(/src="([^"]*)"/);
+      if (src) {
+        image = createOptimizedPicture(src[1], '', index < 3, breakpoints).outerHTML;
+      }
+
       const snippet = resultItem.snippet === '<strong></strong>' ? '' : resultItem.snippet;
 
       return `
       <li>
         <div class='cards-card-image image-content'>
-          <a href='${resultItem.url}' title='${emptyLinkTitlePrefix.replace('%title%', resultItem.title) || emptyLinkTitlePrefix}'>${resultImage}</a>
+          <a href='${resultItem.url}' title='${emptyLinkTitlePrefix.replace('%title%', resultItem.title) || emptyLinkTitlePrefix}'>${image || ''}</a>
         </div>
         <div class='cards-card-body'>
           <h3><strong><a href='${resultItem.url}' title='${resultItem.title}'>${resultItem.title}</a></strong></h3>
@@ -141,6 +150,7 @@ export default async function decorate(block) {
     resultsList.innerHTML = listItemsHtml || noResultsHMTL;
     searchParams.set('query', query);
     window.history.replaceState(null, null, `?${searchParams.toString()}`);
+    document.querySelector('body').classList.add('search-results-loaded');
   };
 
   // initialize fetch

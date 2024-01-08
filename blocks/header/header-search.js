@@ -31,6 +31,9 @@ function setupSearchInput(searchButton) {
       e.preventDefault();
       toggleSearch(e);
       document.querySelector(e.shiftKey ? '.header-tools .color-mode-toggle' : '.header-tools .button-container a')?.focus();
+    } else if (e.key === 'Escape') {
+      const searchWrapper = document.querySelector('.header-search-wrapper');
+      searchWrapper?.classList.toggle('active');
     }
   });
   searchInput.addEventListener('blur', (e) => {

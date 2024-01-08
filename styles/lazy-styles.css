@@ -91,13 +91,13 @@
   transform: translateY(-100vh);
 
   .header-search-block {
-    box-shadow: 0 0 10px var(--color-shadow-default);
+    box-shadow: 0 0 10px var(--color-shadow-default), var(--focus-ring);
     top: 10vh;
     left: 50%;
     right: 50%;
     transform: translateX(-50%) translateY(-10vh);
     width: min(var(--spacing-96), 90vw);
-    border-radius: var(--spacing-4);
+    border-radius: var(--spacing-2);
     opacity: 0;
     transition: all .4s cubic-bezier(0.4, 0.0, 1, 1);
     transition-property: transform, opacity;
@@ -117,6 +117,12 @@
   
     & .search-button {
       border-radius: 0 var(--spacing-2) var(--spacing-2) 0;
+      box-shadow: none;
+
+      &:hover {
+        box-shadow: none;
+        background-color: hsla(var(--color-brand-2-hsl) / 90%);
+      }
     }
   }
 
