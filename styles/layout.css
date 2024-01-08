@@ -20,6 +20,10 @@ body {
 
   & > *:not(.hero-wrapper) {
     padding-block: var(--spacing-8);
+
+    &:is(:has(.details-columns)) {
+      padding-block-end: 0;
+    }
   }
 
   .full-width {
@@ -131,7 +135,7 @@ body.details {
   & > .include.cards {
     display: grid;
     grid-template-columns: subgrid;
-    grid-column: full-width;
+    grid-column: content;
   }
 
   /* this may have caused a weird breaking issue on mobile safari where the width isn't calculated correctly until rotating the device */
