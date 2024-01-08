@@ -100,9 +100,15 @@
     & button {
       position: relative;
       border-radius: 0 var(--spacing-3) var(--spacing-3) 0;
-      top: -2px;
       margin: 0;
       font-size: var(--font-size);
+      box-shadow: none;
+      height: 100%;
+
+      &:hover {
+        box-shadow: none;
+        background-color: hsla(var(--color-brand-2-hsl) / 80%);
+      }
 
       & img {
         width: var(--font-size);

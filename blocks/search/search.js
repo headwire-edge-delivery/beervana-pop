@@ -29,7 +29,7 @@ export default async function decorate(block) {
         </div>
           <div class='form-submit-wrapper form-primary field-wrapper'>
           <button class='button primary search-button'>
-            <img alt='' src='/icons/search.svg' />
+            <img alt='' src='/icons/search.svg' width="16" height="16" />
             Search
           </button>
         </div>
