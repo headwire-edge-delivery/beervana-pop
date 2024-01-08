@@ -32,9 +32,11 @@ function setupSearchInput(searchButton) {
       searchButton.click();
     } else if (e.key === 'Tab') {
       searchWrapper?.classList.remove('active');
-      searchWrapper.querySelector('input[type="text"]').addAttribute('disabled');
-      const searchNav = document.querySelector('header [href="/search"]');
-      searchNav?.focus();
+      requestAnimationFrame(() => {
+        searchInput?.toggleAttribute('disabled');
+        const searchNav = document.querySelector('header [href="/search"]');
+        searchNav?.focus();
+      });
     } else if (e.key === 'Escape') {
       searchWrapper?.classList.toggle('active');
     }
