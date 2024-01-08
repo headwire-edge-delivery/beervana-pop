@@ -35,7 +35,6 @@ export default async function decorate(block) {
   block.parentNode.before(heroWrapper);
 
   const searchForm = document.querySelector('#search-form');
-  console.log(searchForm);
   if (searchForm) {
     const searchInput = searchForm.querySelector('input');
     const searchButton = searchForm.querySelector('button');
