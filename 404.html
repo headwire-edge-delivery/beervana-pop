@@ -44,6 +44,15 @@
     main.error .error-number text {
       font-family: var(--fixed-font-family);
     }
+
+    h1.page-title {
+      font-size: 10rem;
+      font-weight: 700;
+      margin: 0;
+      line-height: 1;
+      color: var(--color-primary);
+    }
+
   </style>
   <link rel="stylesheet" href="/styles/lazy-styles.css">
 </head>
@@ -52,9 +61,7 @@
   <header></header>
   <main class="error">
     <div class="section">
-      <svg viewBox="1 0 38 18" class="error-number">
-        <text x="0" y="17">404</text>
-      </svg>
+      <h1 class="page-title">404</h1>
       <h2 class="error-message">Page Not Found</h2>
       <p class="button-container">
         <a href="/" class="button secondary error-button-home">Go home</a>

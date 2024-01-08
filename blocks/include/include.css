@@ -258,28 +258,8 @@
     flex-direction: column;
     background: var(--color-brand);
     grid-column: content;
-    animation: slide-in linear forwards;
-    animation-timeline: view();
-    opacity: 0;
-    animation-range: 10vh 30vh;
     scroll-snap-align: start;
     color: var(--color, var(--color-text));
-
-    @media (prefers-reduced-motion: reduce) {
-      & {
-        animation: none;
-        opacity: 1;
-      }
-    }
-
-    &:nth-child(even) {
-      transform: translateX(20%);
-    }
-
-    &:nth-child(odd) {
-      transform: translateX(-20%);
-    }
-  
   }
 
   .events-image {
@@ -291,8 +271,8 @@
       display: block;
       position: absolute;
       inset: 0;
+      background: radial-gradient(var(--color-brand-2), var(--color-brand-2) 50%, transparent 100%);
       content: '';
-      background: var(--background-image) no-repeat center center / cover;
       background-blend-mode: luminosity;
       filter: blur(10px);
       z-index: 0;
@@ -303,6 +283,12 @@
     &:hover::before {
       scale: 1.1;
       opacity: .25;
+    }
+
+    @media (width >= 768px) {
+      &::before {
+        background: var(--background-image) no-repeat center center / cover;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {

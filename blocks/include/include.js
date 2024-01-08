@@ -6,10 +6,11 @@ function templateCard({
   path,
   title,
 }, index, placeholders, styles) {
+  const breakpoints = [{ media: '(min-width: 600px)', width: '500' }, { width: '500' }];
   const { emptyLinkTitlePrefix, cardButtonText } = placeholders;
   return `<div class="card">
     <div class="cards-card-image image-content">
-      <a href="${path}" title="${emptyLinkTitlePrefix.replace('%title%', title)}">${createOptimizedPicture(image).outerHTML}</a>
+      <a href="${path}" title="${emptyLinkTitlePrefix.replace('%title%', title)}">${createOptimizedPicture(image, '', false, breakpoints).outerHTML}</a>
     </div>
     <div class="cards-card-body">
       <h3>
@@ -17,7 +18,7 @@ function templateCard({
       </h3>
       ${!styles.includes('brewery') ? `<p>${description}</p>
       <p class="button-container">
-        <a href="${path}" title="${emptyLinkTitlePrefix.replace('%title%', title)}" class="button primary">${cardButtonText}</a>
+        <a href="${path}" title="${emptyLinkTitlePrefix.replace('%title%', title)}" class="button">${cardButtonText}</a>
       </p>` : ''}
     </div>
   </div>`;
@@ -36,7 +37,7 @@ function templateBreakout({
   websiteTitle,
 }, index, placeholders) {
   const { emptyLinkTitlePrefix } = placeholders;
-  const breakpoints = [{ media: '(min-width: 600px)', width: '1250' }, { width: '750' }];
+  const breakpoints = [{ media: '(min-width: 600px)', width: '800' }, { media: '(min-width: 1200px)', width: '1250' }, { width: '750' }];
   return `<div class="breakout-${index % 2 === 0 ? 'left' : 'right'} two-columns block">
     <div class="default-content-wrapper">
       <h2 id="portland-art-museum">
@@ -64,13 +65,14 @@ function templateEvents({
   title,
   startDate,
 }, index, placeholders) {
+  const breakpoints = [{ media: '(min-width: 600px)', width: '350' }, { width: '350' }];
   const { eventsButtonText } = placeholders;
   const date = new Date(startDate);
   return `<div class="event event-${index}">
     <div class="events-image image-content" style="--background-image: url(${image})">
       <a href="${path}" title="${title}">
         <span class="border-group">
-          ${createOptimizedPicture(image).outerHTML}
+          ${createOptimizedPicture(image, '', index < 3, breakpoints).outerHTML}
           <span class="date">
             <span class="weekday">${date.toLocaleDateString('en-US', { weekday: 'long' })}</span>
             <span class="day">${date.toLocaleDateString('en-US', { day: 'numeric' })}</span>
@@ -84,7 +86,7 @@ function templateEvents({
       </h3>
       <p>${description}</p>
       <p class="button-container">
-        <a href="${path}" title="${title}" class="button">${eventsButtonText}</a>
+        <a href="${path}" class="button">${eventsButtonText}</a>
       </p>
     </div>
   </div>`;

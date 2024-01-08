@@ -47,3 +47,7 @@
     order: unset;
   }
 }
+
+body.details .columns.block:has(.columns-img-col) > div {
+  gap: var(--spacing-6);
+}

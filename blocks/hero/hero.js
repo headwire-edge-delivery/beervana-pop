@@ -12,6 +12,7 @@ export default async function decorate(block) {
     picture.parentNode.replaceWith(picture);
     document.body.classList.add('has-hero');
     picture.classList.add('hero-picture');
+
     block.append(picture);
   }
 

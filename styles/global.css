@@ -96,16 +96,25 @@ header,
     display: flex;
     flex-direction: column;
     gap: var(--spacing-4);
-    justify-content: flex-end;
     z-index: 1;
     position: relative;
+    height: 100%;
 
     @media (width > 768px) {
       flex-direction: row;
+      justify-content: flex-end;
     }
+
+    & li {
+      display: flex;
+      justify-content: flex-end;
     
-    ul {
-      display: none;
+      @media (width <= 768px) {
+        &:has(.color-mode-toggle) {
+          flex: 1;
+          align-items: flex-end;
+        }
+      }
     }
   }
 
@@ -136,7 +145,7 @@ header,
     margin: 0;
   }
 
-  @media (width < 768px) {
+  @media (width <= 768px) {
     .nav-hamburger {
       order: 1;
     }
@@ -192,7 +201,7 @@ header,
   }
 }
 
-@media (width < 768px) {
+@media (width <= 768px) {
   .nav-sections {
     visibility: hidden;
     opacity: 0;
@@ -284,9 +293,9 @@ button:not(.nav-hamburger button, .story-nav, .color-mode-toggle),
 
   }
 
-  &:not(.primary,.secondary) {
-    border: 2px solid var(--color-foreground);
-    color: var(--color-secondary);
+  &:not(.primary,.secondary, .enzuzo-notification-button) {
+    background: var(--color-brand-4);
+    color: var(--color-brand-2);
     box-shadow: 0 2px 0 var(--color-secondary);
   
     &:hover {
