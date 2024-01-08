@@ -102,9 +102,13 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
   if (!expanded || isDesktop.matches) {
     // collapse menu on escape press
     window.addEventListener('keydown', closeOnEscape);
-    window.addEventListener('click', closeOnClick);
   } else {
     window.removeEventListener('keydown', closeOnEscape);
+  }
+
+  if (!expanded) {
+    window.addEventListener('click', closeOnClick);
+  } else {
     window.removeEventListener('click', closeOnClick);
   }
 }
