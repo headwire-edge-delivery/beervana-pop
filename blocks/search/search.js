@@ -1,4 +1,4 @@
-import { fetchPlaceholders } from '../../scripts/aem.js';
+import { createOptimizedPicture, fetchPlaceholders } from '../../scripts/aem.js';
 
 export default async function decorate(block) {
   const placeholders = await fetchPlaceholders();
@@ -106,10 +106,12 @@ export default async function decorate(block) {
       return;
     }
     document.title = `Search Results for "${query}"`;
+    const breakpoints = [{ media: '(min-width: 600px)', width: '500' }, { width: '300' }];
     const response = await fetch(`https://beervana-pop-search.jz-759.workers.dev/?search=${query}`);
     const data = await response.json();
 
-    const listItemsHtml = data.map((resultItem) => {
+    const listItemsHtml = data.map((resultItem, index) => {
+      let image;
       let resultImage = '';
       if (resultItem?.heroImage) {
         resultImage = resultItem.heroImage;
@@ -118,12 +120,17 @@ export default async function decorate(block) {
         resultImage = '';
       }
 
+      const src = resultImage.match(/src="([^"]*)"/);
+      if (src) {
+        image = createOptimizedPicture(src[1], '', index > 3, breakpoints).outerHTML;
+      }
+
       const snippet = resultItem.snippet === '<strong></strong>' ? '' : resultItem.snippet;
 
       return `
       <li>
         <div class='cards-card-image image-content'>
-          <a href='${resultItem.url}' title='${emptyLinkTitlePrefix.replace('%title%', resultItem.title) || emptyLinkTitlePrefix}'>${resultImage}</a>
+          <a href='${resultItem.url}' title='${emptyLinkTitlePrefix.replace('%title%', resultItem.title) || emptyLinkTitlePrefix}'>${image}</a>
         </div>
         <div class='cards-card-body'>
           <h3><strong><a href='${resultItem.url}' title='${resultItem.title}'>${resultItem.title}</a></strong></h3>
