@@ -29,8 +29,8 @@ function toggleColorMode(e) {
         document.documentElement.classList.add('dark-mode');
         document.documentElement.classList.remove('light-mode');
       }
-    }, 350);
-  }, 700);
+    }, 200);
+  }, 400);
 }
 
 export default function decorateColorMode(block) {
