@@ -79,10 +79,8 @@
   --color-shadow-hsl: 0 0% 0%;
   --color-shadow-default: hsl(var(--color-shadow-hsl) / 40%);
   
-  /* --font-display: 'Caprasimo', Georgia, serif; */
-
   /* stylelint-disable value-keyword-case */
-  --font-display: Georgia, serif;
+  --font-display: 'Caprasimo', Georgia, serif;
   --font-copy: system-ui, sans-serif;
   --font-xl: 2.5rem;
   --font-lg: 1.9882rem;
