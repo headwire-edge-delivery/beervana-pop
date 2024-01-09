@@ -185,7 +185,7 @@ async function loadEager(doc) {
   decorateTemplateAndTheme();
   const main = doc.querySelector('main');
   if (main) {
-    doc.querySelector('img')?.setAttribute('loading', 'eager');
+    main.querySelector('img')?.setAttribute('loading', 'eager');
     decorateMain(main);
     document.body.classList.add('appear');
     await waitForLCP(LCP_BLOCKS);
