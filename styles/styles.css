@@ -1107,19 +1107,6 @@ header,
   grid-template-columns: var(--section-template-columns);
   min-height: var(--spacing-20);
 
-  &::before {
-    content: "";
-    display: block;
-    background: url('/icons/hops-background.webp') no-repeat center center / cover;
-    width: 100%;
-    height: 100%;
-    inset: 0;
-    position: absolute;
-    background-blend-mode: multiply;
-    opacity: 0.05;
-    z-index: -1;
-  }
-
   .block,
   .nav-wrapper {
     display: grid;
