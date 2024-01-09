@@ -75,9 +75,7 @@ async function decorateDetails(placeholders) {
   const onTap = document.querySelector('meta[name="on-tap"]')?.getAttribute('content') || '';
 
   if (hours || address || telephone || website || websiteTitle || email || onTap) {
-    const contact = document.createElement('div');
-    contact.classList.add('metadata-wrapper', 'details-group');
-    contact.innerHTML = `<div class="contact-info">
+    const detailsMarkup = `${(address || telephone || email || website) && `<div class="contact-info">
       <strong class="font-display text-md details-group-title">Contact</strong>
       <ul class="icon-list">
         ${address && `<li><span class="icon icon-map"><img class="light-mode" data-icon-name="map" src="/icons/map.svg" loading="lazy" alt="map-pin" width="16" height="16"><img class="dark-mode" data-icon-name="map" src="/icons/map-inverted.svg" loading="lazy" alt="map-pin" width="16" height="16"></span><a href="https://google.com/maps/place/${address.replaceAll('<br/>,', '').replaceAll(' ', '+')}">${address.replaceAll('<br/>,', '<br/>')}</a></li>`}
@@ -85,7 +83,7 @@ async function decorateDetails(placeholders) {
         ${email && `<li><span class="icon icon-mail"><img class="light-mode" data-icon-name="mail" src="/icons/mail.svg" loading="lazy" alt="mail" width="16" height="16"><img class="dark-mode" data-icon-name="mail" src="/icons/mail-inverted.svg" loading="lazy" alt="mail" width="16" height="16"></span><a href="mailto:${email}" title="${email}">${email}</a></li>`}
         ${website && `<li><span class="icon icon-link"><img class="light-mode" data-icon-name="link" src="/icons/link.svg" loading="lazy" alt="link" width="16" height="16"><img class="dark-mode" data-icon-name="link" src="/icons/link-inverted.svg" loading="lazy" alt="link" width="16" height="16"></span><a href="${website}" title="${websiteTitle || ''}">${websiteTitle || website}</a></li>`}
       </ul>
-    </div>
+    </div>`}
     ${hours && `<div class="hours-info">
       <strong class="font-display text-md details-group-title">Hours</strong>
       <ul class="icon-list">
@@ -97,7 +95,12 @@ async function decorateDetails(placeholders) {
       <ul>${onTap.split(',').map((beer) => `<li>${beer}</li>`).join('')}</ul>
     </div>`}`;
 
-    document.querySelector('.details-wrapper').appendChild(contact);
+    if (detailsMarkup?.trim()?.length > 0) {
+      const contact = document.createElement('div');
+      contact.classList.add('metadata-wrapper', 'details-group');
+      contact.innerHTML = detailsMarkup;
+      document.querySelector('.details-wrapper').appendChild(contact);
+    }
   }
 }
 

@@ -1184,7 +1184,6 @@ header,
       }
     }
   }
-
 }
 
 .icon-logo-desktop img {
@@ -1293,7 +1292,7 @@ header,
   }
 }
 
-@media (width > 768px) and (width < 1024px) {
+@media (width > 768px) and (width < 1250px) {
   .nav-text-wrapper {
     display: none;
   }
