@@ -1,4 +1,6 @@
 export default async function decorate(block) {
+  block.querySelector('img')?.setAttribute('loading', 'eager');
+
   const INTERVAL_TIME = 4000;
   function setActiveStory(target) {
     const stories = document.querySelector('.stories-wrapper');
