@@ -1,6 +1,6 @@
 import { createOptimizedPicture, decorateIcons, fetchPlaceholders } from '../../scripts/aem.js';
 
-const LIMIT = 3;
+const LIMIT = 6;
 const breakpoints = [{ media: '(min-width: 600px)', width: '500' }, { width: '300' }];
 let blogCardButtonText = 'Read more';
 let totalPages = 1;
