@@ -127,6 +127,7 @@ html.dark-mode {
   --color-foreground: var(--color-brand-4);
   --color-foreground-semi-transparent: var(--color-brand-4-85);
   --color-text: var(--color-brand-3);
+  --color-text-hsl: var(--color-brand-3-hsl);
   --color-text-on-secondary: var(--color-brand-3);
   --color-border-primary: var(--color-brand-1);
   --color-border-secondary: var(--color-brand-4);
@@ -1358,6 +1359,7 @@ button:not(.nav-hamburger button, .story-nav, .color-mode-toggle),
     color: var(--color-brand);
     box-shadow: 0 2px 0 var(--color-text);
     font-style: normal;
+    background: transparent;
   
     &:hover {
       box-shadow: 0 1px 0 var(--color-text);
@@ -1366,10 +1368,33 @@ button:not(.nav-hamburger button, .story-nav, .color-mode-toggle),
     &:active {
       box-shadow: none; 
     }
-
   }
 
-  &:not(.primary,.secondary, .enzuzo-notification-button) {
+  &.subtle {
+    border: none;
+    box-shadow: none;
+    color: var(--color-text);
+    background: transparent;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:focus {
+      text-decoration: underline;
+    }
+
+    &[disabled] {
+      color: hsla(var(--color-text-hsl) / 30%);
+      text-decoration: none;
+
+      & .icon {
+        opacity: .3;
+      }
+    }
+  }
+
+  &:not(.primary, .secondary, .enzuzo-notification-button, .subtle) {
     background: var(--color-brand-4);
     color: var(--color-brand-2);
     box-shadow: 0 2px 0 var(--color-secondary);
