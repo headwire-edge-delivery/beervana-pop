@@ -508,6 +508,13 @@ body.search {
 
 
 .cards.brewery {
+  @media (width < 768px) {
+    & {
+      overflow: clip;
+      padding-block: var(--spacing-3);
+    }
+  }
+
   .card {
     border: 10px solid var(--color-secondary);
     outline: 5px solid var(--color-foreground);
@@ -564,7 +571,7 @@ body.search {
       width: 30%;
       height: 40%;
       position: absolute;
-      top: -8%;
+      top: -7%;
       z-index: 1;
     }
 
