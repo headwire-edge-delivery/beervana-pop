@@ -401,6 +401,10 @@ body.blog {
     }
   }
 
+  .hero-text {
+    flex: 1;
+  }
+
   & h1,
   & h2:not(h1 + h2) {
     text-shadow: 1px 1px 0 var(--color-foreground), 2px 2px 0 var(--color-text-on-foreground);
@@ -791,6 +795,7 @@ body.search {
     padding: 0;
   }
 
+  &.has-image,
   &.hero-image {
     & picture,
     & img {
@@ -1325,6 +1330,7 @@ button:not(.nav-hamburger button, .story-nav, .color-mode-toggle),
   display: inline-flex;
   gap: var(--spacing-3);
   justify-content: center;
+  font-weight: 400;
   
   &:not(:disabled) {
     cursor: pointer;

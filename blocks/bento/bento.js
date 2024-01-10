@@ -21,10 +21,17 @@ export default async function decorate(block) {
 
   const elements = block.querySelectorAll(':scope > div');
   elements.forEach((element) => {
+    element.classList.add('bento-item');
     const contents = element.querySelectorAll(':scope > div');
     const classes = contents[1];
-    element.classList.add(...classes.innerText.toLowerCase().split(' '), 'bento-item');
-    classes.remove();
+    if (classes) {
+      element.classList.add(...classes.innerText.toLowerCase().split(' '));
+      classes.remove();
+    }
+
+    if (element.querySelector('picture')) {
+      element.classList.add('has-image', 'no-padding');
+    }
 
     element.addEventListener('mousemove', ({ target, pageX, pageY }) => {
       const bentoItem = target?.closest('.bento-item');
