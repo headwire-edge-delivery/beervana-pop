@@ -410,11 +410,13 @@ body.blog {
     text-shadow: 1px 1px 0 var(--color-foreground), 2px 2px 0 var(--color-text-on-foreground);
     margin-block: 0;
     color: var(--color-text-on-foreground);
+    scroll-margin-top: var(--spacing-12);
   }
 
   & h2 {
     margin-block: 0;
     color: var(--color-text-on-foreground);
+    scroll-margin-top: var(--spacing-12);
   }
 
   .button-container {
