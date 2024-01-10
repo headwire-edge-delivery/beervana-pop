@@ -611,6 +611,7 @@ body.search {
       position: absolute;
       top: -11%;
       z-index: -1;
+      transition: transform .3s linear;
     }
 
     &::after {
@@ -620,6 +621,14 @@ body.search {
 
     &::before {
       left: -7%;
+    }
+
+    &:hover,
+    &:focus {
+      &::before,
+      &::after {
+        transform: scale(.7);
+      }
     }
   }
 

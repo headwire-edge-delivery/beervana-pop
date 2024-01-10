@@ -9,9 +9,7 @@ function templateCard({
   const breakpoints = [{ media: '(min-width: 600px)', width: '500' }, { width: '300' }];
   const { emptyLinkTitlePrefix, cardButtonText } = placeholders;
   return `<div class="card">
-    <div class="cards-card-image image-content">
-      <a href="${path}" title="${emptyLinkTitlePrefix.replace('%title%', title)}">${createOptimizedPicture(image, '', false, breakpoints).outerHTML}</a>
-    </div>
+    <a class="cards-card-image image-content" href="${path}" title="${emptyLinkTitlePrefix.replace('%title%', title)}">${createOptimizedPicture(image, '', false, breakpoints).outerHTML}</a>
     <div class="cards-card-body">
       <h3>
         <a href="${path}" title="${title}">${title}</a>

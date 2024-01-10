@@ -42,9 +42,7 @@ function displayBlogEntries(data) {
     } = entry;
     const entryElement = document.createElement('div');
     entryElement.classList.add('blog-entry', 'card');
-    entryElement.innerHTML = `<div class="cards-card-image image-content">
-      <a href="${path}">${createOptimizedPicture(image, '', false, breakpoints).outerHTML}</a>
-    </div>
+    entryElement.innerHTML = `<a class="cards-card-image image-content" href="${path}">${createOptimizedPicture(image, '', false, breakpoints).outerHTML}</a>
     <div class="cards-card-body">
       <h3>
         <a href="${path}" title="${title}">${title}</a>
