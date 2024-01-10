@@ -6,6 +6,7 @@
   grid-template-columns: subgrid;
   display: grid;
   grid-column: var(--pagination-grid-column);
+  order: 100;
 
   @media (width > 1024px) {
     & {
