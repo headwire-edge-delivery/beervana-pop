@@ -28,35 +28,43 @@ async function decoratePreviousNext(placeholders) {
         const previous = data[index - 1];
         const next = data[index + 1];
 
-        const { nextLinkText, previousLinkText, paginationTitle } = placeholders;
+        const { nextLinkText, previousLinkText } = placeholders;
         const previousLink = previous?.path || `/${contentType}`;
         const nextLink = next?.path || `/${contentType}`;
+        const previousTitle = previous?.title || previousLinkText;
+        const nextTitle = next?.title || nextLinkText;
 
         if (previousLink || previousLinkText || nextLink || nextLinkText) {
           const pagination = document.createElement('div');
-          pagination.classList.add('pagination', 'details-group');
+          pagination.classList.add('pagination-wrapper');
           const previousLinkHTML = previousLink ? `<li>
                 <a href="${previousLink}" title="${previous?.title || previousLinkText}" class="pagination-link previous">
-                  <span>${previous?.title ? `${previousLinkText}: ${previous?.title}` : previousLinkText}</span>
-                  <span class="icon icon-arrow-left">
-                    <img class="light-mode" data-icon-name="arrow-left" src="/icons/arrow-left.svg" loading="lazy" alt="arrow-left" width="16" height="16">
-                    <img class="dark-mode" data-icon-name="arrow-left" src="/icons/arrow-left-inverted.svg" loading="lazy" alt="arrow-left" width="16" height="16">
+                  <span class="pretitle">
+                    <span class="icon icon-arrow-left">
+                      <img class="light-mode" data-icon-name="arrow-left" src="/icons/arrow-left.svg" loading="lazy" alt="arrow-left" width="16" height="16">
+                      <img class="dark-mode" data-icon-name="arrow-left" src="/icons/arrow-left-inverted.svg" loading="lazy" alt="arrow-left" width="16" height="16">
+                    </span>
+                    <span>${previousLinkText}</span>
                   </span>
+                  <strong class="font-display text-md">${previousTitle}</strong>
                 </a>
               </li>` : '';
           const nextLinkHTML = nextLink ? `<li>
                 <a href="${nextLink}" title="${next?.title || nextLinkText}" class="pagination-link next">
-                  <span>${next?.title ? `${nextLinkText}: ${next?.title}` : nextLinkText}</span>
-                  <span class="icon icon-arrow-right">
-                    <img class="light-mode" data-icon-name="arrow-right" src="/icons/arrow-right.svg" loading="lazy" alt="arrow-right" width="16" height="16">
-                    <img class="dark-mode" data-icon-name="arrow-right" src="/icons/arrow-right-inverted.svg" loading="lazy" alt="arrow-right" width="16" height="16">
+                  <span class="pretitle">
+                    <span>${nextLinkText}</span>
+                    <span class="icon icon-arrow-right">
+                      <img class="light-mode" data-icon-name="arrow-right" src="/icons/arrow-right.svg" loading="lazy" alt="arrow-right" width="16" height="16">
+                      <img class="dark-mode" data-icon-name="arrow-right" src="/icons/arrow-right-inverted.svg" loading="lazy" alt="arrow-right" width="16" height="16">
+                    </span>
                   </span>
+                  <strong class="font-display text-md">${nextTitle}</strong>
                 </a>
               </li>` : '';
 
           if (previousLink || nextLink) {
-            pagination.innerHTML = `<strong class="font-display text-md details-group-title">${paginationTitle}</strong><ul class="icon-list">${previousLinkHTML}${nextLinkHTML}</ul>`;
-            document.querySelector('.details-wrapper').appendChild(pagination);
+            pagination.innerHTML = `<ul>${previousLinkHTML}${nextLinkHTML}</ul>`;
+            document.querySelector('main .section:last-child').appendChild(pagination);
           }
         }
       }
