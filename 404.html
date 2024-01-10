@@ -17,13 +17,16 @@
       if (document.referrer) {
         const { origin, pathname } = new URL(document.referrer);
         if (origin === window.location.origin) {
+          const buttonContainer = document.createElement('p');
+          buttonContainer.classList.add('button-container');
           const backBtn = document.createElement('a');
           backBtn.classList.add('button', 'error-button-back');
           backBtn.href = pathname;
           backBtn.textContent = 'Go back';
           backBtn.title = 'Go back';
-          const btnContainer = document.querySelector('.button-container');
-          btnContainer.append(backBtn);
+          buttonContainer.appendChild(backBtn);
+          const existingButton = document.querySelector('.button-container');
+          existingButton.after(buttonContainer);
         }
       }
       sampleRUM('404', { source: document.referrer, target: window.location.href });

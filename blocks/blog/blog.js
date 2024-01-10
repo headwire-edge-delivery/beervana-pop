@@ -8,7 +8,7 @@ let totalPages = 1;
 function setupMarkup(block, placeholders) {
   const { previousLinkText, nextLinkText } = placeholders;
   block.innerHTML = `<div id="blog-container" class="cards"></div>
-  <div id="pagination-controls">
+  <div id="pagination-controls" class="loading">
     <button id="prev-page" class="button subtle">
       <span class="icon icon-arrow-left"></span>
       <span>${previousLinkText}</span>
@@ -126,5 +126,6 @@ export default async function decorate(block) {
   const urlParams = new URLSearchParams(window.location.search);
   const limit = urlParams.get('limit') || LIMIT;
   const offset = urlParams.get('offset') || 0;
-  fetchBlogData(limit, offset);
+  await fetchBlogData(limit, offset);
+  block.querySelector('#pagination-controls').classList.remove('loading');
 }
