@@ -53,6 +53,7 @@
           }
         }
 
+        &:is(html:not(.light-mode, .dark-mode)  &),
         &:is(html.light-mode &) {
           & {
             --bg-color: hsla(var(--color-foreground-hsl) / 10%);
