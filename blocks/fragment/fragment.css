@@ -1,1 +1,4 @@
 /* lazy fragment styles */
+.fragment-wrapper {
+  grid-column: full-width;
+}
