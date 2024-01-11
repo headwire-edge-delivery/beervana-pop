@@ -12,10 +12,13 @@
     background: url('/icons/forest-background.webp') no-repeat bottom center / cover;
     box-shadow: inset 0 0 5px var(--color-shadow-default);
   }
+
+  &:is(.cta-wrapper) {
+    --bg-color: var(--color-background);
+  }
 }
 
 .cta-content {
-  --bg-color: var(--color-background);
   --color-text: var(--color);
 
   background-color: var(--bg-color);
