@@ -15,6 +15,7 @@
 }
 
 .cta-content {
+  --bg-color: var(--color-background);
   --color-text: var(--color);
 
   background-color: var(--bg-color);
