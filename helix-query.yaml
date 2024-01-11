@@ -8,6 +8,7 @@ indices:
       - '/drafts/**'
       - '/thanks/**'
       - '/assets/**'
+      - '/tools/**'
       - '/footer'
       - '/header'
       - '/nav'
