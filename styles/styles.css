@@ -1,9 +1,11 @@
 /* reset.css */
-* {
-  box-sizing: border-box;
+@layer reset {
+  * {
+    box-sizing: border-box;
 
-  &:not(img, picture, helix-sidekick, input, textarea, br, svg, rect, circle, header, footer, iframe, .embed.block):empty {
-    display: none;
+    &:not(img, picture, helix-sidekick, input, textarea, br, svg, rect, circle, header, footer, iframe, .embed.block):empty {
+      display: none;
+    }
   }
 }
 
@@ -339,10 +341,13 @@ body.blog {
     grid-column: content;
   }
 
-  /* this may have caused a weird breaking issue on mobile safari where the width isn't calculated correctly until rotating the device */
   .cards.wrapper {
     display: grid;
     grid-column: content;
+
+    @media (width < 768px) {
+      padding-inline: var(--spacing-2);
+    }
   }
 
   &:has(.breakout) {
