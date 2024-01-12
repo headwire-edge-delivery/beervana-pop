@@ -33,6 +33,10 @@ export default async function decorate(block) {
       element.classList.add('has-image', 'no-padding');
     }
 
+    if (element.querySelectorAll('picture')?.length > 1 && element.querySelector('hr')) {
+      element.classList.add('stories');
+    }
+
     element.addEventListener('mousemove', ({ target, pageX, pageY }) => {
       const bentoItem = target?.closest('.bento-item');
       const x = pageX - bentoItem.offsetLeft;

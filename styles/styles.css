@@ -2,7 +2,7 @@
 * {
   box-sizing: border-box;
 
-  &:not(img, picture, helix-sidekick, input, textarea, br, svg, rect, circle, header, footer, iframe, .embed.block):empty {
+  &:not(img, picture, helix-sidekick, input, textarea, br, svg, rect, circle, header, footer, iframe, .embed.block, button):empty {
     display: none;
   }
 }
@@ -789,6 +789,11 @@ body.search {
   background-color: var(--bg-color);
   color: var(--color);
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 
   & :is(h1, h2, h3, h4, h5, h6) {
     color: inherit;
@@ -801,14 +806,6 @@ body.search {
   .button-container {
     display: inline-flex;
     margin-inline: var(--spacing-2);
-  }
-
-  &.centered {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
   }
 
   &.no-padding {
@@ -829,6 +826,7 @@ body.search {
 
     & > div {
       height: 100%;
+      width: 100%;
     }
   }
 
@@ -867,11 +865,21 @@ body.search {
     @media (width > 1024px) {
       & {
         grid-column: span 1;
+
+        &:not([class*="bg-"]) {
+          --bg-color: var(--color-secondary);
+          --color: var(--color-text-on-secondary);
+        }
       }
 
       &:nth-child(1) {
         grid-column: 3 / span 2;
         grid-row: 1;
+
+        &:not([class*="bg-"]) {
+          --bg-color: var(--color-primary);
+          --color: var(--color-text-on-primary);
+        }
       }
 
       &:nth-child(2) {
@@ -882,6 +890,11 @@ body.search {
       &:nth-child(3) {
         grid-column: 3 / span 2;
         grid-row: 2;
+
+        &:not([class*="bg-"]) {
+          --bg-color: var(--color-foreground);
+          --color: var(--color-text-on-foreground);
+        }
       }
 
       &:nth-child(4) {
