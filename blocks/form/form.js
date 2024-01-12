@@ -1,4 +1,6 @@
 function createSelect(fd) {
+  const selectWrapper = document.createElement('div');
+  selectWrapper.classList.add('select-wrapper');
   const select = document.createElement('select');
   select.id = fd.Field;
   if (fd.Placeholder) {
@@ -17,7 +19,8 @@ function createSelect(fd) {
   if (fd.Mandatory === 'x') {
     select.setAttribute('required', 'required');
   }
-  return select;
+  selectWrapper.append(select);
+  return selectWrapper;
 }
 
 function constructPayload(form) {
