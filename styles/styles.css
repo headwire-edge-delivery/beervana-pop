@@ -1743,6 +1743,63 @@ input[type='checkbox'] {
   }
 }
 
+select {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  padding: var(--spacing-3);
+  margin: 0;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+  outline: none;
+  grid-area: select;
+  color: var(--color-text);
+}
+
+option {
+  color: var(--color-brand-2);
+}
+
+.form-select-wrapper {
+  --select-border: #777;
+  --select-focus: blue;
+  --select-arrow: var(--select-border);
+}
+
+.select-wrapper {
+  display: grid;
+  grid-template-areas: "select";
+  width: 100%;
+  cursor: pointer;
+  align-items: center;
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--spacing-2);
+
+  &::after {
+    content: "";
+    width: 0.8em;
+    height: 0.5em;
+    margin-inline-end: var(--spacing-3);
+    background-color: var(--color-text);
+    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+    grid-area: select;
+    justify-self: flex-end;
+    transition: transform .2s linear;
+  }
+
+  &:focus-within {
+    border-color: var(--color-border-brand);
+    box-shadow: var(--focus-ring);
+
+    &::after {
+      transform: rotate(180deg);
+    }
+  }
+}
+
 @keyframes slide-up {
   from {
     transform: translateY(20%);
