@@ -1798,10 +1798,6 @@ option {
   &:focus-within {
     border-color: var(--color-border-brand);
     box-shadow: var(--focus-ring);
-
-    &::after {
-      transform: rotate(180deg);
-    }
   }
 }
 
