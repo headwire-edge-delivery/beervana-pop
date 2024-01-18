@@ -374,6 +374,7 @@ html.dark-mode .icon {
     }
   
     .default-content-wrapper {
+      & ol,
       & ul {
         margin-inline-start: var(--spacing-6);
       }
