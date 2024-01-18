@@ -366,3 +366,7 @@ html.dark-mode .icon {
     opacity: 1;
   }
 }
+
+body.sidekick-library #cookie-notification {
+  display: none;
+}
