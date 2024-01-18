@@ -127,6 +127,7 @@ const templateConfig = {
   details: decorateTemplateDetails,
   drinks: decorateTemplateDetails,
   eat: decorateTemplateDetails,
+  events: decorateTemplateDetails,
   play: decorateTemplateDetails,
   stay: decorateTemplateDetails,
 };
