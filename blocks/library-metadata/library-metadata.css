@@ -1,0 +1,4 @@
+/* lazy styles */
+.library-metadata-wrapper {
+  grid-column: content;
+}

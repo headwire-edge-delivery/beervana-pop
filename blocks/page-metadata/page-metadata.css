@@ -1,0 +1,4 @@
+/* lazy styles */
+.page-metadata-wrapper {
+  grid-column: content;
+}
