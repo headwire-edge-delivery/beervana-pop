@@ -38,7 +38,9 @@
         / 1fr auto;
       column-gap: var(--spacing-8);
 
-      & h3 {
+      & h2,
+      & h3,
+      & h4 {
         grid-area: title;
         margin-block: 0;
       }

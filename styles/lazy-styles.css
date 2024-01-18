@@ -367,6 +367,16 @@ html.dark-mode .icon {
   }
 }
 
-body.sidekick-library #cookie-notification {
-  display: none !important;
+@layer sidekick {
+  body.sidekick-library {
+    #cookie-notification {
+      display: none !important;
+    }
+  
+    .default-content-wrapper {
+      & ul {
+        margin-inline-start: var(--spacing-6);
+      }
+    }
+  }
 }
