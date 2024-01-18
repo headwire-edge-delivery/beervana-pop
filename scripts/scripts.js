@@ -123,6 +123,7 @@ async function decorateTemplateDetails() {
 
 // add more delayed functionality here
 const templateConfig = {
+  blog: decorateTemplateDetails,
   details: decorateTemplateDetails,
   drinks: decorateTemplateDetails,
   eat: decorateTemplateDetails,
