@@ -368,5 +368,5 @@ html.dark-mode .icon {
 }
 
 body.sidekick-library #cookie-notification {
-  display: none;
+  display: none !important;
 }
