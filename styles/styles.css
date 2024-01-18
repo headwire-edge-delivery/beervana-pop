@@ -297,7 +297,12 @@ main {
   }
 }
 
-body.details {
+body.details,
+body.drinks,
+body.eat,
+body.play,
+body.stay,
+body.events {
   @media (width > 768px) {
     .default-content-wrapper:not(header .default-content-wrapper, footer .default-content-wrapper) {
       grid-column: content-middle / content-right;
@@ -310,6 +315,8 @@ body.details {
       margin-block: var(--spacing-4);
     }
 
+    .page-metadata-wrapper,
+    .library-metadata-wrapper,
     .default-content-wrapper:not(header .default-content-wrapper, footer .default-content-wrapper) {
       grid-column: content-middle / content-right;
       margin-inline-start: var(--spacing-8);
