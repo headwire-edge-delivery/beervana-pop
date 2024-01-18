@@ -124,6 +124,10 @@ async function decorateTemplateDetails() {
 // add more delayed functionality here
 const templateConfig = {
   details: decorateTemplateDetails,
+  drinks: decorateTemplateDetails,
+  eat: decorateTemplateDetails,
+  play: decorateTemplateDetails,
+  stay: decorateTemplateDetails,
 };
 
 function decorateTemplate() {
