@@ -18,13 +18,14 @@
       "paletteRect": "top: 50px; bottom: 10px; right: 10px; left: auto; width:400px; height: calc(100vh - 60px)"
     },
     {
-      "id": "link-validator",
-      "title": "Link Validator",
+      "id": "preview",
+      "title": "custom preview",
       "environments": ["edit"],
       "url": "/tools/sidekick/link-validator.html",
       "includePaths": ["**.docx**"],
       "isPalette": true,
-      "paletteRect": "top: 50px; bottom: 10px; right: 10px; left: auto; width:400px; height: calc(100vh - 60px)"
+      "paletteRect": "top: 50px; bottom: 10px; right: 10px; left: auto; width:400px; height: calc(100vh - 60px)",
+      "override": true
     }
   ]
 }
