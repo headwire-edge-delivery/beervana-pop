@@ -302,3 +302,25 @@ document.body.addEventListener('touchmove', showCookieBanner, { once: true, pass
 document.body.addEventListener('keydown', showCookieBanner, { once: true, passive: true });
 
 loadPage();
+
+const previewed = ({ detail }) => {
+  const sk = detail.data;
+  // your custom code from button.action goes here
+  /* eslint-disable no-console */
+  console.log('previewed', sk, detail);
+};
+
+const sk = document.querySelector('helix-sidekick');
+if (sk) {
+  // sidekick already loaded
+  sk.addEventListener('custom:previewed', previewed);
+  sk.addEventListener('previewed', previewed);
+} else {
+  // wait for sidekick to be loaded
+  document.addEventListener('sidekick-ready', () => {
+    document.querySelector('helix-sidekick')
+      .addEventListener('custom:previewed', previewed);
+    document.querySelector('helix-sidekick')
+      .addEventListener('previewed', previewed);
+  }, { once: true });
+}
