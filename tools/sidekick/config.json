@@ -21,7 +21,7 @@
       "id": "link-validator",
       "title": "Link Validator",
       "environments": ["edit"],
-      "url": "/tools/sidekick/link-validator.html",
+      "url": "https://raw.githubusercontent.com/headwire-edge-delivery/beervana-pop/main/tools/sidekick/link-validator.js",
       "includePaths": ["**.docx**"]
     }
   ]
