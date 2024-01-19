@@ -1,2 +1,4 @@
 /* eslint-disable no-console */
-console.log('link-validator.js');
+export default function linkValidator() {
+  console.log('link-validator.js');
+}
