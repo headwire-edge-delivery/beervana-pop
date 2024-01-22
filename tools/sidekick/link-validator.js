@@ -13,6 +13,7 @@ export default async function linkValidator() {
     const listItemText = document.createTextNode('URL incorrectly configured');
     listItem.appendChild(listItemText);
     list.appendChild(listItem);
+    document.body.classList.add('error', 'loaded');
   } else {
     /* eslint-disable prefer-destructuring */
     let documentId = urlParams.get('referrer');
@@ -50,7 +51,6 @@ export default async function linkValidator() {
                 text,
                 url,
               }) => {
-                console.log('text', text.substring(startOffset, endOffsetInclusive + 1));
                 const linkText = text.substring(startOffset, endOffsetInclusive + 1);
                 const listItem = document.createElement('li');
                 const listItemLink = document.createElement('a');
@@ -71,6 +71,8 @@ export default async function linkValidator() {
       listItem.appendChild(listItemText);
       list.appendChild(listItem);
     }
+
+    document.body.classList.add('loaded');
   }
 }
 

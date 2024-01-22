@@ -20,6 +20,10 @@
       }
       
       helix-sidekick { display: none }
+
+      body.loaded #loading {
+        display: none;
+      }
     </style>
     <title>Link Validator</title>
   </head>
@@ -29,7 +33,7 @@
       type="module"
       src="/tools/sidekick/link-validator.js"
     ></script>
-    <h1>Link Validator</h1>
+    <div id="loading">Fetching data about your document</div>
     <div id="app"></div>
   </body>
 </html>
