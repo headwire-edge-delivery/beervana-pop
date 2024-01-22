@@ -24,6 +24,21 @@
       body.loaded #loading {
         display: none;
       }
+
+      #loading {
+        margin: 1rem;
+        transition: opacity 0.5s ease-in-out;
+        animation: oscillate-opacity 1s ease-in-out infinite alternate;
+      }
+
+      @keyframes oscillate-opacity {
+        from {
+          opacity: 0.5;
+        }
+        to {
+          opacity: 1;
+        }
+      }
     </style>
     <title>Link Validator</title>
   </head>
