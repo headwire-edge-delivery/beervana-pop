@@ -45,15 +45,15 @@ export default async function linkValidator() {
               listItem.appendChild(listItemText);
               list.appendChild(listItem);
             } else {
+              const title = document.createElement('h1');
+              title.appendChild(document.createTextNode('Invalid links'));
+              appContainer.prepend(title);
               filteredData.forEach(({
                 endOffsetInclusive,
                 startOffset,
                 text,
                 url,
               }) => {
-                const title = document.createElement('h1');
-                title.appendChild(document.createTextNode('Invalid links: '));
-                appContainer.prepend(title);
                 const linkText = text.substring(startOffset, endOffsetInclusive + 1);
                 const listItem = document.createElement('li');
                 const listItemLink = document.createElement('a');
