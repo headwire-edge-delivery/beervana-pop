@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 export default async function linkValidator() {
   const appContainer = document.getElementById('app');
-  const appScriptUrl = 'https://script.google.com/macros/s/AKfycbwZJ2ODY5AGZAh8tuEowWVKmcAEPbUkN2M9tJjg1Nnd_OqTPAuWfk5ojyFHQ4vxw3U/exec';
+  const appScriptUrl = 'https://script.google.com/macros/s/AKfycbyf1E7HYTBa1fDn7SXIZPbJJlMxU4VxPqo4nTtkVEnllK7Fp0yrB_2RJYPIhWEvjZYK/exec';
   const urlParams = new URLSearchParams(window.location.search);
   // loop over urlParams and console log their key/value pairs
   urlParams.forEach((value, key) => {
