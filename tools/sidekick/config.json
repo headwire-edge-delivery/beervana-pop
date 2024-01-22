@@ -21,7 +21,7 @@
       "id": "link-validator",
       "title": "Link Validator",
       "environments": ["edit"],
-      "url": "https://main--beervana-pop--headwire-edge-delivery.hlx.live/tools/sidekick/link-validator.html",
+      "url": "/tools/sidekick/link-validator.html",
       "includePaths": ["**.docx**"],
       "passConfig": true,
       "passReferrer": true,
