@@ -20,7 +20,13 @@ export default async function linkValidator() {
     const fetchUrl = `${appScriptUrl}?id=${documentId}`;
 
     try {
-      const response = await fetch(fetchUrl);
+      const response = await fetch(fetchUrl, {
+        redirect: 'follow',
+        method: 'GET',
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8',
+        },
+      });
       if (response.ok) {
         const data = await response.json();
         if (data) {
