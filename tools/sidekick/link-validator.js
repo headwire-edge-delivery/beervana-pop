@@ -1,8 +1,7 @@
 /* eslint-disable no-console */
 export default async function linkValidator() {
   const appContainer = document.getElementById('app');
-  const title = document.createElement('h1');
-  appContainer.appendChild(title);
+  const title = document.querySelector('#title');
   const list = document.createElement('ul');
   appContainer.appendChild(list);
 

@@ -23,13 +23,12 @@
       
       helix-sidekick { display: none }
 
-      body.loaded #loading {
-        display: none;
-      }
-
-      #loading {
+      #title {
         margin: 1rem;
         transition: opacity 0.5s ease-in-out;
+      }
+
+      body:not(.loaded) #title {
         animation: oscillate-opacity 1s ease-in-out infinite alternate;
       }
 
@@ -80,7 +79,7 @@
       type="module"
       src="/tools/sidekick/link-validator.js"
     ></script>
-    <div id="loading">Fetching data about your document</div>
+    <h1 id="title">Fetching data about your document</h1>
     <div id="app"></div>
   </body>
 </html>
