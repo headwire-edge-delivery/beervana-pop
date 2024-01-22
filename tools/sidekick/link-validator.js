@@ -10,10 +10,7 @@ export default async function linkValidator() {
   const urlParams = new URLSearchParams(window.location.search);
 
   if (urlParams.size === 0 || !urlParams.has('referrer')) {
-    const listItem = document.createElement('li');
-    const listItemText = document.createTextNode('URL incorrectly configured');
-    listItem.appendChild(listItemText);
-    list.appendChild(listItem);
+    title.innerText = 'URL incorrectly configured';
     document.body.classList.add('error', 'loaded');
   } else {
     /* eslint-disable prefer-destructuring */
@@ -34,13 +31,13 @@ export default async function linkValidator() {
         const data = await response.json();
         if (data) {
           if (data.length === 0) {
-            title.appendChild(document.createTextNode('No links found'));
+            title.innerText = 'No links found';
           } else {
             const filteredData = data.filter(({ url }) => url.startsWith('https://docs.google.com/document'));
             if (filteredData.length === 0) {
-              title.appendChild(document.createTextNode('No invalid links found'));
+              title.innerText = 'No invalid links found';
             } else {
-              title.appendChild(document.createTextNode('Invalid links'));
+              title.innerText = 'Invalid links';
               filteredData.forEach(({
                 endOffsetInclusive,
                 startOffset,
