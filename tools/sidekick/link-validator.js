@@ -51,6 +51,8 @@ export default async function linkValidator() {
                 text,
                 url,
               }) => {
+                const title = document.createElement('h1');
+                title.appendChild(document.createTextNode('Invalid links: '));
                 const linkText = text.substring(startOffset, endOffsetInclusive + 1);
                 const listItem = document.createElement('li');
                 const listItemLink = document.createElement('a');
