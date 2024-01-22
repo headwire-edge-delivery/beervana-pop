@@ -50,10 +50,14 @@ export default async function linkValidator() {
                 text,
                 url,
               }) => {
-                console.log('text', text, text.substring(startOffset, endOffsetInclusive));
+                console.log('text', text.substring(startOffset, endOffsetInclusive + 1));
+                const linkText = text.substring(startOffset, endOffsetInclusive + 1);
                 const listItem = document.createElement('li');
-                const listItemText = document.createTextNode(url);
-                listItem.appendChild(listItemText);
+                const listItemLink = document.createElement('a');
+                listItemLink.setAttribute('href', url);
+                const listItemText = document.createTextNode(linkText);
+                listItemLink.appendChild(listItemText);
+                listItem.appendChild(listItemLink);
                 list.appendChild(listItem);
               });
             }
@@ -71,18 +75,3 @@ export default async function linkValidator() {
 }
 
 linkValidator();
-
-/* getting all urls in a google doc
-// the documentId could be the referrer url passed to the iframe
-const documentId = "###"; // Please set the Google Document ID.
-
-const content = Docs.Documents.get(documentId).body.content;
-const urls = [];
-JSON.parse(JSON.stringify(content), (k, v) => {
-  if (k == "url") urls.push(v);
-});
-console.log(urls);
-
-test deploy id: AKfycbzjTrboeqn_3E-IKirlIs0_oEp_Og-iAxvPmJq1VL8
-
-*/
