@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 export default async function linkValidator() {
+  const appContainer = document.getElementById('app');
   const appScriptUrl = 'https://script.google.com/macros/s/AKfycbwZJ2ODY5AGZAh8tuEowWVKmcAEPbUkN2M9tJjg1Nnd_OqTPAuWfk5ojyFHQ4vxw3U/exec';
   const urlParams = new URLSearchParams(window.location.search);
   // loop over urlParams and console log their key/value pairs
@@ -16,6 +17,17 @@ export default async function linkValidator() {
   if (response.ok) {
     const data = await response.json();
     console.log(data);
+    if (data) {
+      const list = document.createElement('ul');
+      appContainer.appendChild(list);
+      data
+        .filter(({ url }) => url.startsWith('https://docs.google.com/document'))
+        .forEach(({ url }) => {
+          const listItem = document.createElement('li');
+          const listItemText = document.createTextNode(url);
+          listItem.appendChild(listItemText);
+        });
+    }
   }
 }
 
