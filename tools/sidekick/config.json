@@ -22,7 +22,9 @@
       "title": "Link Validator",
       "environments": ["admin", "edit", "preview", "live"],
       "url": "/tools/sidekick/link-validator.html",
-      "includePaths": ["**.docx**"]
+      "includePaths": ["**.docx**"],
+      "passConfig": true,
+      "passReferrer": true
     }
   ]
 }
