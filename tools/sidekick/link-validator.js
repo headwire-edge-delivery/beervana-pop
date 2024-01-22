@@ -7,7 +7,7 @@ export default async function linkValidator() {
   const appScriptUrl = 'https://script.google.com/macros/s/AKfycbyf1E7HYTBa1fDn7SXIZPbJJlMxU4VxPqo4nTtkVEnllK7Fp0yrB_2RJYPIhWEvjZYK/exec';
   const urlParams = new URLSearchParams(window.location.search);
 
-  if (urlParams.size === 0) {
+  if (urlParams.size === 0 || !urlParams.has('referrer')) {
     const listItem = document.createElement('li');
     const listItemText = document.createTextNode('URL incorrectly configured');
     listItem.appendChild(listItemText);
