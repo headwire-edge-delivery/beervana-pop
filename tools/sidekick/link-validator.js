@@ -1,12 +1,12 @@
 /* eslint-disable no-console */
 export default async function linkValidator() {
   const appContainer = document.getElementById('app');
+  const list = document.createElement('ul');
+  appContainer.appendChild(list);
+
   const appScriptUrl = 'https://script.google.com/macros/s/AKfycbyf1E7HYTBa1fDn7SXIZPbJJlMxU4VxPqo4nTtkVEnllK7Fp0yrB_2RJYPIhWEvjZYK/exec';
   const urlParams = new URLSearchParams(window.location.search);
-  // loop over urlParams and console log their key/value pairs
-  urlParams.forEach((value, key) => {
-    console.log(`${key}: ${value}`);
-  });
+
   /* eslint-disable prefer-destructuring */
   let documentId = urlParams.get('referrer');
   documentId = documentId.split('https://docs.google.com/document/d/')[1];
@@ -16,23 +16,27 @@ export default async function linkValidator() {
   const response = await fetch(fetchUrl);
   if (response.ok) {
     const data = await response.json();
-    console.log(data);
     if (data) {
-      const list = document.createElement('ul');
-      appContainer.appendChild(list);
-      const filteredData = data.filter(({ url }) => url.startsWith('https://docs.google.com/document'));
-      if (filteredData.length === 0) {
+      if (data.length === 0) {
         const listItem = document.createElement('li');
         const listItemText = document.createTextNode('No links found');
         listItem.appendChild(listItemText);
         list.appendChild(listItem);
       } else {
-        filteredData.forEach(({ url }) => {
+        const filteredData = data.filter(({ url }) => url.startsWith('https://docs.google.com/document'));
+        if (filteredData.length === 0) {
           const listItem = document.createElement('li');
-          const listItemText = document.createTextNode(url);
+          const listItemText = document.createTextNode('No invalid links found');
           listItem.appendChild(listItemText);
           list.appendChild(listItem);
-        });
+        } else {
+          filteredData.forEach(({ url }) => {
+            const listItem = document.createElement('li');
+            const listItemText = document.createTextNode(url);
+            listItem.appendChild(listItemText);
+            list.appendChild(listItem);
+          });
+        }
       }
     }
   }
