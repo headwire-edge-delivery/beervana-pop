@@ -36,7 +36,13 @@ export default async function linkValidator() {
             listItem.appendChild(listItemText);
             list.appendChild(listItem);
           } else {
-            filteredData.forEach(({ url }) => {
+            filteredData.forEach(({
+              endOffsetInclusive,
+              startOffset,
+              text,
+              url,
+            }) => {
+              console.log('text', text, text.substring(startOffset, endOffsetInclusive));
               const listItem = document.createElement('li');
               const listItemText = document.createTextNode(url);
               listItem.appendChild(listItemText);
