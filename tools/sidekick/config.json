@@ -20,7 +20,7 @@
     {
       "id": "link-validator",
       "title": "Link Validator",
-      "environments": ["any"],
+      "environments": ["edit"],
       "url": "/tools/sidekick/link-validator.html",
       "includePaths": ["**.docx**"],
       "passConfig": true,
