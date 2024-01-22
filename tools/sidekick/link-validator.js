@@ -19,38 +19,46 @@ export default async function linkValidator() {
     documentId = documentId.split('/')[0];
     const fetchUrl = `${appScriptUrl}?id=${documentId}`;
 
-    const response = await fetch(fetchUrl);
-    if (response.ok) {
-      const data = await response.json();
-      if (data) {
-        if (data.length === 0) {
-          const listItem = document.createElement('li');
-          const listItemText = document.createTextNode('No links found');
-          listItem.appendChild(listItemText);
-          list.appendChild(listItem);
-        } else {
-          const filteredData = data.filter(({ url }) => url.startsWith('https://docs.google.com/document'));
-          if (filteredData.length === 0) {
+    try {
+      const response = await fetch(fetchUrl);
+      if (response.ok) {
+        const data = await response.json();
+        if (data) {
+          if (data.length === 0) {
             const listItem = document.createElement('li');
-            const listItemText = document.createTextNode('No invalid links found');
+            const listItemText = document.createTextNode('No links found');
             listItem.appendChild(listItemText);
             list.appendChild(listItem);
           } else {
-            filteredData.forEach(({
-              endOffsetInclusive,
-              startOffset,
-              text,
-              url,
-            }) => {
-              console.log('text', text, text.substring(startOffset, endOffsetInclusive));
+            const filteredData = data.filter(({ url }) => url.startsWith('https://docs.google.com/document'));
+            if (filteredData.length === 0) {
               const listItem = document.createElement('li');
-              const listItemText = document.createTextNode(url);
+              const listItemText = document.createTextNode('No invalid links found');
               listItem.appendChild(listItemText);
               list.appendChild(listItem);
-            });
+            } else {
+              filteredData.forEach(({
+                endOffsetInclusive,
+                startOffset,
+                text,
+                url,
+              }) => {
+                console.log('text', text, text.substring(startOffset, endOffsetInclusive));
+                const listItem = document.createElement('li');
+                const listItemText = document.createTextNode(url);
+                listItem.appendChild(listItemText);
+                list.appendChild(listItem);
+              });
+            }
           }
         }
       }
+    } catch (error) {
+      console.log(error);
+      const listItem = document.createElement('li');
+      const listItemText = document.createTextNode('An error occurred while trying to fetch the data');
+      listItem.appendChild(listItemText);
+      list.appendChild(listItem);
     }
   }
 }
