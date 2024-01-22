@@ -26,6 +26,7 @@ export default async function linkValidator() {
         const listItem = document.createElement('li');
         const listItemText = document.createTextNode(url);
         listItem.appendChild(listItemText);
+        list.appendChild(listItem);
       });
     }
   }
