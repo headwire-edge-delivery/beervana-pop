@@ -20,13 +20,13 @@ export default async function linkValidator() {
     if (data) {
       const list = document.createElement('ul');
       appContainer.appendChild(list);
-      data
-        .filter(({ url }) => url.startsWith('https://docs.google.com/document'))
-        .forEach(({ url }) => {
-          const listItem = document.createElement('li');
-          const listItemText = document.createTextNode(url);
-          listItem.appendChild(listItemText);
-        });
+      const filteredData = data.filter(({ url }) => url.startsWith('https://docs.google.com/document'));
+      console.log(filteredData);
+      filteredData.forEach(({ url }) => {
+        const listItem = document.createElement('li');
+        const listItemText = document.createTextNode(url);
+        listItem.appendChild(listItemText);
+      });
     }
   }
 }
