@@ -4,7 +4,8 @@ export default async function linkValidator() {
   const list = document.createElement('ul');
   appContainer.appendChild(list);
 
-  const appScriptUrl = 'https://script.google.com/macros/s/AKfycbw7ad1lmOsJ2OU7RhkoPRuzKT1hdxvDyl-aAa5k3aCE5IaxxggyuzH5PwJLeIjMMFj5/exec';
+  const deployId = 'AKfycbzIdYez46Yqf21v7hoBCplIzUSiOHg7dq2BaRPo8Tq2BvOXQejgSFfDgdYIxuSvPSkr';
+  const appScriptUrl = `https://script.google.com/macros/s/${deployId}/exec`;
   const urlParams = new URLSearchParams(window.location.search);
 
   if (urlParams.size === 0 || !urlParams.has('referrer')) {
