@@ -24,8 +24,10 @@
       helix-sidekick { display: none }
 
       #title {
-        margin: 1rem;
         transition: opacity 0.5s ease-in-out;
+        margin: 0;
+        padding: 1rem;
+        font-size: 1.65rem;
       }
 
       body:not(.loaded) #title {
@@ -41,17 +43,14 @@
         }
       }
 
-      #app h1 {
-        margin: 0;
-        padding: 1rem;
-        border-bottom: var(--hlx-sk-button-border);
-        font-size: 1.65rem;
-      }
-
       #app ul {
         list-style: none;
         margin: 0;
         padding: 0;
+      }
+
+      body.loaded ul {
+        border-top: var(--hlx-sk-button-border);
       }
 
       #app li {
