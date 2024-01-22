@@ -6,7 +6,11 @@ export default async function linkValidator() {
   urlParams.forEach((value, key) => {
     console.log(`${key}: ${value}`);
   });
-  const fetchUrl = `${appScriptUrl}?id=${urlParams.get('referrer')}`;
+  /* eslint-disable prefer-destructuring */
+  let documentId = urlParams.get('referrer');
+  documentId = documentId.split('https://docs.google.com/document/d/')[1];
+  documentId = documentId.split('/')[0];
+  const fetchUrl = `${appScriptUrl}?id=${documentId}`;
 
   const response = await fetch(fetchUrl);
   if (response.ok) {
