@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 export default async function linkValidator() {
   const appContainer = document.getElementById('app');
+  const title = document.createElement('h1');
+  appContainer.appendChild(title);
   const list = document.createElement('ul');
   appContainer.appendChild(list);
 
@@ -33,21 +35,13 @@ export default async function linkValidator() {
         const data = await response.json();
         if (data) {
           if (data.length === 0) {
-            const listItem = document.createElement('li');
-            const listItemText = document.createTextNode('No links found');
-            listItem.appendChild(listItemText);
-            list.appendChild(listItem);
+            title.appendChild(document.createTextNode('No links found'));
           } else {
             const filteredData = data.filter(({ url }) => url.startsWith('https://docs.google.com/document'));
             if (filteredData.length === 0) {
-              const listItem = document.createElement('li');
-              const listItemText = document.createTextNode('No invalid links found');
-              listItem.appendChild(listItemText);
-              list.appendChild(listItem);
+              title.appendChild(document.createTextNode('No invalid links found'));
             } else {
-              const title = document.createElement('h1');
               title.appendChild(document.createTextNode('Invalid links'));
-              appContainer.prepend(title);
               filteredData.forEach(({
                 endOffsetInclusive,
                 startOffset,
