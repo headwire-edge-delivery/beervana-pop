@@ -21,13 +21,19 @@ export default async function linkValidator() {
       const list = document.createElement('ul');
       appContainer.appendChild(list);
       const filteredData = data.filter(({ url }) => url.startsWith('https://docs.google.com/document'));
-      console.log(filteredData);
-      filteredData.forEach(({ url }) => {
+      if (filteredData.length === 0) {
         const listItem = document.createElement('li');
-        const listItemText = document.createTextNode(url);
+        const listItemText = document.createTextNode('No links found');
         listItem.appendChild(listItemText);
         list.appendChild(listItem);
-      });
+      } else {
+        filteredData.forEach(({ url }) => {
+          const listItem = document.createElement('li');
+          const listItemText = document.createTextNode(url);
+          listItem.appendChild(listItemText);
+          list.appendChild(listItem);
+        });
+      }
     }
   }
 }
