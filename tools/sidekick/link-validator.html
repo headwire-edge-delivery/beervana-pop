@@ -40,9 +40,27 @@
         }
       }
 
+      #app a {
+        color: var(--hlx-sk-accent, blue);
+      }
+
       #app span {
         word-wrap: break-word;
         font-size: .8rem;
+      }
+
+      #app ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      #app li {
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+        padding: .5rem 1rem;
+        border-bottom: var(--hlx-sk-button-border);
       }
     </style>
     <title>Link Validator</title>
