@@ -56,10 +56,12 @@ export default async function linkValidator() {
                 const listItemLink = document.createElement('a');
                 listItemLink.setAttribute('href', url);
                 const listItemText = document.createTextNode(linkText);
+                const listItemSpan = document.createElement('span');
                 const listItemUrl = document.createTextNode(url);
                 listItemLink.appendChild(listItemText);
                 listItem.appendChild(listItemLink);
-                listItem.appendChild(listItemUrl);
+                listItemSpan.appendChild(listItemUrl);
+                listItem.appendChild(listItemSpan);
                 list.appendChild(listItem);
               });
             }
