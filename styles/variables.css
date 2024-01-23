@@ -105,6 +105,7 @@ html.dark-mode {
   --color-foreground: var(--color-brand-4);
   --color-foreground-semi-transparent: var(--color-brand-4-85);
   --color-text: var(--color-brand-3);
+  --color-text-hsl: var(--color-brand-3-hsl);
   --color-text-on-secondary: var(--color-brand-3);
   --color-border-primary: var(--color-brand-1);
   --color-border-secondary: var(--color-brand-4);

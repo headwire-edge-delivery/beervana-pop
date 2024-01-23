@@ -2,12 +2,24 @@ html, body {
   font-family: var(--font-copy);
   font-weight: 400;
   font-size: var(--font-size);
+  height: 100%;
+  scroll-behavior: smooth;
+
+  &:is(body) {
+    display: flex;
+    flex-direction: column;
+
+    & main {
+      flex: 1;
+    }
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   margin-block: var(--spacing-3);
   color: var(--color, var(--color-text));
+  font-weight: 400;
 
   &:is(h1) { font-size: var(--font-xl); }
   &:is(h2) { font-size: var(--font-lg); }
@@ -16,7 +28,7 @@ h1, h2, h3, h4, h5, h6 {
   &:is(h5) { font-size: var(--font-xs); }
 
   & strong {
-    font-weight: 700;
+    font-weight: 400;
   }
 }
 
@@ -42,4 +54,15 @@ main {
 .font-sm { font-size: var(--font-sm); }
 .font-xs { font-size: var(--font-xs); }
 .font-copy { font-family: var(--font-copy); }
-.font-display { font-family: var(--font-display); }
+
+.font-display { 
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+
+main .default-content-wrapper {
+  & ol,
+  & ul {
+    margin-inline-start: var(--spacing-6);
+  }
+}
