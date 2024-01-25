@@ -1,3 +1,18 @@
+function createDocumentLinksHtml(links) {
+  return links.map((link) => {
+    let linkType = 'Valid Site Link';
+    if (link.isEditorLink) linkType = 'Editor Link';
+    if (link.isExternalLink) linkType = 'External Link';
+    if (!link.isValidSiteUrl && !link.isEditorLink && !link.isExternalLink) linkType = 'Invalid Link';
+
+    return `<div class="link">
+      <div class="link-text">${link.text}</div>
+      <div class="link-status">Link Type: ${linkType}</div>
+      <div class="link-url">${link.url}</div>
+    </div>`;
+  }).join('');
+}
+
 /* eslint-disable no-console */
 export default async function linkValidator() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -38,7 +53,7 @@ export default async function linkValidator() {
         const titleEl = document.querySelector('#title');
         titleEl.innerHTML = `Link Validator for ${title}`;
         const appContainer = document.querySelector('#app');
-        appContainer.innerHTML = `<pre>${JSON.stringify(links, null, 2)}</pre>`;
+        appContainer.innerHTML = `<div class="links-container">${createDocumentLinksHtml(links)}</div>`;
       }
     }
   }
