@@ -34,11 +34,11 @@ export default async function linkValidator() {
       });
 
       if (response.ok) {
-        const data = await response.json();
-        const title = document.querySelector('#title');
-        title.innerHTML = `Link Validator for ${data.title}`;
+        const { title, links } = await response.json();
+        const titleEl = document.querySelector('#title');
+        titleEl.innerHTML = `Link Validator for ${title}`;
         const appContainer = document.querySelector('#app');
-        appContainer.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+        appContainer.innerHTML = `<pre>${JSON.stringify(links, null, 2)}</pre>`;
       }
     }
   }
