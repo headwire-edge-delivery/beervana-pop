@@ -6,77 +6,15 @@
     <meta name="Description" content="AEM Link Validator" />
     <meta name="robots" content="noindex" />
     <base href="/" />
-    <!-- inherit base styles from sidekick (if desired) -->
-    <link rel="stylesheet" href="chrome-extension://ccfggkjabjahcjoljmgmklhpaccedipo/app.css">
-
-    <style>
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        background-color: var(--hlx-sk-bg);
-        height: 100%;
-        color: var(--hlx-sk-color);
-        font-family: var(--hlx-sk-font-family);
-      }
-      
-      helix-sidekick { display: none }
-
-      #title {
-        transition: opacity 0.5s ease-in-out;
-        margin: 0;
-        padding: 1rem;
-        font-size: 1.65rem;
-      }
-
-      body:not(.loaded) #title {
-        animation: oscillate-opacity 1s ease-in-out infinite alternate;
-      }
-
-      @keyframes oscillate-opacity {
-        from {
-          opacity: 0.5;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-
-      #app ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-
-      body.loaded ul:has(li) {
-        border-top: var(--hlx-sk-button-border);
-      }
-
-      #app li {
-        display: flex;
-        flex-direction: column;
-        gap: .5rem;
-        padding: .5rem 1rem;
-        border-bottom: var(--hlx-sk-button-border);
-      }
-
-      #app a {
-        color: var(--hlx-sk-accent, blue);
-      }
-
-      #app span {
-        word-wrap: break-word;
-        font-size: .8rem;
-      }
-    </style>
+    <link rel="stylesheet" href="chrome-extension://ccfggkjabjahcjoljmgmklhpaccedipo/app.css"/>
+    <link rel="stylesheet" href="link-validator.css"/>
     <title>Link Validator</title>
   </head>
 
   <body>
     <script
       type="module"
-      src="/tools/sidekick/link-validator.js"
+      src="/tools/sidekick/cloudflare-link-validator.js"
     ></script>
     <h1 id="title">Fetching data about your document</h1>
     <div id="app"></div>
