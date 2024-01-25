@@ -54,6 +54,7 @@ export default async function linkValidator() {
         titleEl.innerHTML = `Link Validator for ${title}`;
         const appContainer = document.querySelector('#app');
         appContainer.innerHTML = `<div class="links-container">${createDocumentLinksHtml(links)}</div>`;
+        document.body.classList.add('loaded');
       }
     }
   }
