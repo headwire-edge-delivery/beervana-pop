@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
 export default async function linkValidator() {
-  console.log('linkValidator()');
   const urlParams = new URLSearchParams(window.location.search);
   urlParams.forEach((value, key) => {
     console.log(`${key}: ${value}`);
@@ -36,7 +35,10 @@ export default async function linkValidator() {
 
       if (response.ok) {
         const data = await response.json();
-        console.log('data', data);
+        const title = document.querySelector('#title');
+        title.innerHTML = `Link Validator for ${data.title}`;
+        const appContainer = document.querySelector('#app');
+        appContainer.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
       }
     }
   }
