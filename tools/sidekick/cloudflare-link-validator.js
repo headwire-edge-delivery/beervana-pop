@@ -42,6 +42,154 @@ function createDocumentLinksHtml(links) {
   </li>`).join('');
 }
 
+/* files response example
+{
+    "mimeType": "application/vnd.google-apps.document",
+    "id": "1O9ltaspMJ4GGu366yLfUeGLaaP4_m5OpjpS16js2coc",
+    "name": "tour-rethink",
+    "links": [
+      {
+        "text": "Portland",
+        "url": "https://docs.google.com/document/d/1O9ltaspMJ4GGu366yLfUeGLaaP4_m5OpjpS16js2coc",
+        "isEditorLink": true,
+        "isValidSiteUrl": false,
+        "isExternalLink": false,
+        "isValidUrl": true
+      },
+      {
+        "text": "Reserve Now",
+        "url": "https://main--beervana--headwire-edge-delivery.hlx.live/contact",
+        "isEditorLink": false,
+        "isValidSiteUrl": false,
+        "isExternalLink": true,
+        "isValidUrl": true
+      },
+      {
+        "text": "Beervana Brew Tour",
+        "url": "#beervana-brew-tour",
+        "isEditorLink": false,
+        "isValidSiteUrl": true,
+        "isExternalLink": false,
+        "isValidUrl": false
+      },
+      {
+        "text": "Sip of Portland Tour",
+        "url": "#sip-of-portland-brew-tour",
+        "isEditorLink": false,
+        "isValidSiteUrl": true,
+        "isExternalLink": false,
+        "isValidUrl": false
+      },
+      {
+        "text": "Build your Own Tour",
+        "url": "#build-your-own-tour",
+        "isEditorLink": false,
+        "isValidSiteUrl": true,
+        "isExternalLink": false,
+        "isValidUrl": false
+      },
+      {
+        "text": "Find out More",
+        "url": "https://main--beervana-pop--headwire-edge-delivery.hlx.page/tour/original-beervana-brew-tour",
+        "isEditorLink": false,
+        "isValidSiteUrl": true,
+        "isExternalLink": false,
+        "isValidUrl": true
+      },
+      {
+        "text": "Reserve Now",
+        "url": "https://main--beervana-pop--headwire-edge-delivery.hlx.page/tour/original-beervana-brew-tour",
+        "isEditorLink": false,
+        "isValidSiteUrl": true,
+        "isExternalLink": false,
+        "isValidUrl": true
+      },
+      {
+        "text": "Reserve Now",
+        "url": "https://main--beervana-pop--headwire-edge-delivery.hlx.live/contact",
+        "isEditorLink": false,
+        "isValidSiteUrl": true,
+        "isExternalLink": false,
+        "isValidUrl": true
+      },
+      {
+        "text": "Find out More",
+        "url": "https://main--beervana-pop--headwire-edge-delivery.hlx.page/tour/sip-of-portland-brew-tour",
+        "isEditorLink": false,
+        "isValidSiteUrl": true,
+        "isExternalLink": false,
+        "isValidUrl": true
+      },
+      {
+        "text": "Reserve Now",
+        "url": "https://main--beervana-pop--headwire-edge-delivery.hlx.page/tour/sip-of-portland-brew-tour",
+        "isEditorLink": false,
+        "isValidSiteUrl": true,
+        "isExternalLink": false,
+        "isValidUrl": true
+      },
+      {
+        "text": "Reserve Now",
+        "url": "https://main--beervana-pop--headwire-edge-delivery.hlx.live/contact",
+        "isEditorLink": false,
+        "isValidSiteUrl": true,
+        "isExternalLink": false,
+        "isValidUrl": true
+      },
+      {
+        "text": "Find out More",
+        "url": "https://main--beervana-pop--headwire-edge-delivery.hlx.live/tour/make-your-own-tour",
+        "isEditorLink": false,
+        "isValidSiteUrl": true,
+        "isExternalLink": false,
+        "isValidUrl": true
+      },
+      {
+        "text": "Reserve Now",
+        "url": "https://main--beervana-pop--headwire-edge-delivery.hlx.live/contact",
+        "isEditorLink": false,
+        "isValidSiteUrl": true,
+        "isExternalLink": false,
+        "isValidUrl": true
+      },
+      {
+        "text": "Reserve Now",
+        "url": "https://main--beervana-pop--headwire-edge-delivery.hlx.live/contact",
+        "isEditorLink": false,
+        "isValidSiteUrl": true,
+        "isExternalLink": false,
+        "isValidUrl": true
+      }
+    ]
+  },
+  */
+
+// use the files response example to create a list of pages in a list
+// each  page should have the title, checkbox and validity icon and
+// then a list of links similar to the above
+/*
+const titleEl = document.querySelector('#title');
+titleEl.innerHTML = `Link Validator for ${title}`;
+const appContainer = document.querySelector('#app');
+appContainer.innerHTML = `<ul class="links-container">${createDocumentLinksHtml(links)}</ul>`;
+*/
+export function createPagesHtml(files) {
+  return files.map((file) => `<li class="page">
+    <div class="page-title-wrapper">
+      <input type="checkbox" class="icon icon-toggle" />
+      <strong class="page-title">${file.name}</strong>
+      <span class="icon page-validity check" data-valid="true">
+        <svg width="20" height="15" viewBox="0 0 20 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 2L7 13L2 8" stroke="#283618" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </div>
+    <div class="page-links">
+      <ul class="links-container">${createDocumentLinksHtml(file.links)}</ul>
+    </div>
+  </li>`).join('');
+}
+
 /* eslint-disable no-console */
 export default async function linkValidator() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -83,7 +231,9 @@ export default async function linkValidator() {
         });
 
         if (response.ok) {
-          console.log('response ok', await response.json());
+          const data = await response.json();
+          console.log('data', data);
+          document.body.classList.add('loaded');
         } else {
           console.error('response not ok', response);
         }
