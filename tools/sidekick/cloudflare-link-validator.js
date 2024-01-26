@@ -51,7 +51,7 @@ function createDocumentLinksHtml(links) {
 export function createPagesHtml(files) {
   return files.map((file) => `<li class="page">
     <div class="page-title-wrapper">
-      ${file.links?.length > 0 && '<input type="checkbox" class="icon icon-toggle" />'}
+      ${file.links?.length > 0 ? '<input type="checkbox" class="icon icon-toggle" />' : '<span></span>'}
       <strong class="page-title">${file.name}</strong>
       ${file.links?.length === 0 ? '<span class="no-links">0</span>' : `
       <span class="icon page-validity check">
