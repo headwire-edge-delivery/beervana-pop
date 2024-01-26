@@ -13,10 +13,6 @@ function createDocumentLinksHtml(links) {
       <table>
         <tbody>
           <tr>
-            <td>Link Is Valid URL</td>
-            <td>${link.isValidUrl}</td>
-          </tr>
-          <tr>
             <td>Link URL</td>
             <td>${link.url}</td>
           </tr>
@@ -36,139 +32,16 @@ function createDocumentLinksHtml(links) {
             <td>Editor URL</td>
             <td>${link.isEditorLink}</td>
           </tr>
+          <tr>
+            <td>Link Is Valid URL</td>
+            <td>${link.isValidUrl}</td>
+          </tr>
         </tbody>
       </table>
     </div>
   </li>`).join('');
 }
 
-/* files response example
-{
-    "mimeType": "application/vnd.google-apps.document",
-    "id": "1O9ltaspMJ4GGu366yLfUeGLaaP4_m5OpjpS16js2coc",
-    "name": "tour-rethink",
-    "links": [
-      {
-        "text": "Portland",
-        "url": "https://docs.google.com/document/d/1O9ltaspMJ4GGu366yLfUeGLaaP4_m5OpjpS16js2coc",
-        "isEditorLink": true,
-        "isValidSiteUrl": false,
-        "isExternalLink": false,
-        "isValidUrl": true
-      },
-      {
-        "text": "Reserve Now",
-        "url": "https://main--beervana--headwire-edge-delivery.hlx.live/contact",
-        "isEditorLink": false,
-        "isValidSiteUrl": false,
-        "isExternalLink": true,
-        "isValidUrl": true
-      },
-      {
-        "text": "Beervana Brew Tour",
-        "url": "#beervana-brew-tour",
-        "isEditorLink": false,
-        "isValidSiteUrl": true,
-        "isExternalLink": false,
-        "isValidUrl": false
-      },
-      {
-        "text": "Sip of Portland Tour",
-        "url": "#sip-of-portland-brew-tour",
-        "isEditorLink": false,
-        "isValidSiteUrl": true,
-        "isExternalLink": false,
-        "isValidUrl": false
-      },
-      {
-        "text": "Build your Own Tour",
-        "url": "#build-your-own-tour",
-        "isEditorLink": false,
-        "isValidSiteUrl": true,
-        "isExternalLink": false,
-        "isValidUrl": false
-      },
-      {
-        "text": "Find out More",
-        "url": "https://main--beervana-pop--headwire-edge-delivery.hlx.page/tour/original-beervana-brew-tour",
-        "isEditorLink": false,
-        "isValidSiteUrl": true,
-        "isExternalLink": false,
-        "isValidUrl": true
-      },
-      {
-        "text": "Reserve Now",
-        "url": "https://main--beervana-pop--headwire-edge-delivery.hlx.page/tour/original-beervana-brew-tour",
-        "isEditorLink": false,
-        "isValidSiteUrl": true,
-        "isExternalLink": false,
-        "isValidUrl": true
-      },
-      {
-        "text": "Reserve Now",
-        "url": "https://main--beervana-pop--headwire-edge-delivery.hlx.live/contact",
-        "isEditorLink": false,
-        "isValidSiteUrl": true,
-        "isExternalLink": false,
-        "isValidUrl": true
-      },
-      {
-        "text": "Find out More",
-        "url": "https://main--beervana-pop--headwire-edge-delivery.hlx.page/tour/sip-of-portland-brew-tour",
-        "isEditorLink": false,
-        "isValidSiteUrl": true,
-        "isExternalLink": false,
-        "isValidUrl": true
-      },
-      {
-        "text": "Reserve Now",
-        "url": "https://main--beervana-pop--headwire-edge-delivery.hlx.page/tour/sip-of-portland-brew-tour",
-        "isEditorLink": false,
-        "isValidSiteUrl": true,
-        "isExternalLink": false,
-        "isValidUrl": true
-      },
-      {
-        "text": "Reserve Now",
-        "url": "https://main--beervana-pop--headwire-edge-delivery.hlx.live/contact",
-        "isEditorLink": false,
-        "isValidSiteUrl": true,
-        "isExternalLink": false,
-        "isValidUrl": true
-      },
-      {
-        "text": "Find out More",
-        "url": "https://main--beervana-pop--headwire-edge-delivery.hlx.live/tour/make-your-own-tour",
-        "isEditorLink": false,
-        "isValidSiteUrl": true,
-        "isExternalLink": false,
-        "isValidUrl": true
-      },
-      {
-        "text": "Reserve Now",
-        "url": "https://main--beervana-pop--headwire-edge-delivery.hlx.live/contact",
-        "isEditorLink": false,
-        "isValidSiteUrl": true,
-        "isExternalLink": false,
-        "isValidUrl": true
-      },
-      {
-        "text": "Reserve Now",
-        "url": "https://main--beervana-pop--headwire-edge-delivery.hlx.live/contact",
-        "isEditorLink": false,
-        "isValidSiteUrl": true,
-        "isExternalLink": false,
-        "isValidUrl": true
-      }
-    ]
-  },
-  */
-
-// use the files response example to create a list of pages in a list
-// each  page should have the title, checkbox and validity icon and
-// then a list of links similar to the above
-/*
-*/
 export function createPagesHtml(files) {
   return files.map((file) => `<li class="page">
     <div class="page-title-wrapper">
