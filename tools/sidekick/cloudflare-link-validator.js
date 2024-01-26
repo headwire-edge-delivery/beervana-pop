@@ -9,10 +9,14 @@ function createDocumentLinksHtml(links) {
     <div class="link-title-wrapper">
       <input type="checkbox" class="icon icon-toggle" />
       <strong class="link-title">${link.text}</strong>
-      <span class="icon link-validity check" data-valid="${link.isValidUrl && !link.isEditorLink}">
-        <svg width="20" height="15" viewBox="0 0 20 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <span class="icon link-validity check">
+        ${link.isValidUrl && !link.isEditorLink ? `
+        <svg class="valid" width="20" height="15" viewBox="0 0 20 15" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M18 2L7 13L2 8" stroke="#283618" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+        </svg>` : `
+        <svg class="invalid" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9.45 5.55L5.55 9.45M5.55 5.55L9.45 9.45M14 7.5C14 11.0899 11.0899 14 7.5 14C3.91015 14 1 11.0899 1 7.5C1 3.91015 3.91015 1 7.5 1C11.0899 1 14 3.91015 14 7.5Z" stroke="#FEFAE0" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`}
       </span>
     </div>
     <div class="link-details">
