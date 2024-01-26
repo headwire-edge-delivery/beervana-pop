@@ -1,3 +1,9 @@
+const MIME_TYPES = {
+  DOC: 'application/vnd.google-apps.document',
+  SHEET: 'application/vnd.google-apps.spreadsheet',
+  FOLDER: 'application/vnd.google-apps.folder',
+};
+
 function createDocumentLinksHtml(links) {
   return links.map((link) => `<li class="link">
     <div class="link-title-wrapper">
@@ -105,7 +111,8 @@ export default async function linkValidator() {
           const titleEl = document.querySelector('#title');
           titleEl.innerHTML = 'Link Validator for current folder';
           const appContainer = document.querySelector('#app');
-          appContainer.innerHTML = `<ul class="links-container">${createPagesHtml(data)}</ul>`;
+          const documents = data.filter((file) => file.mimeType === MIME_TYPES.DOC);
+          appContainer.innerHTML = `<ul class="links-container">${createPagesHtml(documents)}</ul>`;
           document.body.classList.add('loaded');
         } else {
           console.error('response not ok', response);
