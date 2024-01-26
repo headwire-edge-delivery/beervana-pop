@@ -112,18 +112,18 @@ body:not(.loaded) #title {
   filter: invert(69%) sepia(8%) saturate(12%) hue-rotate(346deg) brightness(88%) contrast(89%);
 }
 
-#app .page:not(:has(.invalid)) .page-title-wrapper .valid {
+#app .page:not(:has(.page-links .invalid)) .page-title-wrapper .valid {
   display: block;
 }
 
-#app .page:not(:has(.invalid)) .page-title-wrapper .invalid {
+#app .page:not(:has(.page-links .invalid)) .page-title-wrapper .invalid {
   display: none;
 }
 
-#app .page:has(.invalid) .page-title-wrapper .valid {
+#app .page:has(.page-links .invalid) .page-title-wrapper .valid {
   display: none;
 }
 
-#app .page:has(.invalid) .page-title-wrapper .invalid {
+#app .page:has(.page-links .invalid) .page-title-wrapper .invalid {
   display: block;
 }
