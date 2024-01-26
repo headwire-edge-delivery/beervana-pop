@@ -62,10 +62,13 @@ body:not(.loaded) #title {
 #app .icon.toggle {
   grid-area: toggle;
   z-index: 0;
+  transition: transform .3s;
 }
 
 #app .icon.toggle svg {
   filter: invert(100%) sepia(0%) saturate(6192%) hue-rotate(197deg) brightness(106%) contrast(84%);
+  position: relative;
+  top: .3rem;
 }
 
 #app .links-toggle {
@@ -77,6 +80,7 @@ body:not(.loaded) #title {
   appearance: none;
   grid-area: toggle;
   z-index: 1;
+  margin: 0;
 }
 
 #app table {
@@ -121,6 +125,10 @@ body:not(.loaded) #title {
 #app li:has(input:checked) > .page-links,
 #app li:has(input:checked) > .link-details {
   max-height: 100%;
+}
+
+#app li:has(input:checked) > .icon.toggle {
+  transform: rotate(90deg);
 }
 
 #app .page-links {
