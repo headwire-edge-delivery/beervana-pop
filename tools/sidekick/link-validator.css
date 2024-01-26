@@ -82,10 +82,6 @@ body:not(.loaded) #title {
   padding: .75rem .5rem;
 }
 
-#app .link-validity svg {
-  filter: invert(1);
-}
-
 #app .link-details {
   max-height: 0;
   overflow: hidden;
@@ -94,4 +90,12 @@ body:not(.loaded) #title {
 
 #app li:has(input:checked) .link-details {
   max-height: 100%;
+}
+
+#app .check[data-valid="true"] svg {
+  filter: invert(59%) sepia(72%) saturate(4441%) hue-rotate(64deg) brightness(92%) contrast(86%);
+}
+
+#app .check[data-valid="true"] svg {
+  filter: invert(9%) sepia(79%) saturate(5775%) hue-rotate(357deg) brightness(95%) contrast(90%);
 }
