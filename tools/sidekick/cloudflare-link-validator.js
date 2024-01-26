@@ -95,6 +95,7 @@ export function createPagesHtml(files) {
 /* eslint-disable no-console */
 export default async function linkValidator() {
   const urlParams = new URLSearchParams(window.location.search);
+  const contentType = document.getElementById('content-type');
 
   if (urlParams.size === 0 || !urlParams.has('referrer')) {
     console.error('URL incorrectly configured');
@@ -116,6 +117,7 @@ export default async function linkValidator() {
       workerUrl.searchParams.append('publishUrl', publishUrl);
 
       if (referrerUrl.pathname.includes('folders')) {
+        contentType.innerHTML = 'Folder';
         const folderId = referrerUrl.pathname.split('/folders/')[1]?.split('/')[0];
         workerUrl.searchParams.append('folderId', folderId);
 
@@ -139,6 +141,7 @@ export default async function linkValidator() {
           console.error('response not ok', response);
         }
       } else {
+        contentType.innerHTML = 'Document';
         const documentId = referrerUrl.pathname.split('/document/d/')[1]?.split('/')[0];
         workerUrl.searchParams.append('documentId', documentId);
 
