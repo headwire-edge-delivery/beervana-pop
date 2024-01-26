@@ -7,7 +7,14 @@ const MIME_TYPES = {
 function createDocumentLinksHtml(links) {
   return links.map((link) => `<li class="link">
     <div class="link-title-wrapper">
-      <input type="checkbox" class="icon icon-toggle" />
+      <span class="links-toggle icon">
+        <input type="checkbox" class="icon" />
+        <span class="icon toggle">
+          <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 13L7 7L1 1" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </span>
       <strong class="link-title">${link.text}</strong>
       <span class="icon link-validity check">
         ${link.isValidUrl && !link.isEditorLink ? `
