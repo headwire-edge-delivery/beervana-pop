@@ -61,17 +61,14 @@ body.loaded ul:has(li) {
 #app table {
   border-spacing: 0;
   font-size: .8rem;
+  border-block-start: var(--hlx-sk-button-border);
 }
-
 
 #app td {
   padding: .25rem;
   vertical-align: top;
   border: var(--hlx-sk-button-border);
-}
-
-#app td:not(tr:first-child) {
-  border-top: none;
+  border-block-start: none;
 }
 
 #app td + td {
