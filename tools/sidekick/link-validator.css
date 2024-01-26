@@ -52,6 +52,13 @@ body:not(.loaded) #title {
   font-size: .8rem;
 }
 
+#app .icon {
+  display: flex;
+  width: 1.5rem;
+  height: 1.5rem;
+  place-content: center;
+}
+
 #app .icon.toggle {
   grid-area: toggle;
   z-index: 0;
@@ -146,11 +153,4 @@ body:not(.loaded) #title {
 
 #app .page:has(.page-links .invalid) .page-title-wrapper .invalid {
   display: block;
-}
-
-#app .icon {
-  display: flex;
-  width: 1.5rem;
-  height: 1.5rem;
-  place-content: center;
 }
