@@ -31,12 +31,15 @@ body:not(.loaded) #title {
   }
 }
 
+#app h2 {
+  margin: 1rem;
+}
+
 #app ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-
 
 #app li {
   display: flex;
