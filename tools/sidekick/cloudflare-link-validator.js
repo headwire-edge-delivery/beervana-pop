@@ -180,9 +180,9 @@ export function createPagesHtml(files) {
         </svg>
       </span>
     </div>
-    <div class="page-links">
+    ${file.links && `<div class="page-links">
       <ul class="links-container">${createDocumentLinksHtml(file.links)}</ul>
-    </div>
+    </div>`}
   </li>`).join('');
 }
 
