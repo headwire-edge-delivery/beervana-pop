@@ -76,6 +76,10 @@ body:not(.loaded) #title {
   grid-template-areas: "toggle";
 }
 
+#app .links-toggle[data-has-links="false"] .icon.toggle {
+  display: none;
+}
+
 #app .links-toggle input {
   appearance: none;
   grid-area: toggle;
