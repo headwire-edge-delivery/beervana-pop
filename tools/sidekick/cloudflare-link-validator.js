@@ -1,33 +1,20 @@
 function createDocumentLinksHtml(links) {
-  return links.map((link) => {
-    let linkType = 'Valid Site Link';
-    if (link.isEditorLink) linkType = 'Editor Link';
-    if (link.isExternalLink) linkType = 'External Link';
-    if (!link.isValidSiteUrl && !link.isEditorLink && !link.isExternalLink) linkType = 'Invalid Link';
-
-    return `<li class="link">
-      <div class="link-title-wrapper">
-        <span class="icon icon-toggle"></span>
-        <strong class="link-title">${link.text}</strong>
-        <span class="icon link-validity check">
-          <svg width="20" height="15" viewBox="0 0 20 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M18 2L7 13L2 8" stroke="#283618" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
-      </div>
-      <div class="link-details">
-        <table>
+  return links.map((link) => `<li class="link">
+    <div class="link-title-wrapper">
+      <span class="icon icon-toggle"></span>
+      <strong class="link-title">${link.text}</strong>
+      <span class="icon link-validity check">
+        <svg width="20" height="15" viewBox="0 0 20 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 2L7 13L2 8" stroke="#283618" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </div>
+    <div class="link-details">
+      <table>
+        <tbody>
           <tr>
-            <td>Start Offset</td>
-            <td>${link.startOffset}</td>
-          </tr>
-          <tr>
-            <td>End Offset</td>
-            <td>${link.endOffsetInclusive}</td>
-          </tr>
-          <tr>
-            <td>Link Type</td>
-            <td>${linkType}</td>
+            <td>Link Is Valid URL</td>
+            <td>${link.isValidUrl}</td>
           </tr>
           <tr>
             <td>Link URL</td>
@@ -38,25 +25,21 @@ function createDocumentLinksHtml(links) {
             <td>${link.text}</td>
           </tr>
           <tr>
-            <td>Link Is Valid Site URL</td>
+            <td>Valid Site URL</td>
             <td>${link.isValidSiteUrl}</td>
           </tr>
           <tr>
-            <td>Link Is Valid URL</td>
-            <td>${link.isValidUrl}</td>
-          </tr>
-          <tr>
-            <td>Link Is External URL</td>
+            <td>External URL</td>
             <td>${link.isExternalLink}</td>
           </tr>
           <tr>
-            <td>Link Is Editor URL</td>
+            <td>Editor URL</td>
             <td>${link.isEditorLink}</td>
           </tr>
-        </table>
-      </div>
-    </li>`;
-  }).join('');
+        </tbody>
+      </table>
+    </div>
+  </li>`).join('');
 }
 
 /* eslint-disable no-console */

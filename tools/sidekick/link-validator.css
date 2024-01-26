@@ -45,7 +45,7 @@ body.loaded ul:has(li) {
   display: flex;
   flex-direction: column;
   gap: .5rem;
-  padding: .5rem 1rem;
+  padding: .5rem 1rem 1rem;
   border-bottom: var(--hlx-sk-button-border);
 }
 
@@ -56,4 +56,34 @@ body.loaded ul:has(li) {
 #app span {
   word-wrap: break-word;
   font-size: .8rem;
+}
+
+#app table {
+  border-spacing: 0;
+  font-size: .8rem;
+}
+
+#app td {
+  border: var(--hlx-sk-button-border);
+  padding: .25rem;
+  vertical-align: top;
+}
+
+#app td + td {
+  border-inline-start: none;
+}
+
+#app td:nth-child(odd) {
+  font-weight: bold;
+}
+
+#app .link-title-wrapper {
+  display: grid;
+  grid-template-columns: 1.5rem 1fr 1.5rem;
+  gap: .25rem;
+  align-items: center;
+}
+
+#app .link-validity svg {
+  filter: invert(1);
 }
