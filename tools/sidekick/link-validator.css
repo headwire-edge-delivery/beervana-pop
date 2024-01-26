@@ -67,8 +67,7 @@ body:not(.loaded) #title {
 
 #app .icon.toggle svg {
   filter: invert(100%) sepia(0%) saturate(6192%) hue-rotate(197deg) brightness(106%) contrast(84%);
-  position: relative;
-  top: .3rem;
+  margin-block-start: .3rem;
 }
 
 #app .links-toggle {
@@ -140,10 +139,12 @@ body:not(.loaded) #title {
 }
 
 #app .valid {
+  margin-block-start: .3rem;
   filter: invert(59%) sepia(72%) saturate(4441%) hue-rotate(64deg) brightness(92%) contrast(86%);
 }
 
 #app .invalid {
+  margin-block-start: .3rem;
   filter: invert(9%) sepia(79%) saturate(5775%) hue-rotate(357deg) brightness(95%) contrast(90%);
 }
 
