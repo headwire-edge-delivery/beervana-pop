@@ -84,6 +84,8 @@ export default async function linkValidator() {
 
         if (response.ok) {
           console.log('response ok', await response.json());
+        } else {
+          console.error('response not ok', response);
         }
       } else {
         const documentId = referrerUrl.pathname.split('https://docs.google.com/document/d/')[1]?.split('/')[0];
