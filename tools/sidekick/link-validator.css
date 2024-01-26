@@ -57,6 +57,7 @@ body:not(.loaded) #title {
   font-size: .8rem;
   border-block-end: var(--hlx-sk-button-border);
   border-block-end-width: .25rem;
+  width: 100%;
 }
 
 #app td {
