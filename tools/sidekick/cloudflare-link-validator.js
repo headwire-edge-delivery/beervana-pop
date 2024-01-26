@@ -81,9 +81,6 @@ export function createPagesHtml(files) {
 /* eslint-disable no-console */
 export default async function linkValidator() {
   const urlParams = new URLSearchParams(window.location.search);
-  urlParams.forEach((value, key) => {
-    console.log(`${key}: ${value}`);
-  });
 
   if (urlParams.size === 0 || !urlParams.has('referrer')) {
     console.error('URL incorrectly configured');
@@ -105,9 +102,7 @@ export default async function linkValidator() {
       workerUrl.searchParams.append('publishUrl', publishUrl);
 
       if (referrerUrl.pathname.includes('folders')) {
-        console.log('folder detected');
         const folderId = referrerUrl.pathname.split('/folders/')[1]?.split('/')[0];
-        console.log('folderId', folderId);
         workerUrl.searchParams.append('folderId', folderId);
 
         const response = await fetch(workerUrl.toString(), {
@@ -120,7 +115,6 @@ export default async function linkValidator() {
 
         if (response.ok) {
           const data = await response.json();
-          console.log('data', data);
           const titleEl = document.querySelector('#title');
           titleEl.innerHTML = 'Link Validator for current folder';
           const appContainer = document.querySelector('#app');
@@ -131,7 +125,7 @@ export default async function linkValidator() {
           console.error('response not ok', response);
         }
       } else {
-        const documentId = referrerUrl.pathname.split('https://docs.google.com/document/d/')[1]?.split('/')[0];
+        const documentId = referrerUrl.pathname.split('/document/d/')[1]?.split('/')[0];
         workerUrl.searchParams.append('documentId', documentId);
 
         const response = await fetch(workerUrl.toString(), {
