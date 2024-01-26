@@ -37,16 +37,10 @@ body:not(.loaded) #title {
   padding: 0;
 }
 
-body.loaded ul:has(li) {
-  border-top: var(--hlx-sk-button-border);
-}
 
 #app li {
   display: flex;
   flex-direction: column;
-  gap: .5rem;
-  padding: .5rem 1rem 1rem;
-  border-bottom: var(--hlx-sk-button-border);
 }
 
 #app a {
@@ -61,18 +55,18 @@ body.loaded ul:has(li) {
 #app table {
   border-spacing: 0;
   font-size: .8rem;
-  border-block-start: var(--hlx-sk-button-border);
+  border-block-end: var(--hlx-sk-button-border);
+  border-block-end-width: .25rem;
 }
 
 #app td {
-  padding: .25rem;
+  padding: .5rem;
   vertical-align: top;
-  border: var(--hlx-sk-button-border);
-  border-block-start: none;
+  border-block-end: var(--hlx-sk-button-border);
 }
 
 #app td + td {
-  border-inline-start: none;
+  border-inline-start: var(--hlx-sk-button-border);
 }
 
 #app td:nth-child(odd) {
@@ -84,8 +78,16 @@ body.loaded ul:has(li) {
   grid-template-columns: 1.5rem 1fr 1.5rem;
   gap: .25rem;
   align-items: center;
+  border-block: var(--hlx-sk-button-border);
+  padding: .75rem .5rem;
 }
 
 #app .link-validity svg {
   filter: invert(1);
+}
+
+#app .link-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: all .3s;
 }

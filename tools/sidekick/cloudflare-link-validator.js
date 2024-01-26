@@ -1,7 +1,7 @@
 function createDocumentLinksHtml(links) {
   return links.map((link) => `<li class="link">
     <div class="link-title-wrapper">
-      <span class="icon icon-toggle"></span>
+      <input type="checkbox" class="icon icon-toggle" />
       <strong class="link-title">${link.text}</strong>
       <span class="icon link-validity check">
         <svg width="20" height="15" viewBox="0 0 20 15" fill="none" xmlns="http://www.w3.org/2000/svg">
