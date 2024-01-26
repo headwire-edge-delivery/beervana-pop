@@ -63,21 +63,19 @@ body.loaded ul:has(li) {
   font-size: .8rem;
 }
 
-#app tr {
-  border: var(--hlx-sk-button-border);
-}
-
-#app tr + tr {
-  border-block-start: none;
-}
 
 #app td {
   padding: .25rem;
   vertical-align: top;
+  border: var(--hlx-sk-button-border);
+}
+
+#app td:not(tr:first-child) {
+  border-top: none;
 }
 
 #app td + td {
-  border-inline-start: var(--hlx-sk-button-border);
+  border-inline-start: none;
 }
 
 #app td:nth-child(odd) {
