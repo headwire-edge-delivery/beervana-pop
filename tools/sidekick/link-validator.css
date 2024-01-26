@@ -100,12 +100,30 @@ body:not(.loaded) #title {
   border-inline-start: 1.5rem solid;
 }
 
-#app .page:not(:has(.invalid)) .page-title-wrapper .check svg,
 #app .valid {
   filter: invert(59%) sepia(72%) saturate(4441%) hue-rotate(64deg) brightness(92%) contrast(86%);
 }
 
-#app .page:has(.invalid) .page-title-wrapper .check svg,
 #app .invalid {
   filter: invert(9%) sepia(79%) saturate(5775%) hue-rotate(357deg) brightness(95%) contrast(90%);
+}
+
+#app .no-links svg {
+  filter: invert(69%) sepia(8%) saturate(12%) hue-rotate(346deg) brightness(88%) contrast(89%);
+}
+
+#app .page:not(:has(.invalid)) .page-title-wrapper .valid {
+  display: block;
+}
+
+#app .page:not(:has(.invalid)) .page-title-wrapper .invalid {
+  display: none;
+}
+
+#app .page:has(.invalid) .page-title-wrapper .valid {
+  display: none;
+}
+
+#app .page:has(.invalid) .page-title-wrapper .invalid {
+  display: block;
 }

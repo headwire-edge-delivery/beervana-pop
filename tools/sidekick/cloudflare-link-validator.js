@@ -14,8 +14,8 @@ function createDocumentLinksHtml(links) {
         <svg class="valid" width="20" height="15" viewBox="0 0 20 15" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M18 2L7 13L2 8" stroke="#283618" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>` : `
-        <svg class="invalid" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M9.45 5.55L5.55 9.45M5.55 5.55L9.45 9.45M14 7.5C14 11.0899 11.0899 14 7.5 14C3.91015 14 1 11.0899 1 7.5C1 3.91015 3.91015 1 7.5 1C11.0899 1 14 3.91015 14 7.5Z" stroke="#FEFAE0" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg class="invalid" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M13 1L1 13M1 1L13 13" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>`}
       </span>
     </div>
@@ -57,10 +57,18 @@ export function createPagesHtml(files) {
     <div class="page-title-wrapper">
       ${file.links?.length > 0 ? '<input type="checkbox" class="icon icon-toggle" />' : '<span></span>'}
       <strong class="page-title">${file.name}</strong>
-      ${file.links?.length === 0 ? '<span class="no-links">0</span>' : `
-      <span class="icon page-validity check">
-        <svg width="20" height="15" viewBox="0 0 20 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+      ${file.links?.length === 0 ? `
+      <span class="icon no-links">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3.93 3.93L18.07 18.07M21 11C21 16.5228 16.5228 21 11 21C5.47715 21 1 16.5228 1 11C1 5.47715 5.47715 1 11 1C16.5228 1 21 5.47715 21 11Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>` : `
+      <span class="icon page-validity">
+        <svg class="valid" width="20" height="15" viewBox="0 0 20 15" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M18 2L7 13L2 8" stroke="#283618" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <svg class="invalid" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M13 1L1 13M1 1L13 13" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </span>`}
     </div>
