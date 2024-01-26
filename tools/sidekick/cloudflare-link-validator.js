@@ -158,7 +158,11 @@ export default async function linkValidator() {
           const titleEl = document.querySelector('#title');
           titleEl.innerHTML = `Link Validator for ${title}`;
           const appContainer = document.querySelector('#app');
-          appContainer.innerHTML = `<ul class="links-container">${createDocumentLinksHtml(links)}</ul>`;
+          if (links.length === 0) {
+            appContainer.innerHTML = '<h2>No Links Found</h2>';
+          } else {
+            appContainer.innerHTML = `<ul class="links-container">${createDocumentLinksHtml(links)}</ul>`;
+          }
           document.body.classList.add('loaded');
         }
       }
