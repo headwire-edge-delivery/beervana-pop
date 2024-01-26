@@ -91,3 +91,7 @@ body:not(.loaded) #title {
   overflow: hidden;
   transition: all .3s;
 }
+
+#app li:has(input:checked) .link-details {
+  max-height: 100%;
+}
