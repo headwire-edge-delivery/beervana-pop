@@ -96,6 +96,6 @@ body:not(.loaded) #title {
   filter: invert(59%) sepia(72%) saturate(4441%) hue-rotate(64deg) brightness(92%) contrast(86%);
 }
 
-#app .check[data-valid="true"] svg {
+#app .check[data-valid="false"] svg {
   filter: invert(9%) sepia(79%) saturate(5775%) hue-rotate(357deg) brightness(95%) contrast(90%);
 }
