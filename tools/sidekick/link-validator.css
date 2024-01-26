@@ -52,6 +52,11 @@ body:not(.loaded) #title {
   font-size: .8rem;
 }
 
+#app input {
+  appearance: none;
+  background: url('/icons/chevron-right.svg') no-repeat 0 0;
+}
+
 #app table {
   border-spacing: 0;
   font-size: .8rem;
@@ -126,4 +131,11 @@ body:not(.loaded) #title {
 
 #app .page:has(.page-links .invalid) .page-title-wrapper .invalid {
   display: block;
+}
+
+#app .icon {
+  display: flex;
+  width: 1.5rem;
+  height: 1.5rem;
+  place-content: center;
 }
