@@ -168,10 +168,6 @@ function createDocumentLinksHtml(links) {
 // each  page should have the title, checkbox and validity icon and
 // then a list of links similar to the above
 /*
-const titleEl = document.querySelector('#title');
-titleEl.innerHTML = `Link Validator for ${title}`;
-const appContainer = document.querySelector('#app');
-appContainer.innerHTML = `<ul class="links-container">${createDocumentLinksHtml(links)}</ul>`;
 */
 export function createPagesHtml(files) {
   return files.map((file) => `<li class="page">
@@ -233,6 +229,10 @@ export default async function linkValidator() {
         if (response.ok) {
           const data = await response.json();
           console.log('data', data);
+          const titleEl = document.querySelector('#title');
+          titleEl.innerHTML = 'Link Validator for current folder';
+          const appContainer = document.querySelector('#app');
+          appContainer.innerHTML = `<ul class="links-container">${createPagesHtml(data)}</ul>`;
           document.body.classList.add('loaded');
         } else {
           console.error('response not ok', response);
