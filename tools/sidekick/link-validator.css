@@ -91,9 +91,13 @@ body:not(.loaded) #title {
   transition: all .3s;
 }
 
-#app .page-links:has(input:checked) > .link-details,
+#app li:has(input:checked) > .page-links,
 #app li:has(input:checked) > .link-details {
   max-height: 100%;
+}
+
+#app .page-links {
+  border-inline-start: 1.5rem solid;
 }
 
 #app .check[data-valid="true"] svg {
