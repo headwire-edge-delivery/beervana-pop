@@ -3,7 +3,7 @@ function createDocumentLinksHtml(links) {
     <div class="link-title-wrapper">
       <input type="checkbox" class="icon icon-toggle" />
       <strong class="link-title">${link.text}</strong>
-      <span class="icon link-validity check" data-valid="${link.isValidUrl}">
+      <span class="icon link-validity check" data-valid="${link.isValidUrl && !link.isEditorLink}">
         <svg width="20" height="15" viewBox="0 0 20 15" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M18 2L7 13L2 8" stroke="#283618" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
