@@ -52,12 +52,20 @@ body:not(.loaded) #title {
   font-size: .8rem;
 }
 
-#app input {
-  appearance: none;
-}
 
 #app .icon.toggle svg {
+  grid-area: toggle;
   filter: invert(100%) sepia(0%) saturate(6192%) hue-rotate(197deg) brightness(106%) contrast(84%);
+}
+
+#app .links-toggle {
+  display: grid;
+  grid-template-areas: "toggle";
+}
+
+#app .links-toggle input {
+  appearance: none;
+  grid-area: toggle;
 }
 
 #app table {
