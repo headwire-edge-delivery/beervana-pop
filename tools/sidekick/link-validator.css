@@ -74,6 +74,7 @@ body:not(.loaded) #title {
   font-weight: bold;
 }
 
+#app .page-title-wrapper,
 #app .link-title-wrapper {
   display: grid;
   grid-template-columns: 1.5rem 1fr 1.5rem;
@@ -83,13 +84,15 @@ body:not(.loaded) #title {
   padding: .75rem .5rem;
 }
 
+#app .page-links,
 #app .link-details {
   max-height: 0;
   overflow: hidden;
   transition: all .3s;
 }
 
-#app li:has(input:checked) .link-details {
+#app .page-links:has(input:checked) > .link-details,
+#app li:has(input:checked) > .link-details {
   max-height: 100%;
 }
 
