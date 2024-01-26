@@ -61,29 +61,50 @@ export default async function linkValidator() {
     if (ref && repo && owner && referrer) {
       const previewUrl = `https://${ref}--${repo}--${owner}.hlx.page`;
       const publishUrl = `https://${ref}--${repo}--${owner}.hlx.live`;
-      const documentId = referrer.split('https://docs.google.com/document/d/')[1]?.split('/')[0];
+      const referrerUrl = new URL(referrer);
 
       const workerUrl = new URL('https://eds-link-validator-worker.jz-759.workers.dev/');
-      workerUrl.searchParams.append('documentId', documentId);
       workerUrl.searchParams.append('validate', true);
       workerUrl.searchParams.append('previewUrl', previewUrl);
       workerUrl.searchParams.append('publishUrl', publishUrl);
 
-      const response = await fetch(workerUrl.toString(), {
-        redirect: 'follow',
-        method: 'GET',
-        headers: {
-          'Content-Type': 'text/plain;charset=utf-8',
-        },
-      });
+      if (referrerUrl.pathname.includes('folders')) {
+        console.log('folder detected');
+        const folderId = referrerUrl.pathname.split('/folders/')[1]?.split('/')[0];
+        console.log('folderId', folderId);
+        workerUrl.searchParams.append('folderId', folderId);
 
-      if (response.ok) {
-        const { title, links } = await response.json();
-        const titleEl = document.querySelector('#title');
-        titleEl.innerHTML = `Link Validator for ${title}`;
-        const appContainer = document.querySelector('#app');
-        appContainer.innerHTML = `<ul class="links-container">${createDocumentLinksHtml(links)}</ul>`;
-        document.body.classList.add('loaded');
+        const response = await fetch(workerUrl.toString(), {
+          redirect: 'follow',
+          method: 'GET',
+          headers: {
+            'Content-Type': 'text/plain;charset=utf-8',
+          },
+        });
+
+        if (response.ok) {
+          console.log('response ok', await response.json());
+        }
+      } else {
+        const documentId = referrerUrl.pathname.split('https://docs.google.com/document/d/')[1]?.split('/')[0];
+        workerUrl.searchParams.append('documentId', documentId);
+
+        const response = await fetch(workerUrl.toString(), {
+          redirect: 'follow',
+          method: 'GET',
+          headers: {
+            'Content-Type': 'text/plain;charset=utf-8',
+          },
+        });
+
+        if (response.ok) {
+          const { title, links } = await response.json();
+          const titleEl = document.querySelector('#title');
+          titleEl.innerHTML = `Link Validator for ${title}`;
+          const appContainer = document.querySelector('#app');
+          appContainer.innerHTML = `<ul class="links-container">${createDocumentLinksHtml(links)}</ul>`;
+          document.body.classList.add('loaded');
+        }
       }
     }
   }
