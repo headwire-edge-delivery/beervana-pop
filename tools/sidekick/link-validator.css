@@ -54,7 +54,10 @@ body:not(.loaded) #title {
 
 #app input {
   appearance: none;
-  background: url('/icons/chevron-right.svg') no-repeat 0 0;
+}
+
+#app .icon.toggle svg {
+  filter: invert(100%) sepia(0%) saturate(6192%) hue-rotate(197deg) brightness(106%) contrast(84%);
 }
 
 #app table {
