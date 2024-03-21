@@ -1,0 +1,7 @@
+@layer components {
+  @layer dynamic-content {
+    .dynamic-content-wrapper {
+      grid-column: content;
+    }
+  }
+}
