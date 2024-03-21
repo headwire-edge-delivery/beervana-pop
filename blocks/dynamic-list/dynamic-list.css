@@ -1,0 +1,7 @@
+@layer components {
+  @layer dynamic-list {
+    .dynamic-list-wrapper {
+      grid-column: content;
+    }
+  }
+}

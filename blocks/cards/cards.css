@@ -1,35 +1,263 @@
-/*
-block-collection css
-.cards > ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(278px, 1fr));
-  grid-gap: 16px;
-}
+@layer components {
+  @layer cards {
+    @layer default {
+      .cards-wrapper {
+        grid-column: content;
+      }
 
-.cards > ul > li {
-  border: 1px solid var(--dark-color);
-  background-color: var(--background-color)
-}
+      .cards-block {
+        --cards-per-row: 1;
 
-.cards .cards-card-body {
-  margin: 16px;
-}
+        display: grid;
+        grid-template-columns: repeat(var(--cards-per-row), minmax(0, 1fr));
+        list-style: none;
+        gap: var(--spacing-16) 0;
 
-.cards .cards-card-image {
-  line-height: 0;
-}
+        @media (width > 768px) {
+          --cards-per-row: 2;
 
-.cards .cards-card-body > *:first-child {
-  margin-top: 0;
-}
+          gap: var(--spacing-16) var(--spacing-8);
+        }
 
-.cards > ul > li img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-}
+        @media (width > 1024px) {
+          --cards-per-row: 3;
+        }
 
-*/
+        & li {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .card {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .cards-card-image {
+          aspect-ratio: 4 / 3;
+          overflow: hidden;
+          border-radius: var(--spacing-3) var(--spacing-3) 0 0;
+          border: 1px solid var(--color-foreground);
+          border-bottom: 0;
+          background: hsla(var(--color-foreground-hsl) / 30%);
+
+          & a,
+          & picture,
+          & img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: scale .2s linear;
+          }
+
+          &:focus,
+          &:hover {
+            img {
+              scale: 1.05;
+            }
+          }
+        }
+
+        .cards-card-body {
+          padding: var(--spacing-4);
+          display: grid;
+          grid-template-rows: auto auto 1fr;
+          flex: 1;
+          gap: var(--spacing-3);
+          background: hsla(var(--color-foreground-hsl) / 30%);
+          border-radius: 0 0 var(--spacing-3) var(--spacing-3);
+          
+          &:is(:not(.cards-card-image + .cards-card-body)) {
+            border-radius: var(--spacing-3);
+            border: 1px solid var(--color-foreground);
+          }
+
+          &:not(.cards-block.brewery .cards-card-body):is(.cards-card-image + .cards-card-body) {
+            border-radius: 0 0 var(--spacing-3) var(--spacing-3);
+            border: 1px solid var(--color-foreground);
+          }
+
+          & > * {
+            margin-block: 0;
+          }
+
+          & :last-child:is(.button-container) {
+            align-self: flex-end;
+          }
+        }
+      }
+    }
+
+    @layer brewery {
+      .cards-block.brewery {
+        @media (width < 768px) {
+          & {
+            overflow: clip;
+            padding-block: var(--spacing-3);
+          }
+        }
+
+        .card {
+          border: 10px solid var(--color-secondary);
+          outline: 5px solid var(--color-foreground);
+          outline-offset: 0;
+          border-radius: 100% 100% 0 0;
+          position: relative;
+          transition: all .2s linear;
+          opacity: 0;
+          transform: translateY(20%);
+          animation: slide-up linear forwards;
+          animation-timeline: view();
+          animation-range: 10vh 30vh;
+
+          @media (width > 768px) {
+            &:nth-child(2n - 1) {
+              animation-range: 0 20vh;
+            }
+
+            &:nth-child(2n) {
+              animation-range: 20vh 40vh;
+            }
+          }
+
+          @media (width > 1024px) {
+            &:nth-child(3n - 2) {
+              animation-range: 0 20vh;
+            }
+
+            &:nth-child(3n - 1) {
+              animation-range: 20vh 40vh;
+            }
+
+            &:nth-child(3n) {
+              animation-range: 30vh 40vh;
+            }
+          }
+
+          &:hover,
+          &:focus {
+            .cards-card-image img {
+              scale: 1.05;
+            }
+
+            .cards-card-body {
+              background-color: var(--color-brand);
+            }
+          }
+        
+          &::before,
+          &::after {
+            display: block;
+            content: '';
+            background: url('/icons/hops.webp') no-repeat center center / contain;
+            width: 30%;
+            height: 40%;
+            position: absolute;
+            top: -7%;
+            z-index: 1;
+          }
+
+          &::after {
+            right: 0;
+            transform: rotate(120deg);
+          }
+
+          &::before {
+            left: 0;
+            transform: rotate(200deg);
+          }
+        }
+
+        .cards-card-image {
+          aspect-ratio: 1 / 1;
+          border-radius: 100% 100% 0 0;
+          overflow: hidden;
+          outline: 11px solid var(--color-brand);
+          outline-offset: 0;
+
+          & a,
+          & picture,
+          & img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+            &:is(img) {
+              transition: all .2s linear;
+
+              @media (prefers-reduced-motion: reduce) {
+                transition: none;
+              }
+            }
+          }
+
+          &::before,
+          &::after {
+            display: block;
+            content: '';
+            background: url('/icons/two-hops.webp') no-repeat center center / contain;
+            width: 60%;
+            height: 60%;
+            position: absolute;
+            top: -11%;
+            z-index: -1;
+            transition: transform .3s linear;
+          }
+
+          &::after {
+            right: -7%;
+            scale: -1 1;
+          }
+
+          &::before {
+            left: -7%;
+          }
+
+          @media (prefers-reduced-motion: no-preference) {
+            &:hover,
+            &:focus {
+              &::before,
+              &::after {
+                transform: scale(.7);
+              }
+            }
+          }
+        }
+
+        .cards-card-body {
+          height: auto;
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          background: var(--color-brand-2);
+          border-radius: 0;
+          display: block;
+          padding: 0;
+
+          @media (prefers-reduced-motion: reduce) {
+            transition: none;
+          }
+
+          & > *:not(h3) {
+            display: none;
+          }
+
+          & h3 {
+            transition: all .2s linear;
+            margin: 0;
+            text-align: center;
+
+            & a {
+              padding: var(--spacing-4);
+              color: var(--color-brand-3);
+              text-decoration: none;
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,3 +1,5 @@
+@layer reset, variables, typography, layout, fcp, global, components, utilities;
+
 @import url('./reset.css');
 @import url('./variables.css');
 @import url('./typography.css');
