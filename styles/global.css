@@ -715,11 +715,3 @@ option {
     transform: scaleX(1);
   }
 }
-
-@layer components {
-  @layer cards {
-    .cards-wrapper {
-      grid-column: content;
-    }
-  }
-}
