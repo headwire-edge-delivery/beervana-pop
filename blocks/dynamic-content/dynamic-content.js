@@ -49,6 +49,14 @@ async function getDynamicContent(queryURL) {
   return data;
 }
 
+function updataBlockProperties(block, config) {
+  block.classList.add(`${config.template}-block`);
+  block.classList.remove('dynamic-content');
+  block.dataset.blockName = config.template;
+  block.parentElement.classList.add(`${config.template}-wrapper`);
+  block.parentElement.classList.remove('dynamic-content-wrapper');
+}
+
 const templateConfig = {
   cards: templateCards,
 };
@@ -59,6 +67,7 @@ export default async function decorate(block) {
   const placeholders = await fetchPlaceholders();
   const { data } = await getDynamicContent(queryURL);
   if (data.length > 0 && templateConfig[config.template]) {
+    updataBlockProperties(block, config);
     block.innerHTML = templateConfig[config.template]({ data, config, placeholders });
   }
 }

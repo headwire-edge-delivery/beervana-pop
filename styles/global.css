@@ -716,3 +716,10 @@ option {
   }
 }
 
+@layer components {
+  @layer cards {
+    .cards-wrapper {
+      grid-column: content;
+    }
+  }
+}
