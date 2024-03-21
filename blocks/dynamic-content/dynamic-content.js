@@ -1,6 +1,8 @@
+import { fetchPlaceholders } from '../../scripts/aem.js';
 import { getOrigin } from '../../scripts/scripts.js';
+import { templateCards } from '../../scripts/templates.js';
 
-const DEFAULT_PATHNAME = '/query-index.json';
+const DEFAULT_SOURCE = '/query-index.json';
 
 function getConfig(block) {
   const config = {};
@@ -15,7 +17,7 @@ function getConfig(block) {
 function buildQueryURL(config) {
   const origin = getOrigin();
   const url = new URL(origin);
-  url.pathname = config.source || DEFAULT_PATHNAME;
+  url.pathname = config.source || DEFAULT_SOURCE;
 
   Object.keys(config).forEach((key) => {
     switch (key) {
@@ -47,17 +49,16 @@ async function getDynamicContent(queryURL) {
   return data;
 }
 
+const templateConfig = {
+  cards: templateCards,
+};
+
 export default async function decorate(block) {
-  // console.group('Dynamic Content');
   const config = getConfig(block);
   const queryURL = buildQueryURL(config);
-  // const template = config?.template || '';
-  // console.log('Config:', config);
-  // console.log('QueryURL:', queryURL);
-  // console.log('Template:', template);
+  const placeholders = await fetchPlaceholders();
   const { data } = await getDynamicContent(queryURL);
-  if (data) {
-    // console.log('Data:', data);
+  if (data.length > 0 && templateConfig[config.template]) {
+    block.innerHTML = templateConfig[config.template]({ data, config, placeholders });
   }
-  // console.groupEnd();
 }
