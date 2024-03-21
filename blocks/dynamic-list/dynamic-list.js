@@ -1,6 +1,6 @@
 import { fetchPlaceholders, loadCSS } from '../../scripts/aem.js';
 import { getOrigin } from '../../scripts/scripts.js';
-import { templateCards, templateEvents } from './dynamic-list-templates.js';
+import { templateBreakout, templateCards, templateEvents } from './dynamic-list-templates.js';
 
 const DEFAULT_SOURCE = '/query-index.json';
 
@@ -62,6 +62,7 @@ function updataBlockProperties(block, config) {
 const templateConfig = {
   cards: templateCards,
   events: templateEvents,
+  breakout: templateBreakout,
 };
 
 export default async function decorate(block) {
