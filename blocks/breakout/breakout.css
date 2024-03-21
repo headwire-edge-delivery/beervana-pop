@@ -1,0 +1,250 @@
+@layer components {
+  @layer breakout {
+    @layer default {
+      @layer wrappers {
+        .breakout-wrapper {
+          grid-column: full-width;
+          display: grid;
+          grid-template-columns: subgrid;
+        }
+
+        .breakout-block {
+          display: grid;
+          grid-template-columns: subgrid;
+          grid-column: full-width;
+          grid-auto-flow: row;
+          overflow: clip;
+
+          &.block {
+            margin-block: var(--spacing-12);
+          }
+        }
+      }
+      
+      @layer breakout-item {
+        .breakout-item {
+          --breakout-item-grid-flow: column;
+          --breakout-item-margin-block: var(--spacing-8);
+
+          display: grid;
+          grid-auto-flow: var(--breakout-item-grid-flow);
+          margin-block: var(--breakout-item-margin-block);
+          grid-column: full-width;
+          grid-template-columns: subgrid;
+          grid-template-rows: [image-start] auto [image-end content-start] auto [content-end];
+
+          @media (width > 768px) {
+            & {
+              --breakout-item-grid-flow: row;
+              --breakout-item-margin-block: 0;
+    
+              grid-template-rows: unset;
+            }
+          }
+
+          @layer breakout-item-content {
+            .default-content-wrapper {
+              grid-column: content;
+              grid-row: content;
+              padding: var(--spacing-6);
+
+              &.image-content {
+                grid-column: full-width;
+                grid-row: image;
+                padding: 0;
+              }
+
+              & :last-child:not(li a) {
+                padding-block-end: 0;
+                margin-block-end: 0;
+              }
+            }
+
+            .image-content {
+              grid-column: image;
+              aspect-ratio: 12 / 9;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+
+              @media (width > 768px) and (width < 1024px) {
+                & {
+                  aspect-ratio: 1 / 1;
+                }
+              }
+
+              @media (width > 1500px) {
+                & {
+                  display: block;
+                }
+              }
+
+              & a,
+              & picture,
+              & img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+              }
+            }
+
+            .default-content-wrapper:not(.image-content) {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+            }
+
+            & h2 {
+              font-weight: 700;
+              line-height: 2rem;
+            }
+
+            & p {
+              margin-block: var(--spacing-1);
+              color: var(--colors-text-text-tertiary);
+            }
+
+            & ul {
+              margin: var(--spacing-4) 0;
+              padding: 0;
+              list-style: none;
+              display: flex;
+              flex-direction: column;
+
+              & li {
+                padding: 0 var(--spacing-2);
+                display: flex;
+                gap: var(--spacing-2);
+                color: var(--colors-text-text-tertiary);
+
+                &:has(a) {
+                  padding-block: 0;
+
+                  & a {
+                    padding-block: var(--spacing-2);
+                  }
+                }
+              }
+
+              & .icon {
+                width: var(--spacing-4);
+                height: var(--spacing-4);
+                display: inline-flex;
+
+                &:not(.icon-map-pin) {
+                  align-self: center;
+                }
+              }
+            }
+          
+            @media (width > 768px) {
+              .default-content-wrapper {
+                grid-row: unset;
+
+                &.image-content {
+                  grid-column: image;
+                  grid-row: unset;
+                }
+              }
+            }
+          
+          }
+        }
+      }
+    }
+
+    @layer breakout-left {
+      .breakout-left {
+        grid-column: breakout-left;
+
+        @layer breakout-item-content {
+          .image-content {
+            grid-column: breakout-left / content;
+            transition: all .2s linear;
+            animation: slide-in linear forwards;
+            animation-timeline: view();
+            transform: translateX(-20%);
+            opacity: 0;
+            animation-range: 10vh 30vh;
+
+            & picture,
+            & img {
+              border-radius: 0 var(--spacing-12) var(--spacing-12) 0;
+            }
+          }
+
+          @media (width > 768px) {
+            .default-content-wrapper {
+              grid-column: content-right;
+
+              &.image-content {
+                grid-column: breakout-left / content-left;
+              }
+            }
+          }
+        
+          @media (width > 1024px) {
+            .default-content-wrapper:not(.image-content) {
+              padding-inline-start: var(--spacing-10);
+            }
+          }
+        }
+
+        @media (width > 768px) {
+          & {
+            grid-column: breakout-left;
+            grid-template-columns: subgrid;
+            display: grid;
+          }
+        }
+      }
+    }
+
+    @layer breakout-right {
+      .breakout-right {
+        grid-column: breakout-right;
+
+        @layer breakout-item-content {
+          .image-content {
+            grid-column: content / breakout-right;
+            animation: slide-in linear forwards;
+            animation-timeline: view();
+            transform: translateX(20%);
+            opacity: 0;
+            animation-range: 10vh 30vh;
+
+            & picture,
+            & img {
+              border-radius: var(--spacing-12) 0 0 var(--spacing-12);
+            }
+          }
+
+          @media (width > 768px) {
+            .default-content-wrapper {
+              grid-column: content-left;
+
+              &.image-content {
+                grid-column: content-right / breakout-right;
+              }
+            }
+          }
+        
+          @media (width > 1024px) {
+            .default-content-wrapper:not(.image-content) {
+              padding-inline-end: var(--spacing-10);
+            }
+          }
+        }
+
+        @media (width > 768px) {
+          & {
+            grid-column: breakout-right;
+            grid-template-columns: subgrid;
+            display: grid;
+          }
+        }
+      }
+    }
+  }
+}
