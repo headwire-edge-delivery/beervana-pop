@@ -1,4 +1,4 @@
-import { createOptimizedPicture } from './aem.js';
+import { createOptimizedPicture } from '../../scripts/aem.js';
 
 /* eslint-disable object-curly-newline */
 export function templateCards({ item, index, placeholders, config }) {

@@ -1,6 +1,6 @@
 import { fetchPlaceholders, loadCSS } from '../../scripts/aem.js';
 import { getOrigin } from '../../scripts/scripts.js';
-import { templateCards, templateEvents } from '../../scripts/templates.js';
+import { templateCards, templateEvents } from './dynamic-list-templates.js';
 
 const DEFAULT_SOURCE = '/query-index.json';
 
