@@ -1,6 +1,6 @@
 @layer components {
-  @layer dynamic-content {
-    .dynamic-content-wrapper {
+  @layer dynamic-list {
+    .dynamic-list-wrapper {
       grid-column: content;
     }
   }

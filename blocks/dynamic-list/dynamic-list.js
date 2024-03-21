@@ -1,6 +1,6 @@
-import { fetchPlaceholders } from '../../scripts/aem.js';
+import { fetchPlaceholders, loadCSS } from '../../scripts/aem.js';
 import { getOrigin } from '../../scripts/scripts.js';
-import { templateCards } from '../../scripts/templates.js';
+import { templateCards, templateEvents } from '../../scripts/templates.js';
 
 const DEFAULT_SOURCE = '/query-index.json';
 
@@ -51,14 +51,17 @@ async function getDynamicContent(queryURL) {
 
 function updataBlockProperties(block, config) {
   block.classList.add(`${config.template}-block`);
-  block.classList.remove('dynamic-content');
+  block.classList.remove('dynamic-list');
   block.dataset.blockName = config.template;
   block.parentElement.classList.add(`${config.template}-wrapper`);
-  block.parentElement.classList.remove('dynamic-content-wrapper');
+  if (config.variant) {
+    block.classList.add(config.variant);
+  }
 }
 
 const templateConfig = {
   cards: templateCards,
+  events: templateEvents,
 };
 
 export default async function decorate(block) {
@@ -66,8 +69,17 @@ export default async function decorate(block) {
   const queryURL = buildQueryURL(config);
   const placeholders = await fetchPlaceholders();
   const { data } = await getDynamicContent(queryURL);
+  const cssPath = `/blocks/${config.template}/${config.template}.css`;
   if (data.length > 0 && templateConfig[config.template]) {
     updataBlockProperties(block, config);
-    block.innerHTML = templateConfig[config.template]({ data, config, placeholders });
+    if (!document.querySelector(`link[href="${cssPath}"]`)) loadCSS(cssPath);
+    block.innerHTML = data
+      .map((item, index) => templateConfig[config.template]({
+        item,
+        index,
+        config,
+        placeholders,
+      }))
+      .join('');
   }
 }
