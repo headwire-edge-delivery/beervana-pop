@@ -1,1 +1,101 @@
-/* lazy bento styles */
+/* stylelint-disable declaration-block-no-redundant-longhand-properties */
+@layer components {
+  @layer bento {
+    @layer wrappers {
+      .bento-wrapper {
+        display: grid;
+        grid-template-columns: subgrid;
+        grid-column: full-width;
+      }
+
+      .bento.block:not([data-block-status="loaded"]) {
+        display: none;
+      }
+
+      .bento.block {
+        --bg-color: hsla(var(--color-foreground-hsl) / 30%);
+        --color: inherit;
+
+        grid-column: content;
+        display: grid;
+        grid-template-columns: subgrid;
+        grid-template-rows: min(min-content, var(--spacing-56));
+        grid-auto-flow: dense;
+        gap: var(--spacing-4);
+        margin-block: var(--spacing-6);
+
+        &:is(html.dark-mode &) {
+          --bg-color: hsla(var(--color-brand-hsl) / 30%);
+        } 
+      }
+    }
+
+    @layer grid-utilities {
+      @layer default {
+        .bento.block {
+          --grid-rows-default: 1;
+          --grid-columns-default: 1;
+          --grid-column-start-default: auto;
+          --grid-column-end-default: auto;
+          --grid-row-start-default: auto;
+          --grid-row-end-default: auto;
+
+          grid-template-rows: repeat(var(--grid-rows-mobile, var(--grid-rows-default)), auto);
+          grid-template-columns: repeat(var(--grid-columns-mobile, var(--grid-columns-default)), 1fr);
+        }
+
+        .bento-item {
+          display: grid;
+          grid-column-start: var(--grid-column-start-mobile, var(--grid-column-start-default, auto));
+          grid-column-end: span var(--grid-column-end-mobile, var(--grid-column-end-default, auto));
+          grid-row-start: var(--grid-row-start-mobile, var(--grid-row-start-default, auto));
+          grid-row-end: span var(--grid-row-end-mobile, var(--grid-row-end-default, auto));
+        }
+      }
+
+      @layer tablet {
+        @media (width > 768px) {
+          .bento.block {
+            grid-template-rows: repeat(var(--grid-rows-tablet, var(--grid-rows-default)), auto);
+            grid-template-columns: repeat(var(--grid-columns-tablet, var(--grid-columns-default)), 1fr);
+          }
+
+          .bento-item {
+            grid-column-start: var(--grid-column-start-tablet, var(--grid-column-start-default, auto));
+            grid-column-end: span var(--grid-column-end-tablet, var(--grid-column-end-default, auto));
+            grid-row-start: var(--grid-row-start-tablet, var(--grid-row-start-default, auto));
+            grid-row-end: span var(--grid-row-end-tablet, var(--grid-row-end-default, auto));
+          }
+        }
+      }
+
+      @layer desktop {
+        @media (width > 1024px) {
+          .bento.block {
+            grid-template-rows: repeat(var(--grid-rows-desktop, var(--grid-rows-default)), auto);
+            grid-template-columns: repeat(var(--grid-columns-desktop, var(--grid-columns-default)), 1fr);
+          }
+
+          .bento-item {
+            grid-column-start: var(--grid-column-start-desktop, var(--grid-column-start-default, auto));
+            grid-column-end: span var(--grid-column-end-desktop, var(--grid-column-end-default, auto));
+            grid-row-start: var(--grid-row-start-desktop, var(--grid-row-start-default, auto));
+            grid-row-end: span var(--grid-row-end-desktop, var(--grid-row-end-default, auto));
+          }
+        }
+      }
+    }
+
+    @layer bento-item {
+      .bento-item {
+        [data-align="center"] {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
