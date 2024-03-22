@@ -88,12 +88,46 @@
 
     @layer bento-item {
       .bento-item {
+        border-radius: var(--spacing-4);
+        padding: var(--spacing-4);
+        background-color: var(--bg-color);
+        color: var(--color);
+        position: relative;
+
         [data-align="center"] {
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
           text-align: center;
+        }
+
+        & :is(h1, h2, h3, h4, h5, h6) {
+          color: inherit;
+
+          &:is(h1) {
+            text-shadow: 1px 1px 0 var(--bg-color), 2px 2px 0 var(--color-text-shadow);
+          }
+        }
+
+        &.bento-item-image {
+          & picture,
+          & img {
+            border-radius: var(--spacing-4);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            overflow: hidden;
+            display: block;
+          }
+
+          & > div {
+            height: 100%;
+          }
+        }
+
+        &.bento-item-image-only {
+          padding: 0;
         }
       }
     }

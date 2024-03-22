@@ -46,6 +46,15 @@ function getConfig(block, config) {
   return config;
 }
 
+function checkForImage(itemElement) {
+  if (itemElement.querySelector('img')) {
+    itemElement.classList.add('bento-item-image');
+    if (itemElement.textContent.trim() === '') {
+      itemElement.classList.add('bento-item-image-only');
+    }
+  }
+}
+
 export default async function decorate(block) {
   const config = getConfig(block, {});
   // set the config on the block
@@ -67,5 +76,6 @@ export default async function decorate(block) {
       }
     });
     element.children[0].remove();
+    checkForImage(element);
   });
 }
