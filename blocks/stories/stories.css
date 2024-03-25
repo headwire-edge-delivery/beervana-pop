@@ -1,0 +1,113 @@
+@layer components {
+  @layer stories {
+    @layer wrappers {
+      .stories-wrapper:not(.bento-item) {
+        display: grid;
+        grid-template: [stories] 1fr / [stories] 1fr;
+        grid-column: full-width;
+      }
+
+      .stories.block {
+        display: grid;
+        grid-template: [story] 1fr / [story] 1fr;
+        grid-area: stories;
+      }
+    }
+
+    @layer story-item {
+      .story-item {
+        grid-area: story;
+        grid-column: 1;
+        grid-row: 1;
+        background: var(--bg) no-repeat center center / cover, linear-gradient(to top, hsla(var(--color-foreground-hsl) / 80%), hsla(var(--color-foreground-hsl) / 50%)), var(--color-background);
+        border-radius: var(--spacing-4);
+        padding: var(--spacing-4);
+        transition: transform .3s cubic-bezier(0.4, 0.0, 1, 1), opacity .3s cubic-bezier(0.4, 0.0, 1, 1);
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        opacity: 0;
+        transform: scale(.9);
+        will-change: transform, opacity;
+        margin: 0;
+        max-width: unset;
+        max-height: unset;
+
+        &:has(picture) {
+          padding: 0;
+        }
+
+        & > ul {
+          margin-inline-start: var(--spacing-5);
+        }
+
+        &.active {
+          opacity: 1;
+          transform: scale(1);
+        }
+
+      
+        & > p:has( > picture) {
+          margin: 0;
+          height: 100%;
+
+          & picture,
+          & img {
+            border-radius: var(--spacing-4);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            overflow: hidden;
+            display: block;
+          }
+        }
+      }
+    }
+
+    @layer story-navigation {
+      .stories-navigation {
+        padding: var(--spacing-4);
+        grid-area: stories;
+        display: grid;
+        grid-auto-flow: column;
+        gap: var(--spacing-1);
+        align-items: flex-start;
+        z-index: 1;
+
+        .story-nav {
+          display: block;
+          background: hsla(var(--color-background-hsl) / 50%);
+          height: var(--spacing-1);
+          border: none;
+          outline: none;
+          position: relative;
+
+          &:hover {
+            background-color: hsla(var(--color-background-hsl) / 100%);
+            cursor: pointer;
+          }
+
+          &:focus {
+            outline: none;
+            box-shadow: var(--focus-ring);
+          }
+        
+          &.active::after {
+            content: '';
+            display: block;
+            transform-origin: top left;
+            width: 100%;
+            height: 100%;
+            transition: transform .2s linear;
+            background-color: hsla(var(--color-background-hsl) / 90%);;
+            animation: progress-bar 3s linear forwards;
+            position: absolute;
+            inset: 0;
+            will-change: width;
+          }
+        }
+      }
+    }
+  }
+}

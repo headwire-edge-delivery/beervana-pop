@@ -102,6 +102,11 @@
           text-align: center;
         }
 
+        &.stories-wrapper {
+          padding: 0;
+          max-height: 60vh;
+        }
+
         & :is(h1, h2, h3, h4, h5, h6) {
           color: inherit;
 

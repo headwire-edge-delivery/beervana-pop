@@ -1,3 +1,5 @@
+import { loadBlock } from '../../scripts/aem.js';
+
 /* eslint-disable no-return-assign */
 function getBreakpointConfig(table) {
   const config = {};
@@ -39,7 +41,6 @@ function getConfig(block, config) {
     let breakpoint = table.parentElement.querySelector('p')?.textContent.trim().toLowerCase() || 'desktop';
     breakpoint = breakpoint.indexOf(',') === -1 ? [breakpoint] : breakpoint.split(',');
     breakpoint.forEach((bp) => config[bp.trim()] = getBreakpointConfig(table));
-    config.table = table;
     table?.parentElement?.parentElement?.remove();
   });
 
@@ -55,15 +56,35 @@ function checkForImage(itemElement) {
   }
 }
 
-export default async function decorate(block) {
-  const config = getConfig(block, {});
-  // set the config on the block
+function setupHighlighter(itemElement) {
+  itemElement.addEventListener('mousemove', ({ target, pageX, pageY }) => {
+    const bentoItem = target?.closest('.bento-item');
+    const x = pageX - bentoItem.offsetLeft;
+    const y = pageY - bentoItem.offsetTop;
+    bentoItem.style.setProperty('--left', `${x}px`);
+    bentoItem.style.setProperty('--top', `${y}px`);
+  });
+}
+
+function hasStory(itemElement) {
+  return itemElement.querySelector('img') && itemElement.querySelector('hr');
+}
+
+function setupStories(itemElement) {
+  itemElement.dataset.blockName = 'stories';
+  loadBlock(itemElement);
+}
+
+function configBlock(block, config) {
+  block.classList.add('bento');
   Object.keys(config).forEach((key) => {
     const { columns, rows } = config[key];
     block.style.setProperty(`--grid-columns-${key}`, columns);
     block.style.setProperty(`--grid-rows-${key}`, rows);
   });
-  // set the config on the items
+}
+
+function configItems(block, config) {
   block.querySelectorAll(':scope > div').forEach((element) => {
     element.classList.add('bento-item');
     const key = element.children[0]?.textContent.trim().toLowerCase();
@@ -76,6 +97,16 @@ export default async function decorate(block) {
       }
     });
     element.children[0].remove();
+    setupHighlighter(element);
     checkForImage(element);
+    if (hasStory(element)) {
+      setupStories(element);
+    }
   });
+}
+
+export default async function decorate(block) {
+  const config = getConfig(block, {});
+  configBlock(block, config);
+  configItems(block, config);
 }
