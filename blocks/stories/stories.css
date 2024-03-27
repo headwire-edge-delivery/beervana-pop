@@ -11,6 +11,7 @@
         display: grid;
         grid-template: [story] 1fr / [story] 1fr;
         grid-area: stories;
+        overflow: hidden;
       }
     }
 
@@ -33,6 +34,7 @@
         margin: 0;
         max-width: unset;
         max-height: unset;
+        overflow: hidden;
 
         &:has(picture) {
           padding: 0;
@@ -51,6 +53,7 @@
         & > p:has( > picture) {
           margin: 0;
           height: 100%;
+          max-width: 100%;
 
           & picture,
           & img {

@@ -135,6 +135,41 @@
           padding: 0;
         }
       }
+
+    }
+
+    @layer bento-item-utilities {
+      .bento-item.shadow {
+        box-shadow: 0 0 10px var(--color-shadow-default);
+      }
+
+      .bento-item.bg-image-overlay {
+        & > div {
+          position: relative;
+          z-index: 1;
+        }
+
+        &::before {
+          content: "";
+          display: block;
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          background-blend-mode: multiply;
+          opacity: 0.2;
+          z-index: 0;
+          background: var(--bg-color) var(--bg-image) no-repeat center center / cover;
+          inset: 0;
+        }
+      }
+    }
+
+    @layer bento-item-stories {
+      .bento-item.stories-wrapper {
+        display: grid;
+        grid-template-areas: "stories";
+        overflow: hidden;
+      }
     }
   }
 }
