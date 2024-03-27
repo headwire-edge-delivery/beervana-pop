@@ -171,5 +171,25 @@
         overflow: hidden;
       }
     }
+
+    @layer bento-item-hover {
+      @media (prefers-reduced-motion: no-preference) {
+        .bento-item:hover {
+          &::after {
+            content: '';
+            background: radial-gradient(ellipse at var(--left) var(--top), var(--bg-color), transparent, transparent);
+            position: absolute;
+            inset: calc(var(--spacing-2) * -1);
+            border-radius: var(--spacing-6);
+            z-index: 0;
+          }
+
+          & div {
+            position: relative;
+            z-index: 1;
+          }
+        }
+      }
+    }
   }
 }
