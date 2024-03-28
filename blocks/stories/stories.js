@@ -37,9 +37,10 @@ function setupBlock(block) {
 }
 
 function storyNavClickHandler({ target }) {
+  const block = target.closest('.stories-wrapper');
   clearInterval(STORY_INTERVAL);
-  setActiveStory(target);
-  STORY_INTERVAL = setInterval(() => setActiveStory(), INTERVAL_TIME);
+  setActiveStory(block, target);
+  STORY_INTERVAL = setInterval(() => setActiveStory(block), INTERVAL_TIME);
 }
 
 function setupNavigation(block, storyCount) {
