@@ -25,9 +25,8 @@
         padding: var(--spacing-4);
         transition: transform .3s cubic-bezier(0.4, 0.0, 1, 1), opacity .3s cubic-bezier(0.4, 0.0, 1, 1);
         background-size: cover;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
+        display: grid;
+        grid-template: [story] 1fr / [story] 1fr;
         opacity: 0;
         transform: scale(.9);
         will-change: transform, opacity;
@@ -50,10 +49,12 @@
         }
 
       
-        & > p:has( > picture) {
+        .story-image-wrapper {
           margin: 0;
           height: 100%;
           max-width: 100%;
+          grid-area: story;
+          overflow: hidden;
 
           & picture,
           & img {
@@ -68,15 +69,34 @@
       }
     }
 
+    @layer story-text-wrapper {
+      .story-text-wrapper {
+        grid-area: story;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        gap: var(--spacing-4);
+        padding: var(--spacing-4);
+        background: linear-gradient(0deg, rgba(0 0 0 / 70%) 0%, rgba(0 0 0 / 0%) 50%);
+
+        &:last-child {
+          padding-block-end: 0;
+          margin-block-end: 0;
+        }
+      }
+    }
+
     @layer story-navigation {
       .stories-navigation {
-        padding: var(--spacing-4);
-        grid-area: stories;
         display: grid;
         grid-auto-flow: column;
         gap: var(--spacing-1);
-        align-items: flex-start;
         z-index: 1;
+        position: absolute;
+        top: var(--spacing-4);
+        left: var(--spacing-4);
+        right: var(--spacing-4);
+        height: auto;
 
         .story-nav {
           display: block;

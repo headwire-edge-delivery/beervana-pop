@@ -166,9 +166,24 @@
 
     @layer bento-item-stories {
       .bento-item.stories-wrapper {
+        --stories-aspect-ratio: var(--grid-column-end-mobile, 2) / var(--grid-row-end-mobile, 1);
+
         display: grid;
         grid-template-areas: "stories";
         overflow: hidden;
+        aspect-ratio: var(--stories-aspect-ratio);
+      }
+
+      @media (width > 768px) {
+        .bento-item.stories-wrapper {
+          --stories-aspect-ratio: var(--grid-column-end-tablet, 2) / var(--grid-row-end-tablet, 1);
+        }
+      }
+
+      @media (width > 1024px) {
+        .bento-item.stories-wrapper {
+          --stories-aspect-ratio: var(--grid-column-end-desktop, 2) / var(--grid-row-end-desktop, 1);
+        }
       }
     }
 

@@ -83,6 +83,15 @@ function setupStoryItems(block, storyCount) {
     storyItem.classList.add('story-item', i === 0 && 'active');
     storyItem.dataset.story = i;
     storyItem.append(...getStoryItemChildren(blockChildren));
+    const pictureWrapper = storyItem.querySelector(':scope > p:has(picture)');
+    pictureWrapper.classList.add('story-image-wrapper');
+    const textContent = storyItem.querySelectorAll(':scope > *:not(p:has(picture))');
+    if (textContent.length > 0) {
+      const storyTextWrapper = document.createElement('div');
+      storyTextWrapper.classList.add('story-text-wrapper');
+      storyItem.appendChild(storyTextWrapper);
+      storyTextWrapper.append(...textContent);
+    }
     blockContent.appendChild(storyItem);
   }
   block.prepend(blockContent);
